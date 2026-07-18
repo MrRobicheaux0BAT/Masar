@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thieves' Guild Quest Tracker</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Uncial+Antiqua&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cinzel', serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0f0f1e 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #d4af37;
+            padding: 20px;
+        }
+        
+        .container {
+            background: rgba(15, 15, 30, 0.95);
+            border: 3px solid #6a4c93;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(106, 76, 147, 0.5), inset 0 0 50px rgba(0, 0, 0, 0.5);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            position: relative;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #6a4c93, #4a2c63, #6a4c93, #4a2c63);
+            border-radius: 10px;
+            z-index: -1;
+            filter: blur(10px);
+            opacity: 0.7;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #6a4c93;
+            padding-bottom: 20px;
+        }
+        
+        .title {
+            font-family: 'Uncial Antiqua', cursive;
+            font-size: 2.5em;
+            color: #d4af37;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5), 0 0 20px rgba(106, 76, 147, 0.3);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        
+        .subtitle {
+            font-size: 0.9em;
+            color: #9b7fb8;
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+        
+        .guild-symbol {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            background: radial-gradient(circle, #6a4c93 0%, #4a2c63 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            box-shadow: 0 0 15px rgba(106, 76, 147, 0.7);
+        }
+        
+        .city-tracker {
+            background: rgba(106, 76, 147, 0.1);
+            border: 2px solid #6a4c93;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .city-tracker:hover {
+            background: rgba(106, 76, 147, 0.2);
+            box-shadow: 0 0 15px rgba(106, 76, 147, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .city-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .city-name {
+            font-size: 1.4em;
+            color: #e6c589;
+            font-weight: 600;
+            text-shadow: 0 0 5px rgba(230, 197, 137, 0.3);
+        }
+        
+        .city-count {
+            font-size: 2em;
+            color: #d4af37;
+            font-weight: 700;
+            min-width: 60px;
+            text-align: center;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+        
+        .controls {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: 2px solid #6a4c93;
+            background: linear-gradient(135deg, #4a2c63 0%, #2a1c43 100%);
+            color: #d4af37;
+            font-family: 'Cinzel', serif;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        .btn:hover {
+            background: linear-gradient(135deg, #6a4c93 0%, #4a2c63 100%);
+            box-shadow: 0 0 15px rgba(106, 76, 147, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .btn-add {
+            flex: 1;
+        }
+        
+        .btn-reset {
+            background: linear-gradient(135deg, #5a1c3c 0%, #3a0c2c 100%);
+            border-color: #8a3c6c;
+        }
+        
+        .btn-reset:hover {
+            background: linear-gradient(135deg, #7a3c5c 0%, #5a1c3c 100%);
+            box-shadow: 0 0 15px rgba(138, 60, 108, 0.5);
+        }
+        
+        .total-section {
+            background: rgba(106, 76, 147, 0.2);
+            border: 3px solid #6a4c93;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            margin-top: 30px;
+            box-shadow: 0 0 20px rgba(106, 76, 147, 0.4);
+        }
+        
+        .total-label {
+            font-size: 1.3em;
+            color: #9b7fb8;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        
+        .total-count {
+            font-size: 3.5em;
+            color: #d4af37;
+            font-weight: 700;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.7), 0 0 40px rgba(106, 76, 147, 0.3);
+        }
+        
+        .reset-all {
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .btn-reset-all {
+            padding: 15px 40px;
+            font-size: 1.1em;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(106, 76, 147, 0.3);
+            border-radius: 4px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #6a4c93 0%, #9b7fb8 100%);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px rgba(106, 76, 147, 0.5);
+        }
+        
+        .quest-requirement {
+            font-size: 0.8em;
+            color: #7a5c9a;
+            margin-top: 5px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="guild-symbol">◆</div>
+            <h1 class="title">Thieves' Guild</h1>
+            <p class="subtitle">Quest Tracker</p>
+        </div>
+        
+        <div id="cities-container">
+            <!-- City trackers will be inserted here -->
+        </div>
+        
+        <div class="total-section">
+            <div class="total-label">TOTAL QUESTS COMPLETED</div>
+            <div class="total-count" id="total-count">0</div>
+        </div>
+        
+        <div class="reset-all">
+            <button class="btn btn-reset btn-reset-all" onclick="resetAll()">Reset All Progress</button>
+        </div>
+    </div>
+    
+    <script>
+        const cities = [
+            { id: 'whiterun', name: 'Whiterun', required: 5 },
+            { id: 'windhelm', name: 'Windhelm', required: 5 },
+            { id: 'markarth', name: 'Markarth', required: 5 },
+            { id: 'solitude', name: 'Solitude', required: 5 }
+        ];
+        
+        const STORAGE_KEY = 'thieves_guild_quests';
+        
+        function loadProgress() {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved) {
+                return JSON.parse(saved);
+            }
+            const initial = {};
+            cities.forEach(city => {
+                initial[city.id] = 0;
+            });
+            return initial;
+        }
+        
+        function saveProgress(progress) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+        }
+        
+        let questProgress = loadProgress();
+        
+        function renderCities() {
+            const container = document.getElementById('cities-container');
+            container.innerHTML = '';
+            
+            cities.forEach(city => {
+                const count = questProgress[city.id] || 0;
+                const percentage = Math.min((count / city.required) * 100, 100);
+                
+                const cityDiv = document.createElement('div');
+                cityDiv.className = 'city-tracker';
+                cityDiv.innerHTML = `
+                    <div class="city-header">
+                        <div class="city-name">${city.name}</div>
+                        <div class="city-count">${count}</div>
+                    </div>
+                    <div class="controls">
+                        <button class="btn btn-add" onclick="incrementCity('${city.id}')">Add Quest</button>
+                        <button class="btn btn-reset" onclick="resetCity('${city.id}')">Reset</button>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: ${percentage}%"></div>
+                    </div>
+                    <div class="quest-requirement">${count}/${city.required} quests for special merchant</div>
+                `;
+                container.appendChild(cityDiv);
+            });
+            
+            updateTotal();
+        }
+        
+        function incrementCity(cityId) {
+            questProgress[cityId] = (questProgress[cityId] || 0) + 1;
+            saveProgress(questProgress);
+            renderCities();
+        }
+        
+        function resetCity(cityId) {
+            if (confirm(`Reset quest count for ${cities.find(c => c.id === cityId).name}?`)) {
+                questProgress[cityId] = 0;
+                saveProgress(questProgress);
+                renderCities();
+            }
+        }
+        
+        function resetAll() {
+            if (confirm('Are you sure you want to reset all quest progress?')) {
+                cities.forEach(city => {
+                    questProgress[city.id] = 0;
+                });
+                saveProgress(questProgress);
+                renderCities();
+            }
+        }
+        
+        function updateTotal() {
+            const total = Object.values(questProgress).reduce((sum, count) => sum + count, 0);
+            document.getElementById('total-count').textContent = total;
+        }
+        
+        renderCities();
+    </script>
+</body>
+</html>
