@@ -1,0 +1,3225 @@
+{
+  "eras": [
+    {
+      "id": "dawn",
+      "name": "Dawn Era",
+      "summary": "The Dawn Era is the nonlinear, prehistoric age of creation when the laws of nature were unset and time itself was unstable. From the interplay of Anu and Padomay (and related dualities across cultures) sprang the et'Ada, the Original Spirits. Lorkhan's plan to create Mundus—the mortal plane—drew many Aedra into a costly collaboration; Magnus and the Magna Ge fled, tearing holes that became the sun and stars, while Daedric Princes rejected the project and shaped their own realms. Convention at the Adamantine Tower fixed Mundus's laws, Lorkhan's Heart was torn free, and linear history became possible.",
+      "keyInsights": [
+        "Mundus was forged by Aedric sacrifice; Daedra kept their power by refusing to join.",
+        "Magnus's departure created the sun and stars—the source of magic flowing from Aetherius.",
+        "Lorkhan (Shor to Nords) is central to mortality; his Heart remains a cosmic fulcrum.",
+        "Dragon Breaks later echo Dawn chaos—nonlinear time returning to Mundus."
+      ],
+      "skyrimRelevance": "Explains why dragons, Divines, Daedra, and the Thu'um matter: they are leftovers of creation. Nordic myths of Shor, Kyne, and Alduin the World-Eater are Dawn-rooted beliefs that still shape Skyrim's religion and the Dragon Crisis of 4E 201.",
+      "connections": [
+        "merethic",
+        "aedra",
+        "daedra",
+        "creation",
+        "ehlnofey"
+      ]
+    },
+    {
+      "id": "merethic",
+      "name": "Merethic Era",
+      "summary": "Also called the Era of Myths or Era of the Elves, the Merethic spans roughly ME 2500 to ME 1 and is numbered in reverse from the founding of the Camoran Dynasty. Aldmer settle Tamriel; Dwemer, Chimer, Ayleids, and others diverge. Late Merethic humans from Atmora under Ysgramor colonize Skyrim, suffer the Night of Tears at Saarthal, and return with the Five Hundred Companions. Dragons and Dragon Priests dominate men until the Dragon War ends Alduin's tyranny—setting up every Nordic ruin and Word Wall a Skyrim player explores.",
+      "keyInsights": [
+        "Ysgramor's Return establishes Nordic Skyrim and the Companions' founding myth.",
+        "The Dragon War and Alduin's banishment define Skyrim's Merethic climax.",
+        "Miraak, the First Dragonborn, rises and falls on Solstheim in this era.",
+        "Snow Elves (Falmer) and Dwemer are already major powers in northern Tamriel."
+      ],
+      "skyrimRelevance": "Almost every Nordic barrow, dragon priest mask, Companion tradition, and Falmer tragedy begins here. Understanding the Merethic makes Helgen's dragon return feel like unfinished Merethic business.",
+      "connections": [
+        "dawn",
+        "first",
+        "nords-atmora",
+        "dragons",
+        "dwemer",
+        "falmer",
+        "ehlnofey"
+      ]
+    },
+    {
+      "id": "first",
+      "name": "First Era",
+      "summary": "Beginning with the Camoran Dynasty in Valenwood (1E 0), the First Era lasts 2,920 years and sees human empires rise. High King Harald consolidates historical Skyrim; Alessia's slave revolt topples the Ayleids and founds the Eight Divines faith. Nordic expansions, the War of the First Council, Red Mountain, and the disappearance of the Dwemer remake Morrowind. Reman Cyrodiil later founds the Second Empire and the Dragonguard—ancestors of the Blades—to hunt dragons.",
+      "keyInsights": [
+        "Alessia's Eight Divines become the Imperial pantheon Nords later clash over regarding Talos.",
+        "The Dwemer vanish at Red Mountain; Falmer dependency deepens into betrayal.",
+        "Reman's Dragonguard establishes institutional dragon-hunting that becomes the Blades.",
+        "King Wulfharth and Nordic mythic history intertwine with Morrowind's Tribunal rise."
+      ],
+      "skyrimRelevance": "Explains Draugr-era Dragon Cult remnants Harald purged, why Dwemer ruins sit empty, and why the Blades claim ancient authority when Delphine and Esbern guide the Dragonborn.",
+      "connections": [
+        "merethic",
+        "second",
+        "empire-septim",
+        "dwemer",
+        "chimer-dunmer",
+        "aedra",
+        "dragons"
+      ]
+    },
+    {
+      "id": "second",
+      "name": "Second Era",
+      "summary": "The Second Era opens after the Reman Dynasty's fall under Akaviri Potentate Versidue-Shaie (2E 1) and lasts 896 years. It includes the Interregnum, the rise of the Mages Guild under Vanus Galerion, Three Banners War chaos, and the founding of the Dark Brotherhood from Morag Tong roots. Tiber Septim (Talos) reunifies Tamriel by 2E 896 using the Numidium, ending the era and founding the Third Empire—binding Skyrim into Imperial history that still defines 4E politics.",
+      "keyInsights": [
+        "Tiber Septim's conquest and apotheosis as Talos become the religious flashpoint of the Great War.",
+        "The Dark Brotherhood's Night Mother cult crystallizes in this era.",
+        "Mages Guild traditions foreshadow later Synod/College tensions.",
+        "Skyrim remains a Nordic kingdom within shifting Imperial frameworks."
+      ],
+      "skyrimRelevance": "Talos worship, Imperial legitimacy, and faction origins (Brotherhood, mage institutions) all trace here—core Civil War and guild-quest context in 4E 201.",
+      "connections": [
+        "first",
+        "third",
+        "empire-septim",
+        "dark-brotherhood",
+        "college-winterhold",
+        "aedra"
+      ]
+    },
+    {
+      "id": "third",
+      "name": "Third Era",
+      "summary": "Proclaimed by Tiber Septim, the Third Era spans 433 years of Septim rule. It covers the Warp in the West, the Nerevarine's defeat of Dagoth Ur, and climaxes with the Oblivion Crisis of 3E 433: Uriel Septim VII's assassination by the Mythic Dawn and Mehrunes Dagon's invasion. Martin Septim's sacrifice ends the Septim bloodline, shatters the Amulet of Kings' covenant as formerly known, and ushers in the Fourth Era—leaving the Empire fatally weakened before Skyrim's story.",
+      "keyInsights": [
+        "The Oblivion Crisis ends the Septim Dynasty and permanently destabilizes Imperial authority.",
+        "Mythic Dawn texts found in Skyrim are primary sources on that catastrophe.",
+        "Uriel VII's long reign shaped the Empire Nords remember as 'the good old days.'",
+        "Daedric threat awareness surges Empire-wide after Dagon's assault."
+      ],
+      "skyrimRelevance": "Every mention of the Empire's decline, the Blades' fall, and Daedric danger after Oblivion is Third Era aftermath. Skyrim's elders lived through its end.",
+      "connections": [
+        "second",
+        "fourth",
+        "empire-septim",
+        "oblivion-crisis",
+        "daedra",
+        "prophecy-dragonborn"
+      ]
+    },
+    {
+      "id": "fourth",
+      "name": "Fourth Era",
+      "summary": "Beginning after the Oblivion Crisis, the Fourth Era sees Red Year devastate Morrowind, Thalmor seize Alinor and rebuild the Aldmeri Dominion, and Titus Mede's dynasty hold a shrinking Empire. The Great War (4E 171–175) ends with the White-Gold Concordat banning Talos worship. The Markarth Incident and Stormcloak Rebellion split Skyrim; in 4E 201 Alduin returns, the Last Dragonborn rises, and civil war, College, Brotherhood, Guild, Dawnguard, and Miraak crises unfold simultaneously.",
+      "keyInsights": [
+        "White-Gold Concordat's Talos ban is the legal and religious root of Skyrim's Civil War.",
+        "Thalmor Justiciars operate openly in Skyrim as Imperial treaty enforcers.",
+        "4E 201 is the Dragon Crisis: Alduin's return fulfills ancient prophecy.",
+        "Provincial secessions (Black Marsh, Elsweyr, Hammerfell friction) show Imperial collapse."
+      ],
+      "skyrimRelevance": "This is the player's present. Every main quest, civil war choice, and Thalmor encounter is Fourth Era history happening in real time.",
+      "connections": [
+        "third",
+        "great-war",
+        "thalmor",
+        "civil-war",
+        "dragons",
+        "prophecy-dragonborn",
+        "oblivion-crisis"
+      ]
+    }
+  ],
+  "topics": [
+    {
+      "id": "creation",
+      "name": "Creation & the Aurbis",
+      "eraIds": [
+        "dawn"
+      ],
+      "summary": "The Aurbis—the Gray Maybe—arises from primordial dualities (Anu/Padomay and cultural analogues). Et'Ada crystallize; Lorkhan proposes Mundus; Aedra sacrifice power to stabilize Nirn while Magna Ge flee to Aetherius. Creation myths disagree on details but agree mortality is a crafted, contested state.",
+      "keyInsights": [
+        "Aurbis sits between Aetherius and Oblivion; Mundus is its mortal hub.",
+        "Cultural monomyths (Anuad, Nordic, Yokudan, Khajiiti) are parallel tellings, not one canon.",
+        "Convention ends Dawn nonlinearity and begins countable history."
+      ],
+      "relatedBookIds": [
+        "childrens-anuad",
+        "the-monomyth",
+        "before-the-ages-of-man",
+        "the-lunar-lorkhan",
+        "spirit-of-nirn",
+        "words-of-clan-mother-ahnissi",
+        "sithis"
+      ]
+    },
+    {
+      "id": "aedra",
+      "name": "Aedra & the Nine Divines",
+      "eraIds": [
+        "dawn",
+        "first",
+        "second",
+        "third",
+        "fourth"
+      ],
+      "summary": "Aedra are et'Ada who poured power into Mundus and became the bones of the world. Alessia's Eight Divines syncretized Nordic and Cyrodiilic faiths; Tiber Septim's apotheosis added Talos as the Ninth. In 4E Skyrim, Talos worship is outlawed by Concordat, making Divine religion a civil-war fault line.",
+      "keyInsights": [
+        "Aedra are 'our ancestors'; diminished creators bound to Mundus.",
+        "Talos is both conqueror-god and banned cult under Dominion pressure.",
+        "Nordic Kyne/Shor traditions sit uneasily beside Imperial Akatosh/Eight framing."
+      ],
+      "relatedBookIds": [
+        "aedra-and-daedra",
+        "the-amulet-of-kings",
+        "trials-of-st-alessia",
+        "shezarr-and-the-divines",
+        "gods-and-worship",
+        "the-talos-mistake",
+        "varieties-of-faith",
+        "children-of-the-sky"
+      ]
+    },
+    {
+      "id": "daedra",
+      "name": "Daedric Princes",
+      "eraIds": [
+        "dawn",
+        "merethic",
+        "first",
+        "second",
+        "third",
+        "fourth"
+      ],
+      "summary": "Daedric Princes are powerful et'Ada who refused Mundus and rule Oblivion realms. Sixteen major Princes meddle constantly—Azura, Boethiah, Mephala shape Dunmer faith; Nocturnal binds Nightingales; Hermaeus Mora claims Miraak and Apocrypha; Mehrunes Dagon drove the Oblivion Crisis. Skyrim's Daedric quests are living theology.",
+      "keyInsights": [
+        "Daedra did not create Mundus, so they retain fuller divine power.",
+        "Prince spheres (ambition, secrets, change, madness) explain cult behavior.",
+        "Artifacts and Black Books are dangerous contracts, not mere loot."
+      ],
+      "relatedBookIds": [
+        "the-book-of-daedra",
+        "aedra-and-daedra",
+        "darkest-darkness",
+        "on-oblivion",
+        "the-doors-of-oblivion",
+        "invocation-of-azura",
+        "boethiahs-proving",
+        "spirit-of-the-daedra",
+        "varieties-of-daedra",
+        "the-waters-of-oblivion",
+        "myths-of-sheogorath",
+        "liminal-bridges"
+      ]
+    },
+    {
+      "id": "ehlnofey",
+      "name": "Ehlnofey & the Aldmer",
+      "eraIds": [
+        "dawn",
+        "merethic"
+      ],
+      "summary": "Ehlnofey—Earth Bones—are ancestral spirits whose progeny become Mer and Men. Old Ehlnofey (Aldmeris) and Wandering Ehlnofey war, sundering Nirn into continents. Aldmer settle Summerset and colonize Tamriel, diversifying into Altmer, Bosmer, Ayleids, Dwemer, Chimer, and Snow Elves—the root of all elven politics the Thalmor later weaponize.",
+      "keyInsights": [
+        "Mer claim closer descent from Ehlnofey; Thalmor ideology weaponizes that pride.",
+        "Sundering of Aldmeris explains why no single elven homeland remains.",
+        "Veloth's exodus and Trinimac's fall birth Chimer and Orsimer."
+      ],
+      "relatedBookIds": [
+        "childrens-anuad",
+        "before-the-ages-of-man",
+        "the-monomyth",
+        "father-of-the-niben",
+        "changed-ones",
+        "the-true-nature-of-orcs",
+        "the-wild-elves",
+        "last-king-of-the-ayleids"
+      ]
+    },
+    {
+      "id": "nords-atmora",
+      "name": "Nords & Atmora",
+      "eraIds": [
+        "merethic",
+        "first",
+        "fourth"
+      ],
+      "summary": "Nords descend from Atmoran migrants. Ysgramor's colonization, the Night of Tears, and the Five Hundred Companions forge Skyrim's founding epic. Thu'um, Sovngarde, and animal-totem roots distinguish Nordic culture from Imperial Cyrodiil—tensions that explode in the Stormcloak revolt.",
+      "keyInsights": [
+        "Ysgramor is cultural progenitor; Companions claim direct lineage of purpose.",
+        "Children of the Sky link Nords to breath, Voice, and Kyne.",
+        "Atmora froze and emptied; Skyrim became the Nordic heartland."
+      ],
+      "relatedBookIds": [
+        "children-of-the-sky",
+        "songs-of-the-return-vol-2",
+        "songs-of-the-return-vol-7",
+        "songs-of-the-return-vol-19",
+        "songs-of-the-return-vol-24",
+        "songs-of-the-return-vol-56",
+        "night-of-tears",
+        "yngol-and-the-sea-ghosts",
+        "frontier-conquest",
+        "nords-of-skyrim",
+        "sovngarde-a-reexamination",
+        "five-songs-of-king-wulfharth",
+        "great-harbingers"
+      ]
+    },
+    {
+      "id": "dragons",
+      "name": "Dragons, Dragon Cult & Dragon War",
+      "eraIds": [
+        "merethic",
+        "first",
+        "fourth"
+      ],
+      "summary": "Dragons ruled men through Dragon Priests until the Dragon War. Mortals learned the Voice; Alduin was cast forward in time on the Throat of the World. Reman's Dragonguard later hunted survivors. In 4E 201 Alduin returns to devour and dominate—until the Last Dragonborn answers prophecy.",
+      "keyInsights": [
+        "Alduin is World-Eater in Nordic myth—debated as Akatosh aspect or separate being.",
+        "Dragon Priests and draugr are Merethic theocracy remnants.",
+        "Dragonrend and an Elder Scroll were used to banish Alduin, not destroy him."
+      ],
+      "relatedBookIds": [
+        "the-dragon-war",
+        "alduin-is-real",
+        "the-alduin-akatosh-dichotomy",
+        "annals-of-the-dragonguard",
+        "atlas-of-dragons",
+        "amongst-the-draugr",
+        "there-be-dragons",
+        "dragon-language-myth-no-more",
+        "olaf-and-the-dragon",
+        "skorm-snow-striders-journal",
+        "the-guardian-and-the-traitor",
+        "the-book-of-the-dragonborn"
+      ]
+    },
+    {
+      "id": "dwemer",
+      "name": "Dwemer",
+      "eraIds": [
+        "merethic",
+        "first"
+      ],
+      "summary": "The Dwemer (Deep Elves) were reclusive engineer-philosophers of northern Tamriel whose tonal architecture and steam automata still fill Skyrim's ruins. Conflict with Chimer climaxed at Red Mountain; as Nerevar and Kagrenac's tools met Lorkhan's Heart, the Dwemer vanished as a people—leaving empty cities and unanswered tonal mysteries.",
+      "keyInsights": [
+        "Dwemer pursued profane mastery of divine principles (Kagrenac's tools).",
+        "Their disappearance is simultaneous and unexplained—linked to the Heart.",
+        "Skyrim's Freehold ruins (Alftand, Blackreach, Nchuand-Zel) are archaeological goldmines."
+      ],
+      "relatedBookIds": [
+        "dwarves-v1",
+        "dwarves-v2",
+        "dwarves-v3",
+        "dwemer-inquiries-vol-i",
+        "dwemer-inquiries-vol-ii",
+        "dwemer-inquiries-vol-iii",
+        "dwemer-history-and-culture",
+        "antecedants-of-dwemer-law",
+        "chronicles-of-nchuleft",
+        "nchunaks-fire-and-faith",
+        "the-aetherium-wars",
+        "ruins-of-kemel-ze",
+        "herbanes-bestiary-automatons"
+      ]
+    },
+    {
+      "id": "falmer",
+      "name": "Falmer (Snow Elves)",
+      "eraIds": [
+        "merethic",
+        "first",
+        "fourth"
+      ],
+      "summary": "Snow Elves once ruled Skyrim's surface until Nordic wars drove them to seek Dwemer sanctuary. The Dwemer blinded and enslaved them; over ages they became the devolved Falmer of the Underdark. Dawnguard lore reveals Gelebor and a hidden Chantry of Auri-El—proof that not all Snow Elf culture died.",
+      "keyInsights": [
+        "Fall of the Snow Prince marks the military end of Snow Elf resistance.",
+        "Dwemer 'protection' was mutilating enslavement.",
+        "Chantry of Auri-El preserves pre-fall Snow Elf faith and Auriel's Bow."
+      ],
+      "relatedBookIds": [
+        "fall-of-the-snow-prince",
+        "the-falmer-a-study",
+        "the-betrayed",
+        "diary-of-faire-agarwen",
+        "journal-of-mirtil-angoth",
+        "touching-the-sky",
+        "ghosts-in-the-storm",
+        "imperial-report-on-saarthal"
+      ]
+    },
+    {
+      "id": "chimer-dunmer",
+      "name": "Chimer & Dunmer",
+      "eraIds": [
+        "dawn",
+        "merethic",
+        "first",
+        "third",
+        "fourth"
+      ],
+      "summary": "Veloth led Chimer to Resdayn under Daedric Anticipations. After Red Mountain, Azura's curse turned them Dunmer; the Tribunal ruled as living gods until the late Third Era. Red Year and Argonian invasion empty Morrowind; many Dunmer flee to Skyrim—especially Windhelm's Gray Quarter and Solstheim's Raven Rock.",
+      "keyInsights": [
+        "Tribunal fall returns Dunmer faith toward Azura, Boethiah, and Mephala (Reclamations).",
+        "Red Year diaspora reshapes eastern Skyrim demographics.",
+        "House politics (Redoran on Solstheim) continue in exile."
+      ],
+      "relatedBookIds": [
+        "changed-ones",
+        "the-anticipations",
+        "the-reclamations",
+        "the-red-year-vol-i",
+        "the-red-year-vol-ii",
+        "war-of-the-first-council",
+        "nerevar-at-red-mountain",
+        "nerevar-moon-and-star",
+        "ancestors-and-the-dunmer",
+        "short-history-of-morrowind",
+        "dunmer-of-skyrim",
+        "scourge-of-the-gray-quarter",
+        "history-of-raven-rock-vol-i",
+        "history-of-raven-rock-vol-ii",
+        "history-of-raven-rock-vol-iii",
+        "decree-of-monument"
+      ]
+    },
+    {
+      "id": "empire-septim",
+      "name": "Empire & the Septims",
+      "eraIds": [
+        "second",
+        "third",
+        "fourth"
+      ],
+      "summary": "Tiber Septim founds the Third Empire; his dynasty rules until Martin's sacrifice. Brief History texts and Arcturian Heresy debate Talos's rise. After Oblivion, Mede emperors hold a diminished Cyrodiil. By 4E 201, Skyrim's loyalty to that Empire is the Civil War's core question.",
+      "keyInsights": [
+        "Septim legitimacy rested on Dragonborn emperors and the Amulet of Kings.",
+        "The Arcturian Heresy challenges official Talos hagiography.",
+        "Mede Empire lacks Septim mystique—easier for Stormcloaks to reject."
+      ],
+      "relatedBookIds": [
+        "brief-history-of-the-empire-v1",
+        "brief-history-of-the-empire-v2",
+        "brief-history-of-the-empire-v3",
+        "brief-history-of-the-empire-v4",
+        "the-arcturian-heresy",
+        "life-of-uriel-septim-vii",
+        "the-third-era-timeline",
+        "battle-of-sancre-tor",
+        "remanada",
+        "the-rise-and-fall-of-the-blades",
+        "the-wolf-queen-v1",
+        "biography-of-the-wolf-queen"
+      ]
+    },
+    {
+      "id": "oblivion-crisis",
+      "name": "Oblivion Crisis",
+      "eraIds": [
+        "third",
+        "fourth"
+      ],
+      "summary": "In 3E 433 the Mythic Dawn assassinates Uriel VII and opens Oblivion Gates for Mehrunes Dagon. Martin's transformation into Akatosh's avatar seals the gates but ends the Septim line. The Crisis legitimizes Thalmor claims in Summerset and begins the Empire's Fourth Era freefall.",
+      "keyInsights": [
+        "Mythic Dawn Commentaries are the cult's primary scripture.",
+        "Provincial chaos after the Crisis enables Dominion expansion.",
+        "Blades survive as fugitives; their dragonlore becomes vital in 4E 201."
+      ],
+      "relatedBookIds": [
+        "the-oblivion-crisis",
+        "mythic-dawn-commentaries-1",
+        "mythic-dawn-commentaries-2",
+        "mythic-dawn-commentaries-3",
+        "mythic-dawn-commentaries-4",
+        "the-doors-of-oblivion",
+        "rising-threat-vol-i",
+        "rising-threat-vol-ii"
+      ]
+    },
+    {
+      "id": "great-war",
+      "name": "Great War & White-Gold Concordat",
+      "eraIds": [
+        "fourth"
+      ],
+      "summary": "From 4E 171–175 the Aldmeri Dominion invades Hammerfell and Cyrodiil, sacks the Imperial City, then loses the Battle of the Red Ring. Exhausted, Titus Mede II signs the White-Gold Concordat: Talos ban, southern Hammerfell ceded, Thalmor enforcement rights. Hammerfell rejects the peace and fights on alone—proof the Dominion can be bled, and fuel for Nord outrage.",
+      "keyInsights": [
+        "Concordat terms nearly match the ultimatum Titus II first rejected.",
+        "Talos ban is religious humiliation designed to fracture Imperial provinces.",
+        "A Dream of Sovngarde memorializes Nord sacrifice at Red Ring."
+      ],
+      "relatedBookIds": [
+        "the-great-war",
+        "rising-threat-vol-iii",
+        "rising-threat-vol-iv",
+        "a-dream-of-sovngarde",
+        "the-talos-mistake",
+        "flight-from-the-thalmor",
+        "nords-arise"
+      ]
+    },
+    {
+      "id": "thalmor",
+      "name": "Thalmor & the Aldmeri Dominion",
+      "eraIds": [
+        "fourth"
+      ],
+      "summary": "Thalmor nationalists seize Summerset (Alinor), absorb Valenwood and later Elsweyr client states, and prosecute the Great War. In Skyrim they hunt Talos worshippers and Blades survivors under Concordat authority. Rising Threat warns they claim credit for ending the Oblivion Crisis and pursue long merish supremacy.",
+      "keyInsights": [
+        "Thalmor dossiers prove active intelligence war inside Skyrim.",
+        "Justiciars are treaty police—and political provocateurs.",
+        "Dominion strategy benefits from Imperial civil war continuing."
+      ],
+      "relatedBookIds": [
+        "rising-threat-vol-i",
+        "rising-threat-vol-ii",
+        "rising-threat-vol-iii",
+        "rising-threat-vol-iv",
+        "flight-from-the-thalmor",
+        "the-talos-mistake",
+        "thalmor-dossier-ulfric",
+        "thalmor-dossier-delphine",
+        "thalmor-dossier-esbern"
+      ]
+    },
+    {
+      "id": "civil-war",
+      "name": "Skyrim Civil War",
+      "eraIds": [
+        "fourth"
+      ],
+      "summary": "After the Markarth Incident, Ulfric Stormcloak kills High King Torygg and raises rebellion for independence and free Talos worship. General Tullius holds the Imperial line. The war splits holds, jars Jarls, and coincides with Alduin's return—forcing the Dragonborn into a kingdom already at its own throat.",
+      "keyInsights": [
+        "Markarth Incident radicalizes Ulfric and births the Forsworn conflict.",
+        "Nords Arise! is Stormcloak propaganda; The Talos Mistake is Imperial counter-spin.",
+        "Skyrim's Rule and Holds of Skyrim outline the political map players contest."
+      ],
+      "relatedBookIds": [
+        "nords-arise",
+        "the-bear-of-markarth",
+        "the-madmen-of-the-reach",
+        "skyrims-rule",
+        "the-holds-of-skyrim",
+        "the-talos-mistake",
+        "the-great-war",
+        "of-crossed-daggers",
+        "the-city-of-stone"
+      ]
+    },
+    {
+      "id": "college-winterhold",
+      "name": "College of Winterhold",
+      "eraIds": [
+        "first",
+        "second",
+        "fourth"
+      ],
+      "summary": "Skyrim's independent mage college sits on a cliff after the Great Collapse (4E 122) sank most of Winterhold—locals blame College magic. Shalidor's Labyrinthian legacy, Eye of Magnus events, and Psijic interventions mark it as one of the last major magical institutions outside Dominion or Synod control.",
+      "keyInsights": [
+        "On the Great Collapse is the College's defense to the Jarl.",
+        "Arcane practice in Skyrim is socially distrusted after the Collapse.",
+        "College quests reconnect to Saarthal's Merethic magical secrets."
+      ],
+      "relatedBookIds": [
+        "on-the-great-collapse",
+        "a-minor-maze",
+        "imperial-report-on-saarthal",
+        "fragment-on-artaeum",
+        "the-old-ways",
+        "galerion-the-mystic",
+        "amongst-the-draugr",
+        "enchanters-primer",
+        "arcana-restored"
+      ]
+    },
+    {
+      "id": "dark-brotherhood",
+      "name": "Dark Brotherhood",
+      "eraIds": [
+        "second",
+        "third",
+        "fourth"
+      ],
+      "summary": "Born from Morag Tong schism and bound to the Night Mother and Sithis, the Dark Brotherhood runs ritual assassination via the Black Sacrament. By 4E 201 only the Falkreath sanctuary remains active in Skyrim; Cicero brings the Night Mother, and the Listener's return coincides with a contract on Titus Mede II.",
+      "keyInsights": [
+        "Brothers of Darkness and Night Mother's Truth outline founding myths.",
+        "A Kiss, Sweet Mother teaches the Black Sacrament players perform.",
+        "Fourth Era losses (Wayrest, Bravil) explain the guild's desperate state."
+      ],
+      "relatedBookIds": [
+        "brothers-of-darkness",
+        "the-night-mothers-truth",
+        "a-kiss-sweet-mother",
+        "sacred-witness",
+        "fire-and-darkness",
+        "ciceros-journal-vol-1",
+        "ciceros-journal-vol-2",
+        "ciceros-journal-vol-3",
+        "ciceros-journal-vol-4",
+        "ciceros-journal-final"
+      ]
+    },
+    {
+      "id": "thieves-guild",
+      "name": "Thieves Guild",
+      "eraIds": [
+        "second",
+        "third",
+        "fourth"
+      ],
+      "summary": "Skyrim's Thieves Guild, centered in Riften's Ratway, dwindles after Guildmaster Gallus's murder and Mercer Frey's betrayal of Nocturnal's Nightingales. Fall from Glory diagnoses the decline; Nightingale volumes and Shadowmarks reveal the cultic backbone behind the crime syndicate the Dragonborn can restore.",
+      "keyInsights": [
+        "Nightingales are Nocturnal's mortal agents, not ordinary thieves.",
+        "Shadowmarks are the Guild's written language across Skyrim.",
+        "Riften's corruption and Mercer Frey nearly destroy the organization."
+      ],
+      "relatedBookIds": [
+        "fall-from-glory",
+        "shadowmarks",
+        "nightingales-fact-or-fiction",
+        "the-nightingales-vol-1",
+        "the-nightingales-vol-2",
+        "purloined-shadows",
+        "guide-to-better-thieving",
+        "of-crossed-daggers"
+      ]
+    },
+    {
+      "id": "prophecy-dragonborn",
+      "name": "Prophecy, Elder Scrolls & Dragonborn",
+      "eraIds": [
+        "merethic",
+        "first",
+        "third",
+        "fourth"
+      ],
+      "summary": "Elder Scrolls are artifacts outside time that record and shape prophecy. Dragonborn—mortals with dragon souls—include Reman, Septims, Miraak, and the Last Dragonborn. The Book of the Dragonborn and Scroll scholarship (Septimus, Ancestor Moth) frame why reading fate costs eyesight and why Alduin's return was foreseen.",
+      "keyInsights": [
+        "Dragonborn can absorb dragon souls and naturally shout.",
+        "Elder Scrolls blinded monks and scholars who overuse them.",
+        "Alduin's Wall links past Dragon War to the 4E prophecy cycle."
+      ],
+      "relatedBookIds": [
+        "the-book-of-the-dragonborn",
+        "effects-of-the-elder-scrolls",
+        "ruminations-on-the-elder-scrolls",
+        "an-accounting-of-the-scrolls",
+        "pension-of-the-ancestor-moth",
+        "annals-of-the-dragonguard",
+        "the-guardian-and-the-traitor",
+        "where-were-you-when-the-dragon-broke"
+      ]
+    },
+    {
+      "id": "companions",
+      "name": "The Companions & Ysgramor's Legacy",
+      "eraIds": [
+        "merethic",
+        "first",
+        "fourth"
+      ],
+      "summary": "The Companions of Whiterun claim descent from Ysgramor's Five Hundred. In the late Third/early Fourth Era their Circle took Hircine's beast blood. Kodlak Whitemane seeks cure and Sovngarde; Wuuthrad's shards and Ysgramor's Tomb quests rebind the order to its Merethic founding.",
+      "keyInsights": [
+        "Great Harbingers chronicles leaders across eras.",
+        "Lycanthropy is a Circle secret, not public Companion doctrine.",
+        "Songs of the Return are liturgy as much as history."
+      ],
+      "relatedBookIds": [
+        "great-harbingers",
+        "songs-of-the-return-vol-2",
+        "songs-of-the-return-vol-7",
+        "songs-of-the-return-vol-19",
+        "songs-of-the-return-vol-24",
+        "songs-of-the-return-vol-56",
+        "lycanthropic-legends-of-skyrim",
+        "the-totems-of-hircine"
+      ]
+    },
+    {
+      "id": "blades",
+      "name": "The Blades & Dragonguard",
+      "eraIds": [
+        "first",
+        "second",
+        "third",
+        "fourth"
+      ],
+      "summary": "Akaviri Dragonguard sworn to Reman became the Blades—emperor's bodyguards and dragon hunters. After the Septims fell, Thalmor hunted them nearly to extinction. Delphine and Esbern preserve dragonlore and Alduin's Wall, bridging First Era Dragonguard knowledge to the Last Dragonborn.",
+      "keyInsights": [
+        "Annals of the Dragonguard is primary First Era source material.",
+        "Rise and Fall of the Blades explains their 4E collapse.",
+        "Thalmor dossiers target surviving Blades by name."
+      ],
+      "relatedBookIds": [
+        "annals-of-the-dragonguard",
+        "the-rise-and-fall-of-the-blades",
+        "atlas-of-dragons",
+        "thalmor-dossier-delphine",
+        "thalmor-dossier-esbern",
+        "the-book-of-the-dragonborn"
+      ]
+    }
+  ],
+  "books": [
+    {
+      "id": "childrens-anuad",
+      "title": "A Children's Anuad",
+      "author": "Unknown",
+      "subject": "Religion & Prophecy",
+      "eraIds": [
+        "dawn",
+        "merethic"
+      ],
+      "topicIds": [
+        "creation",
+        "ehlnofey"
+      ],
+      "summary": "A simplified telling of the Anuad creation myth: Anu, Padomay, the twelve worlds, Nirn's forging, and the split of Ehlnofey into Mer and Men.",
+      "keyInsight": "Men and Mer share Ehlnofey ancestry; the war of Old and Wandering Ehlnofey shaped the continents."
+    },
+    {
+      "id": "the-monomyth",
+      "title": "The Monomyth",
+      "author": "Unknown",
+      "subject": "Religion & Prophecy",
+      "eraIds": [
+        "dawn"
+      ],
+      "topicIds": [
+        "creation",
+        "aedra",
+        "daedra",
+        "ehlnofey"
+      ],
+      "summary": "Compares Tamrielic creation myths—Altmeri, Yokudan, Nordic, and others—showing shared patterns around Lorkhan and Mundus.",
+      "keyInsight": "Every culture agrees creation cost the gods; they disagree who was villain or hero."
+    },
+    {
+      "id": "before-the-ages-of-man",
+      "title": "Before the Ages of Man",
+      "author": "Aicantar of Shimerene",
+      "subject": "History & Lore",
+      "eraIds": [
+        "dawn",
+        "merethic"
+      ],
+      "topicIds": [
+        "creation",
+        "ehlnofey",
+        "nords-atmora"
+      ],
+      "summary": "Imperial chronicle of Dawn Convention and Merethic colonization, from Adamantine Tower through Ysgramor and early human settlement.",
+      "keyInsight": "Merethic history is elf-dominated until late Atmoran migrations remake the north."
+    },
+    {
+      "id": "the-lunar-lorkhan",
+      "title": "The Lunar Lorkhan",
+      "author": "Fal Droon",
+      "subject": "Religion & Prophecy",
+      "eraIds": [
+        "dawn"
+      ],
+      "topicIds": [
+        "creation",
+        "aedra"
+      ],
+      "summary": "Argues Masser and Secunda are halves of Lorkhan's flesh, explaining the moons as divine remnants.",
+      "keyInsight": "The moons themselves may be Lorkhan's divided body."
+    },
+    {
+      "id": "spirit-of-nirn",
+      "title": "Spirit of Nirn",
+      "author": "Unknown",
+      "subject": "Religion & Prophecy",
+      "eraIds": [
+        "dawn"
+      ],
+      "topicIds": [
+        "creation"
+      ],
+      "summary": "Short treatise on Lorkhan's role and conflicting opinions about the mortal world's purpose.",
+      "keyInsight": "Mortality may be Lorkhan's intended gift, not only a curse."
+    },
+    {
+      "id": "words-of-clan-mother-ahnissi",
+      "title": "Words of Clan Mother Ahnissi",
+      "author": "Clan Mother Ahnissi",
+      "subject": "Religion & Prophecy",
+      "eraIds": [
+        "dawn"
+      ],
+      "topicIds": [
+        "creation"
+      ],
+      "summary": "Khajiiti creation story of Ahnurr, Fadomai, and the birth of the litter of gods and worlds.",
+      "keyInsight": "Khajiit myth frames creation as a family tragedy among the gods."
+    },
+    {
+      "id": "sithis",
+      "title": "Sithis",
+      "author": "Unknown",
+      "subject": "Religion & Prophecy",
+      "eraIds": [
+        "dawn",
+        "second"
+      ],
+      "topicIds": [
+        "creation",
+        "dark-brotherhood"
+      ],
+      "summary": "Esoteric text linking Sithis to Padomaic change and, controversially, to Lorkhan.",
+      "keyInsight": "Dark Brotherhood theology treats Sithis as the void behind creation."
+    },
+    {
+      "id": "aedra-and-daedra",
+      "title": "Aedra and Daedra",
+      "author": "Unknown",
+      "subject": "Religion & Prophecy",
+      "eraIds": [
+        "dawn"
+      ],
+      "topicIds": [
+        "aedra",
+        "daedra"
+      ],
+      "summary": "Plain overview of the difference between Aedra who created Mundus and Daedra who did not.",
+      "keyInsight": "Aedra means 'our ancestors'; Daedra means 'not our ancestors.'"
+    },
+    {
+      "id": "the-amulet-of-kings",
+      "title": "The Amulet of Kings",
+      "author": "Wenengrus Monhona",
+      "subject": "Religion & Prophecy",
+      "eraIds": [
+        "first",
+        "third"
+      ],
+      "topicIds": [
+        "aedra",
+        "empire-septim",
+        "oblivion-crisis"
+      ],
+      "summary": "Chronicles Alessia's covenant with Akatosh and the Amulet of Kings that sealed Oblivion.",
+      "keyInsight": "Dragonfires and the Amulet kept Oblivion at bay for eras."
+    },
+    {
+      "id": "trials-of-st-alessia",
+      "title": "Trials of St. Alessia",
+      "author": "Unknown",
+      "subject": "Religion & Prophecy",
+      "eraIds": [
+        "first"
+      ],
+      "topicIds": [
+        "aedra",
+        "empire-septim"
+      ],
+      "summary": "Excerpt describing Alessia's visions and the founding covenant that became the Eight Divines faith.",
+      "keyInsight": "Imperial religion begins as a wartime syncretic covenant, not pure Nordic or Aldmeri faith."
+    },
+    {
+      "id": "shezarr-and-the-divines",
+      "title": "Shezarr and the Divines",
+      "author": "Faustillus Junius",
+      "subject": "Religion & Prophecy",
+      "eraIds": [
+        "first"
+      ],
+      "topicIds": [
+        "aedra",
+        "nords-atmora"
+      ],
+      "summary": "Explains Shezarr (Cyrodiilic Lorkhan) and how Alessia's pantheon balanced Nordic and elven gods.",
+      "keyInsight": "Shezarr is the missing sibling who made the Eight politically possible."
+    },
+    {
+      "id": "gods-and-worship",
+      "title": "Gods and Worship",
+      "author": "Brother Hetchfield",
+      "subject": "Religion & Prophecy",
+      "eraIds": [
+        "third"
+      ],
+      "topicIds": [
+        "aedra"
+      ],
+      "summary": "Speculates whether gods need mortal worship and how prayer sustains divine attention.",
+      "keyInsight": "Worship may be reciprocal fuel, not one-way tribute."
+    },
+    {
+      "id": "the-talos-mistake",
+      "title": "The Talos Mistake",
+      "author": "Leonora Venatus",
+      "subject": "Politics",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "aedra",
+        "great-war",
+        "thalmor",
+        "civil-war"
+      ],
+      "summary": "Imperial propaganda arguing Nords should accept the Concordat ban on Talos worship.",
+      "keyInsight": "Official Imperial line treats Talos worship as a diplomatic error, not sacred duty."
+    },
+    {
+      "id": "varieties-of-faith",
+      "title": "Varieties of Faith in the Empire",
+      "author": "Brother Mikhael Karkuxor of the Imperial College",
+      "subject": "Religion & Prophecy",
+      "eraIds": [
+        "third"
+      ],
+      "topicIds": [
+        "aedra",
+        "daedra",
+        "chimer-dunmer"
+      ],
+      "summary": "Catalogue of pantheons across Tamriel's cultures, from Divines to tribal spirits.",
+      "keyInsight": "There is no single Tamrielic religion—only overlapping divine name-maps."
+    },
+    {
+      "id": "children-of-the-sky",
+      "title": "Children of the Sky",
+      "author": "Unknown",
+      "subject": "History & Lore",
+      "eraIds": [
+        "merethic",
+        "first"
+      ],
+      "topicIds": [
+        "nords-atmora",
+        "aedra",
+        "dragons"
+      ],
+      "summary": "Describes Nords as Kyne's breath-born people and explains the cultural meaning of the Thu'um.",
+      "keyInsight": "To Nords, the Voice is sacred inheritance, not mere magic school."
+    },
+    {
+      "id": "the-book-of-daedra",
+      "title": "The Book of Daedra",
+      "author": "Unknown",
+      "subject": "Religion & Prophecy",
+      "eraIds": [
+        "dawn",
+        "third"
+      ],
+      "topicIds": [
+        "daedra"
+      ],
+      "summary": "Excerpts characterizing each major Daedric Prince's sphere and temperament.",
+      "keyInsight": "Know a Prince's sphere before you accept their gift."
+    },
+    {
+      "id": "darkest-darkness",
+      "title": "Darkest Darkness",
+      "author": "Unknown",
+      "subject": "Religion & Prophecy",
+      "eraIds": [
+        "third"
+      ],
+      "topicIds": [
+        "daedra"
+      ],
+      "summary": "Field-style descriptions of common Daedra types encountered by mortals.",
+      "keyInsight": "Lesser Daedra are tools and soldiers of Princes, not free-acting gods."
+    },
+    {
+      "id": "on-oblivion",
+      "title": "On Oblivion",
+      "author": "Morian Zenas",
+      "subject": "Esoteric",
+      "eraIds": [
+        "third"
+      ],
+      "topicIds": [
+        "daedra",
+        "oblivion-crisis"
+      ],
+      "summary": "Classic guide to Oblivion's nature and the danger of planar travel.",
+      "keyInsight": "Oblivion is adjacent and hungry—not a metaphor."
+    },
+    {
+      "id": "the-doors-of-oblivion",
+      "title": "The Doors of Oblivion",
+      "author": "Seif-ij Hidja",
+      "subject": "Esoteric",
+      "eraIds": [
+        "third"
+      ],
+      "topicIds": [
+        "daedra",
+        "oblivion-crisis"
+      ],
+      "summary": "Chronicle of Morian Zenas's journeys through multiple Oblivion realms, recorded by his apprentice.",
+      "keyInsight": "Each Prince's realm enforces that Prince's logic on visitors."
+    },
+    {
+      "id": "invocation-of-azura",
+      "title": "Invocation of Azura",
+      "author": "Sigillah Parate",
+      "subject": "Religion & Prophecy",
+      "eraIds": [
+        "third"
+      ],
+      "topicIds": [
+        "daedra",
+        "chimer-dunmer"
+      ],
+      "summary": "A priestess argues Azura's superiority among Daedric Princes and proper forms of devotion.",
+      "keyInsight": "Azura's cult frames her as the most 'mortal-facing' of the Princes."
+    },
+    {
+      "id": "boethiahs-proving",
+      "title": "Boethiah's Proving",
+      "author": "Anonymous",
+      "subject": "Religion & Prophecy",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "daedra"
+      ],
+      "summary": "Account of a deadly summoning that tests worthiness through betrayal and combat.",
+      "keyInsight": "Boethiah's favor is earned by surviving treachery, not piety."
+    },
+    {
+      "id": "spirit-of-the-daedra",
+      "title": "Spirit of the Daedra",
+      "author": "Unknown",
+      "subject": "Religion & Prophecy",
+      "eraIds": [
+        "third"
+      ],
+      "topicIds": [
+        "daedra"
+      ],
+      "summary": "Attempts to explain Daedric psychology and why mortals misunderstand them.",
+      "keyInsight": "Daedra are immortal personalities—change for them is sport, not growth."
+    },
+    {
+      "id": "varieties-of-daedra",
+      "title": "Varieties of Daedra",
+      "author": "Aranea Drethan",
+      "subject": "Esoteric",
+      "eraIds": [
+        "third"
+      ],
+      "topicIds": [
+        "daedra"
+      ],
+      "summary": "Scholarly analysis of Daedra forms with special focus on Dremora hierarchy.",
+      "keyInsight": "Dremora clans have ranks and rivalries as complex as mortal courts."
+    },
+    {
+      "id": "the-waters-of-oblivion",
+      "title": "The Waters of Oblivion",
+      "author": "Unknown",
+      "subject": "Religion & Prophecy",
+      "eraIds": [
+        "third"
+      ],
+      "topicIds": [
+        "daedra"
+      ],
+      "summary": "Warning text on the spiritual and physical dangers of trafficking with Oblivion.",
+      "keyInsight": "Contact with Oblivion stains more than the body."
+    },
+    {
+      "id": "myths-of-sheogorath",
+      "title": "Myths of Sheogorath",
+      "author": "Mymophonus",
+      "subject": "Religion & Prophecy",
+      "eraIds": [
+        "third"
+      ],
+      "topicIds": [
+        "daedra"
+      ],
+      "summary": "Collection of madcap myths about the Madgod's interventions in mortal lives.",
+      "keyInsight": "Sheogorath's 'gifts' reframe reality until sanity is the joke."
+    },
+    {
+      "id": "liminal-bridges",
+      "title": "Liminal Bridges",
+      "author": "Camilonwe of Alinor",
+      "subject": "Esoteric",
+      "eraIds": [
+        "third"
+      ],
+      "topicIds": [
+        "daedra",
+        "oblivion-crisis"
+      ],
+      "summary": "Technical discourse on traveling between Mundus and Oblivion via sigils and liminal barriers.",
+      "keyInsight": "Oblivion Gates exploit weakened liminal barriers—exactly what the Crisis weaponized."
+    },
+    {
+      "id": "songs-of-the-return-vol-2",
+      "title": "Songs of the Return, Vol 2",
+      "author": "Unknown",
+      "subject": "History & Lore",
+      "eraIds": [
+        "merethic"
+      ],
+      "topicIds": [
+        "nords-atmora",
+        "companions"
+      ],
+      "summary": "Epic fragment of Ysgramor and the Five Hundred Companions reclaiming Skyrim.",
+      "keyInsight": "Companions' identity is sung history as much as bloodline."
+    },
+    {
+      "id": "songs-of-the-return-vol-7",
+      "title": "Songs of the Return, Vol 7",
+      "author": "Unknown",
+      "subject": "History & Lore",
+      "eraIds": [
+        "merethic"
+      ],
+      "topicIds": [
+        "nords-atmora",
+        "companions"
+      ],
+      "summary": "Continues the Return cycle, including legendary deeds tied to early Skyrim landmarks.",
+      "keyInsight": "Sacred geography (like the Skyforge) is woven into Companion myth."
+    },
+    {
+      "id": "songs-of-the-return-vol-19",
+      "title": "Songs of the Return, Vol 19",
+      "author": "Unknown",
+      "subject": "History & Lore",
+      "eraIds": [
+        "merethic"
+      ],
+      "topicIds": [
+        "nords-atmora",
+        "companions"
+      ],
+      "summary": "Further verses of the Companions' war against the elves of Skyrim.",
+      "keyInsight": "Nordic founding memory is explicitly anti-elven conquest narrative."
+    },
+    {
+      "id": "songs-of-the-return-vol-24",
+      "title": "Songs of the Return, vol 24",
+      "author": "Unknown",
+      "subject": "History & Lore",
+      "eraIds": [
+        "merethic"
+      ],
+      "topicIds": [
+        "nords-atmora",
+        "companions"
+      ],
+      "summary": "Another surviving volume of the Ysgramor cycle preserved in Skyrim.",
+      "keyInsight": "Multiple volumes survive because the Return is Nordic scripture-by-song."
+    },
+    {
+      "id": "songs-of-the-return-vol-56",
+      "title": "Songs of the Return, Vol 56",
+      "author": "Unknown",
+      "subject": "History & Lore",
+      "eraIds": [
+        "merethic"
+      ],
+      "topicIds": [
+        "nords-atmora",
+        "companions"
+      ],
+      "summary": "Late volume in the sprawling Songs of the Return collection.",
+      "keyInsight": "The cycle's length shows how completely the Return defines Nord self-image."
+    },
+    {
+      "id": "night-of-tears",
+      "title": "Night of Tears",
+      "author": "Dranor Seleth",
+      "subject": "History & Lore",
+      "eraIds": [
+        "merethic"
+      ],
+      "topicIds": [
+        "nords-atmora",
+        "college-winterhold"
+      ],
+      "summary": "Inquiry into why elves destroyed Saarthal—suggesting more than simple hatred motivated the attack.",
+      "keyInsight": "Saarthal may have held a power (Eye of Magnus) worth a massacre."
+    },
+    {
+      "id": "yngol-and-the-sea-ghosts",
+      "title": "Yngol and the Sea-Ghosts",
+      "author": "Unknown",
+      "subject": "History & Lore",
+      "eraIds": [
+        "merethic"
+      ],
+      "topicIds": [
+        "nords-atmora"
+      ],
+      "summary": "Tale of Ysgramor's son Yngol slain by sea-ghosts on the voyage to Tamriel.",
+      "keyInsight": "Even the Return's heroes die before the conquest is complete."
+    },
+    {
+      "id": "frontier-conquest",
+      "title": "Frontier, Conquest",
+      "author": "University of Gwylim Press, 3E 344",
+      "subject": "History & Lore",
+      "eraIds": [
+        "merethic",
+        "first"
+      ],
+      "topicIds": [
+        "nords-atmora",
+        "ehlnofey"
+      ],
+      "summary": "Argues humans lived in Tamriel before the famous Nordic waves from Atmora.",
+      "keyInsight": "Nedic peoples complicate the simple 'Nords arrived first' story."
+    },
+    {
+      "id": "nords-of-skyrim",
+      "title": "Nords of Skyrim",
+      "author": "Hrothmund Wolf-Heart",
+      "subject": "History & Lore",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "nords-atmora",
+        "civil-war"
+      ],
+      "summary": "Patriotic essay praising Nordic character, honor, and cultural virtues.",
+      "keyInsight": "Fourth Era Nord identity literature feeds separatist pride."
+    },
+    {
+      "id": "sovngarde-a-reexamination",
+      "title": "Sovngarde: A Reexamination",
+      "author": "Bereditte Jastal",
+      "subject": "Religion & Prophecy",
+      "eraIds": [
+        "merethic",
+        "fourth"
+      ],
+      "topicIds": [
+        "nords-atmora",
+        "aedra"
+      ],
+      "summary": "Scholarly speculation on Sovngarde as Shor's Hall of Valor for worthy dead.",
+      "keyInsight": "Sovngarde belief anchors Nord courage—and Civil War rhetoric."
+    },
+    {
+      "id": "five-songs-of-king-wulfharth",
+      "title": "Five Songs of King Wulfharth",
+      "author": "Unknown",
+      "subject": "History & Lore",
+      "eraIds": [
+        "first"
+      ],
+      "topicIds": [
+        "nords-atmora",
+        "chimer-dunmer",
+        "empire-septim"
+      ],
+      "summary": "Epic songs of the Ash King Wulfharth, plus apocrypha tying him to Red Mountain and the Tribunal age.",
+      "keyInsight": "Wulfharth blurs history and myth—Nordic kingship as living legend."
+    },
+    {
+      "id": "great-harbingers",
+      "title": "Great Harbingers",
+      "author": "Swyk the Long-Sighted",
+      "subject": "Faction",
+      "eraIds": [
+        "merethic",
+        "first",
+        "fourth"
+      ],
+      "topicIds": [
+        "companions",
+        "nords-atmora"
+      ],
+      "summary": "Chronicle of notable Harbingers who led the Companions across the ages.",
+      "keyInsight": "The Companions measure time by Harbingers, not emperors."
+    },
+    {
+      "id": "the-dragon-war",
+      "title": "The Dragon War",
+      "author": "Torhal Bjorik",
+      "subject": "History & Lore",
+      "eraIds": [
+        "merethic"
+      ],
+      "topicIds": [
+        "dragons"
+      ],
+      "summary": "Religious-historical account of mankind's rebellion against dragon overlords and their priests.",
+      "keyInsight": "Men won the Dragon War with the Voice—and dragon allies who turned."
+    },
+    {
+      "id": "alduin-is-real",
+      "title": "Alduin is Real",
+      "author": "Thromgar Iron-Head",
+      "subject": "Religion & Prophecy",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "dragons",
+        "aedra"
+      ],
+      "summary": "Rough Nord essay insisting Alduin the World-Eater is not the same being as Akatosh.",
+      "keyInsight": "Popular Nord piety separates World-Eater from Imperial Time-Dragon."
+    },
+    {
+      "id": "the-alduin-akatosh-dichotomy",
+      "title": "The Alduin/Akatosh Dichotomy",
+      "author": "Alexandre Simon, High Priest of the Akatosh Chantry, Wayrest",
+      "subject": "Religion & Prophecy",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "dragons",
+        "aedra"
+      ],
+      "summary": "Priestly analysis arguing how Alduin and Akatosh relate within Imperial theology.",
+      "keyInsight": "Scholars still cannot agree whether Alduin is aspect, child, or rival of Akatosh."
+    },
+    {
+      "id": "annals-of-the-dragonguard",
+      "title": "Annals of the Dragonguard",
+      "author": "Brother Annulus",
+      "subject": "History & Lore",
+      "eraIds": [
+        "first"
+      ],
+      "topicIds": [
+        "dragons",
+        "blades",
+        "prophecy-dragonborn"
+      ],
+      "summary": "Chronicles late First Era Dragonguard campaigns and dragon-hunting records.",
+      "keyInsight": "Institutional dragon-slaying long predates the Blades' Septim service."
+    },
+    {
+      "id": "atlas-of-dragons",
+      "title": "Atlas of Dragons",
+      "author": "Brother Mathnan",
+      "subject": "History & Lore",
+      "eraIds": [
+        "first",
+        "fourth"
+      ],
+      "topicIds": [
+        "dragons",
+        "blades"
+      ],
+      "summary": "Glossary of known dragons in Skyrim, used as a Dragonguard/Blades reference.",
+      "keyInsight": "Named dragons have histories—Alduin's return reawakens a catalogued bestiary."
+    },
+    {
+      "id": "amongst-the-draugr",
+      "title": "Amongst the Draugr",
+      "author": "Bernadette Bantien, College of Winterhold",
+      "subject": "History & Lore",
+      "eraIds": [
+        "merethic",
+        "fourth"
+      ],
+      "topicIds": [
+        "dragons",
+        "college-winterhold"
+      ],
+      "summary": "College research linking draugr behavior to lingering Dragon Cult service.",
+      "keyInsight": "Draugr are not random undead—they still serve dead priests and dragons."
+    },
+    {
+      "id": "there-be-dragons",
+      "title": "There Be Dragons",
+      "author": "Torhal Bjorik",
+      "subject": "History & Lore",
+      "eraIds": [
+        "merethic",
+        "fourth"
+      ],
+      "topicIds": [
+        "dragons"
+      ],
+      "summary": "Report on dragon nature, rarity, and why they seemed extinct before 4E 201.",
+      "keyInsight": "Dragons were diminished, not metaphysically impossible—return was always latent."
+    },
+    {
+      "id": "dragon-language-myth-no-more",
+      "title": "Dragon Language: Myth no More",
+      "author": "Hela Thrice-Versed",
+      "subject": "Instruction",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "dragons"
+      ],
+      "summary": "Thesis demonstrating the dragon tongue is a real language preserved on Word Walls.",
+      "keyInsight": "Shouts are words with ontology—language that forces reality."
+    },
+    {
+      "id": "olaf-and-the-dragon",
+      "title": "Olaf and the Dragon",
+      "author": "Adonato Leotelli",
+      "subject": "History & Lore",
+      "eraIds": [
+        "first"
+      ],
+      "topicIds": [
+        "dragons",
+        "nords-atmora"
+      ],
+      "summary": "Historian questions the legend of King Olaf One-Eye capturing the dragon Numinex.",
+      "keyInsight": "Even famous dragon-slaying tales may be political mythmaking."
+    },
+    {
+      "id": "skorm-snow-striders-journal",
+      "title": "Skorm Snow-Strider's Journal",
+      "author": "Skorm Snow-Strider",
+      "subject": "History & Lore",
+      "eraIds": [
+        "first"
+      ],
+      "topicIds": [
+        "dragons"
+      ],
+      "summary": "First Era commander's journal on assaulting a Dragon Cult stronghold (Forelhost context).",
+      "keyInsight": "Harald-era Nords still fought holdout Dragon Cult cells."
+    },
+    {
+      "id": "the-guardian-and-the-traitor",
+      "title": "The Guardian and the Traitor",
+      "author": "Lucius Gallus",
+      "subject": "History & Lore",
+      "eraIds": [
+        "merethic"
+      ],
+      "topicIds": [
+        "dragons",
+        "prophecy-dragonborn",
+        "daedra"
+      ],
+      "summary": "Skaal legend of Miraak's corruption by Herma-Mora and conflict with Vahlok.",
+      "keyInsight": "The First Dragonborn fell to Apocrypha long before the Last rose."
+    },
+    {
+      "id": "the-book-of-the-dragonborn",
+      "title": "The Book of the Dragonborn",
+      "author": "Prior Emelene Madrine",
+      "subject": "Religion & Prophecy",
+      "eraIds": [
+        "first",
+        "third",
+        "fourth"
+      ],
+      "topicIds": [
+        "prophecy-dragonborn",
+        "dragons",
+        "empire-septim",
+        "blades"
+      ],
+      "summary": "Treatise defining Dragonborn emperors, prophecy, and the meaning of dragonblood.",
+      "keyInsight": "Dragonborn status is rare, prophetic, and historically tied to Empire-building."
+    },
+    {
+      "id": "dwarves-v1",
+      "title": "Dwarves, v1",
+      "author": "Calcelmo, Scholar of Markarth",
+      "subject": "History & Lore",
+      "eraIds": [
+        "merethic",
+        "first"
+      ],
+      "topicIds": [
+        "dwemer"
+      ],
+      "summary": "Calcelmo's study of Dwemer architecture and metallurgy in Skyrim.",
+      "keyInsight": "Markarth sits on living Dwemer engineering still only partly understood."
+    },
+    {
+      "id": "dwarves-v2",
+      "title": "Dwarves, v2",
+      "author": "Calcelmo, Scholar of Markarth",
+      "subject": "History & Lore",
+      "eraIds": [
+        "merethic",
+        "first"
+      ],
+      "topicIds": [
+        "dwemer"
+      ],
+      "summary": "Covers Dwemer war gear, automata, and martial technology.",
+      "keyInsight": "Dwemer machines outlived their makers as autonomous defenses."
+    },
+    {
+      "id": "dwarves-v3",
+      "title": "Dwarves, v3",
+      "author": "Calcelmo, Scholar of Markarth",
+      "subject": "History & Lore",
+      "eraIds": [
+        "merethic",
+        "first"
+      ],
+      "topicIds": [
+        "dwemer"
+      ],
+      "summary": "Cultural and historical overview of the vanished Deep Elves.",
+      "keyInsight": "Dwemer culture prized tonal inquiry over gods—hubris with a body count."
+    },
+    {
+      "id": "dwemer-inquiries-vol-i",
+      "title": "Dwemer Inquiries Vol I",
+      "author": "Thelwe Ghelein, Scholar",
+      "subject": "History & Lore",
+      "eraIds": [
+        "first"
+      ],
+      "topicIds": [
+        "dwemer"
+      ],
+      "summary": "First of three scholarly essays probing Dwemer disappearance and remains.",
+      "keyInsight": "Serious Dwemer studies admit how little certainty survives."
+    },
+    {
+      "id": "dwemer-inquiries-vol-ii",
+      "title": "Dwemer Inquiries Vol II",
+      "author": "Thelwe Ghelein, Scholar",
+      "subject": "History & Lore",
+      "eraIds": [
+        "first"
+      ],
+      "topicIds": [
+        "dwemer"
+      ],
+      "summary": "Continues inquiry into Dwemer sites, artifacts, and theories of vanishing.",
+      "keyInsight": "Archaeology, not myth alone, constrains Dwemer theories."
+    },
+    {
+      "id": "dwemer-inquiries-vol-iii",
+      "title": "Dwemer Inquiries Vol III",
+      "author": "Thelwe Ghelein, Scholar",
+      "subject": "History & Lore",
+      "eraIds": [
+        "first"
+      ],
+      "topicIds": [
+        "dwemer"
+      ],
+      "summary": "Concluding volume on Dwemer scholarship and open questions.",
+      "keyInsight": "The Heart of Lorkhan remains the best lead on their fate."
+    },
+    {
+      "id": "dwemer-history-and-culture",
+      "title": "Dwemer History and Culture",
+      "author": "Hasphat Antabolis",
+      "subject": "History & Lore",
+      "eraIds": [
+        "first",
+        "third"
+      ],
+      "topicIds": [
+        "dwemer"
+      ],
+      "summary": "Critiques Marobar Sul's popular 'Ancient Tales of the Dwemer' as unreliable fiction.",
+      "keyInsight": "Not every 'Dwemer book' is history—some are novels in costume."
+    },
+    {
+      "id": "antecedants-of-dwemer-law",
+      "title": "Antecedants of Dwemer Law",
+      "author": "Unknown",
+      "subject": "Politics",
+      "eraIds": [
+        "merethic",
+        "first"
+      ],
+      "topicIds": [
+        "dwemer",
+        "ehlnofey"
+      ],
+      "summary": "Traces Dwemer legal custom to High Elven antecedents.",
+      "keyInsight": "Even radical Dwemer society grew from Aldmeri legal roots."
+    },
+    {
+      "id": "chronicles-of-nchuleft",
+      "title": "Chronicles of Nchuleft",
+      "author": "An Anonymous Altmer",
+      "subject": "History & Lore",
+      "eraIds": [
+        "first"
+      ],
+      "topicIds": [
+        "dwemer"
+      ],
+      "summary": "Historical chronicle of events in the Dwemer freehold of Nchuleft.",
+      "keyInsight": "Dwemer city-states kept dated records—rare windows into Freehold politics."
+    },
+    {
+      "id": "nchunaks-fire-and-faith",
+      "title": "Nchunak's Fire and Faith",
+      "author": "Nchunak",
+      "subject": "History & Lore",
+      "eraIds": [
+        "first"
+      ],
+      "topicIds": [
+        "dwemer",
+        "chimer-dunmer"
+      ],
+      "summary": "A Dwemer traveler grapples with Kagrenac's teachings amid rising conflict.",
+      "keyInsight": "Even Dwemer disputed whether Kagrenac's project was wisdom or doom."
+    },
+    {
+      "id": "the-aetherium-wars",
+      "title": "The Aetherium Wars",
+      "author": "Taron Dreth",
+      "subject": "History & Lore",
+      "eraIds": [
+        "first"
+      ],
+      "topicIds": [
+        "dwemer"
+      ],
+      "summary": "Treatise on Dwemer civil conflict in Skyrim over Aetherium and the fall of city-states.",
+      "keyInsight": "Dwemer destroyed each other over a rare tonal material before they vanished."
+    },
+    {
+      "id": "ruins-of-kemel-ze",
+      "title": "Ruins of Kemel-Ze",
+      "author": "Rolard Nordssen",
+      "subject": "Travel",
+      "eraIds": [
+        "first",
+        "third"
+      ],
+      "topicIds": [
+        "dwemer"
+      ],
+      "summary": "Adventure-archaeology account of exploring ancient Dwemer ruins.",
+      "keyInsight": "Dwemer ruins reward curiosity and punish the unprepared equally."
+    },
+    {
+      "id": "herbanes-bestiary-automatons",
+      "title": "Herbane's Bestiary: Automatons",
+      "author": "Herbane",
+      "subject": "Instruction",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "dwemer"
+      ],
+      "summary": "Practical hunter's guide to Dwemer constructs still active in ruins.",
+      "keyInsight": "Centuries later, the machines still kill trespassers on schedule."
+    },
+    {
+      "id": "fall-of-the-snow-prince",
+      "title": "Fall of the Snow Prince",
+      "author": "Lokheim",
+      "subject": "History & Lore",
+      "eraIds": [
+        "merethic",
+        "first"
+      ],
+      "topicIds": [
+        "falmer",
+        "nords-atmora"
+      ],
+      "summary": "Eyewitness chronicle of the Battle of the Moesring and the death of the Snow Prince.",
+      "keyInsight": "Snow Elf leadership died with honor—and with Nordic victory sealed."
+    },
+    {
+      "id": "the-falmer-a-study",
+      "title": "The Falmer: A Study",
+      "author": "Ursa Uthrax",
+      "subject": "History & Lore",
+      "eraIds": [
+        "merethic",
+        "first",
+        "fourth"
+      ],
+      "topicIds": [
+        "falmer",
+        "dwemer"
+      ],
+      "summary": "Study of Falmer degeneration and their enslavement by the Dwemer.",
+      "keyInsight": "Modern Falmer are the engineered aftermath of betrayal, not a separate species origin."
+    },
+    {
+      "id": "the-betrayed",
+      "title": "The Betrayed",
+      "author": "Engwe Emeloth",
+      "subject": "Poetry",
+      "eraIds": [
+        "merethic",
+        "first"
+      ],
+      "topicIds": [
+        "falmer"
+      ],
+      "summary": "Snow Elf poem mourning the fall and betrayal of their people.",
+      "keyInsight": "Falmer remember themselves as Betrayed—a name that is indictment."
+    },
+    {
+      "id": "diary-of-faire-agarwen",
+      "title": "Diary of Faire Agarwen",
+      "author": "Faire Agarwen",
+      "subject": "History & Lore",
+      "eraIds": [
+        "merethic",
+        "first"
+      ],
+      "topicIds": [
+        "falmer"
+      ],
+      "summary": "Ancient diary of a Snow Elf lamenting the extermination of her race.",
+      "keyInsight": "Primary voice: Snow Elf extinction felt personal, slow, and total."
+    },
+    {
+      "id": "journal-of-mirtil-angoth",
+      "title": "Journal of Mirtil Angoth",
+      "author": "Mirtil Angoth",
+      "subject": "History & Lore",
+      "eraIds": [
+        "merethic",
+        "first"
+      ],
+      "topicIds": [
+        "falmer",
+        "dwemer"
+      ],
+      "summary": "Snow Elf diary about seeking refuge with the Dwemer as Nordic war closes in.",
+      "keyInsight": "The choice that saved bodies destroyed a people."
+    },
+    {
+      "id": "touching-the-sky",
+      "title": "Touching the Sky",
+      "author": "Parmion Saldor",
+      "subject": "Religion & Prophecy",
+      "eraIds": [
+        "merethic",
+        "first"
+      ],
+      "topicIds": [
+        "falmer",
+        "aedra"
+      ],
+      "summary": "Overview of Snow Elf pilgrimages to the Chantry of Auri-El.",
+      "keyInsight": "Auri-El worship survived underground among uncorrupted Snow Elves."
+    },
+    {
+      "id": "ghosts-in-the-storm",
+      "title": "Ghosts in the Storm",
+      "author": "Adonato Leotelli",
+      "subject": "History & Lore",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "falmer"
+      ],
+      "summary": "Author's harrowing encounter with Falmer raiders in Skyrim's wilds.",
+      "keyInsight": "Falmer are an active surface threat, not only dungeon flavor."
+    },
+    {
+      "id": "imperial-report-on-saarthal",
+      "title": "Imperial Report on Saarthal",
+      "author": "Heseph Chirirnis",
+      "subject": "History & Lore",
+      "eraIds": [
+        "merethic",
+        "fourth"
+      ],
+      "topicIds": [
+        "nords-atmora",
+        "college-winterhold",
+        "falmer"
+      ],
+      "summary": "Imperial archaeological report on Saarthal's ruins and contested Merethic history.",
+      "keyInsight": "Saarthal is ground zero for Nord-elf trauma and College excavation politics."
+    },
+    {
+      "id": "changed-ones",
+      "title": "Changed Ones",
+      "author": "Unknown",
+      "subject": "Religion & Prophecy",
+      "eraIds": [
+        "dawn",
+        "merethic"
+      ],
+      "topicIds": [
+        "chimer-dunmer",
+        "daedra",
+        "ehlnofey"
+      ],
+      "summary": "Story of Boethiah consuming Trinimac and transforming Veloth's followers into Chimer.",
+      "keyInsight": "Dunmer ethnogenesis begins with a Daedric theological revolution."
+    },
+    {
+      "id": "the-anticipations",
+      "title": "The Anticipations",
+      "author": "Anonymous",
+      "subject": "Religion & Prophecy",
+      "eraIds": [
+        "first",
+        "third"
+      ],
+      "topicIds": [
+        "chimer-dunmer",
+        "daedra"
+      ],
+      "summary": "Explains Tribunal religion's framing of Azura, Boethiah, and Mephala as Anticipations.",
+      "keyInsight": "Tribunal theology subordinated Daedra without denying them."
+    },
+    {
+      "id": "the-reclamations",
+      "title": "The Reclamations",
+      "author": "Thara of Rihad",
+      "subject": "Religion & Prophecy",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "chimer-dunmer",
+        "daedra"
+      ],
+      "summary": "Account of Dunmer religion after the Tribunal's fall, reclaiming the three Good Daedra.",
+      "keyInsight": "Fourth Era Dunmer faith is post-Tribunal reconstruction."
+    },
+    {
+      "id": "the-red-year-vol-i",
+      "title": "The Red Year, Vol. I",
+      "author": "Melis Ravel",
+      "subject": "History & Lore",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "chimer-dunmer"
+      ],
+      "summary": "Survivors describe Red Mountain's eruption and the devastation of Vvardenfell.",
+      "keyInsight": "Red Year is the Dunmer catastrophe that empties Morrowind into Skyrim."
+    },
+    {
+      "id": "the-red-year-vol-ii",
+      "title": "The Red Year, Vol. II",
+      "author": "Melis Ravel",
+      "subject": "History & Lore",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "chimer-dunmer"
+      ],
+      "summary": "Further survivor testimony on the Red Year's aftermath.",
+      "keyInsight": "Refugee memory fuels Dunmer politics in Windhelm and Solstheim."
+    },
+    {
+      "id": "war-of-the-first-council",
+      "title": "War of the First Council",
+      "author": "Agrippa Fundilius",
+      "subject": "History & Lore",
+      "eraIds": [
+        "first"
+      ],
+      "topicIds": [
+        "chimer-dunmer",
+        "dwemer"
+      ],
+      "summary": "Brief account of the First Council religious-political war culminating at Red Mountain.",
+      "keyInsight": "Red Mountain decides both Dwemer fate and Dunmer theocracy."
+    },
+    {
+      "id": "nerevar-at-red-mountain",
+      "title": "Nerevar at Red Mountain",
+      "author": "the Tribunal Temple",
+      "subject": "History & Lore",
+      "eraIds": [
+        "first"
+      ],
+      "topicIds": [
+        "chimer-dunmer",
+        "dwemer"
+      ],
+      "summary": "Temple scholarly description of the Battle of Red Mountain and its aftermath.",
+      "keyInsight": "Official Temple history sanctifies Nerevar while controlling the narrative."
+    },
+    {
+      "id": "nerevar-moon-and-star",
+      "title": "Nerevar Moon and Star",
+      "author": "Unknown",
+      "subject": "History & Lore",
+      "eraIds": [
+        "first",
+        "third"
+      ],
+      "topicIds": [
+        "chimer-dunmer",
+        "prophecy-dragonborn"
+      ],
+      "summary": "Imperial scholarly look at the legend of Indoril Nerevar and associated prophecy.",
+      "keyInsight": "Nerevarine prophecy shows how Elder Scrolls fate recurs across eras."
+    },
+    {
+      "id": "ancestors-and-the-dunmer",
+      "title": "Ancestors and the Dunmer",
+      "author": "Unknown",
+      "subject": "Religion & Prophecy",
+      "eraIds": [
+        "third"
+      ],
+      "topicIds": [
+        "chimer-dunmer"
+      ],
+      "summary": "Guide to Dunmer ancestor worship written for foreign visitors.",
+      "keyInsight": "Dunmer religion is as much household dead as Tribunal or Daedra."
+    },
+    {
+      "id": "short-history-of-morrowind",
+      "title": "Short History of Morrowind",
+      "author": "Jeanette Sitte",
+      "subject": "History & Lore",
+      "eraIds": [
+        "first",
+        "third"
+      ],
+      "topicIds": [
+        "chimer-dunmer",
+        "empire-septim"
+      ],
+      "summary": "Introductory history excerpts on Morrowind and Vvardenfell under Empire.",
+      "keyInsight": "Morrowind's Imperial period is a thin layer over much older House rule."
+    },
+    {
+      "id": "dunmer-of-skyrim",
+      "title": "Dunmer of Skyrim",
+      "author": "Athal Sarys",
+      "subject": "Politics",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "chimer-dunmer",
+        "civil-war"
+      ],
+      "summary": "Proclamation asserting Dunmer strength and destiny in eastern Skyrim.",
+      "keyInsight": "Refugee communities develop their own hardline politics."
+    },
+    {
+      "id": "scourge-of-the-gray-quarter",
+      "title": "Scourge of the Gray Quarter",
+      "author": "Frilgeth Horse-Breaker",
+      "subject": "Politics",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "chimer-dunmer",
+        "civil-war"
+      ],
+      "summary": "Nord complaint about Dunmer refugees concentrated in Windhelm's Gray Quarter.",
+      "keyInsight": "Racial tension in Windhelm is documented Fourth Era social conflict."
+    },
+    {
+      "id": "history-of-raven-rock-vol-i",
+      "title": "History of Raven Rock, Vol. I",
+      "author": "Lyrin Telleno",
+      "subject": "History & Lore",
+      "eraIds": [
+        "third",
+        "fourth"
+      ],
+      "topicIds": [
+        "chimer-dunmer"
+      ],
+      "summary": "Founding and early years of the Solstheim mining colony Raven Rock.",
+      "keyInsight": "Raven Rock begins as East Empire Company ebony outpost."
+    },
+    {
+      "id": "history-of-raven-rock-vol-ii",
+      "title": "History of Raven Rock, Vol. II",
+      "author": "Lyrin Telleno",
+      "subject": "History & Lore",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "chimer-dunmer"
+      ],
+      "summary": "Mid history of Raven Rock through Red Year refugee influx and house politics.",
+      "keyInsight": "Solstheim becomes Dunmer sanctuary after Morrowind burns."
+    },
+    {
+      "id": "history-of-raven-rock-vol-iii",
+      "title": "History of Raven Rock, Vol. III",
+      "author": "Lyrin Telleno",
+      "subject": "History & Lore",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "chimer-dunmer"
+      ],
+      "summary": "Later Raven Rock history into the Fourth Era's decline and Redoran rule.",
+      "keyInsight": "House Redoran stewardship keeps the colony alive when ebony fails."
+    },
+    {
+      "id": "decree-of-monument",
+      "title": "Decree of Monument",
+      "author": "Unknown",
+      "subject": "Politics",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "chimer-dunmer"
+      ],
+      "summary": "Official decree making Refugees' Rest a monument to those who fled Morrowind.",
+      "keyInsight": "Skyrim legally recognized the Dunmer refugee tragedy."
+    },
+    {
+      "id": "brief-history-of-the-empire-v1",
+      "title": "Brief History of the Empire, v1",
+      "author": "Stronach k'Thojj III",
+      "subject": "History & Lore",
+      "eraIds": [
+        "third"
+      ],
+      "topicIds": [
+        "empire-septim"
+      ],
+      "summary": "First part of the standard Imperial history of the Septim dynasty.",
+      "keyInsight": "Official Empire history starts as Septim triumphal narrative."
+    },
+    {
+      "id": "brief-history-of-the-empire-v2",
+      "title": "Brief History of the Empire, v2",
+      "author": "Stronach k'Thojj III",
+      "subject": "History & Lore",
+      "eraIds": [
+        "third"
+      ],
+      "topicIds": [
+        "empire-septim"
+      ],
+      "summary": "Continues Septim-era political history for Imperial readers.",
+      "keyInsight": "Dynastic crises are admitted, but framed as survivable."
+    },
+    {
+      "id": "brief-history-of-the-empire-v3",
+      "title": "Brief History of the Empire, v3",
+      "author": "Stronach k'Thojj III",
+      "subject": "History & Lore",
+      "eraIds": [
+        "third"
+      ],
+      "topicIds": [
+        "empire-septim"
+      ],
+      "summary": "Third volume covering later Septim reigns and troubles.",
+      "keyInsight": "Even court historians cannot hide the Empire's recurring instability."
+    },
+    {
+      "id": "brief-history-of-the-empire-v4",
+      "title": "Brief History of the Empire, v4",
+      "author": "Stronach k'Thojj III",
+      "subject": "History & Lore",
+      "eraIds": [
+        "third"
+      ],
+      "topicIds": [
+        "empire-septim"
+      ],
+      "summary": "Concludes the four-volume Imperial historical survey.",
+      "keyInsight": "This series is the 'textbook Empire' Stormcloaks reject."
+    },
+    {
+      "id": "the-arcturian-heresy",
+      "title": "The Arcturian Heresy",
+      "author": "The Underking, Ysmir Kingmaker",
+      "subject": "History & Lore",
+      "eraIds": [
+        "second",
+        "third"
+      ],
+      "topicIds": [
+        "empire-septim",
+        "aedra"
+      ],
+      "summary": "Heretical account of Tiber Septim's rise involving Zurin Arctus and the Underking.",
+      "keyInsight": "Talos's godhood rests on contested, possibly monstrous, foundations."
+    },
+    {
+      "id": "life-of-uriel-septim-vii",
+      "title": "Life of Uriel Septim VII",
+      "author": "Rufus Hayn",
+      "subject": "Biographies",
+      "eraIds": [
+        "third"
+      ],
+      "topicIds": [
+        "empire-septim",
+        "oblivion-crisis"
+      ],
+      "summary": "Short biography of Uriel VII's long reign and accomplishments before his assassination.",
+      "keyInsight": "Uriel VII's death is the match that lights the Oblivion Crisis."
+    },
+    {
+      "id": "the-third-era-timeline",
+      "title": "The Third Era Timeline",
+      "author": "Jaspus Ignateous",
+      "subject": "History & Lore",
+      "eraIds": [
+        "third"
+      ],
+      "topicIds": [
+        "empire-septim"
+      ],
+      "summary": "Year-by-year style accounting of major Third Era events.",
+      "keyInsight": "A pocket chronology from Tiber's proclamation to the Crisis."
+    },
+    {
+      "id": "battle-of-sancre-tor",
+      "title": "Battle of Sancre Tor",
+      "author": "Unknown",
+      "subject": "History & Lore",
+      "eraIds": [
+        "second"
+      ],
+      "topicIds": [
+        "empire-septim"
+      ],
+      "summary": "How General Talos captured Sancre Tor, a key victory in his conquests.",
+      "keyInsight": "Sancre Tor seals Talos's military legend before emperorship."
+    },
+    {
+      "id": "remanada",
+      "title": "Remanada",
+      "author": "Unknown",
+      "subject": "History & Lore",
+      "eraIds": [
+        "first"
+      ],
+      "topicIds": [
+        "empire-septim",
+        "prophecy-dragonborn"
+      ],
+      "summary": "Mythic fragments on Reman's conception and the return of the Chim-el Adabal.",
+      "keyInsight": "Reman is another Dragonborn empire-founder pattern before Septim."
+    },
+    {
+      "id": "the-rise-and-fall-of-the-blades",
+      "title": "The Rise and Fall of the Blades",
+      "author": "Anonymous",
+      "subject": "Faction",
+      "eraIds": [
+        "first",
+        "third",
+        "fourth"
+      ],
+      "topicIds": [
+        "blades",
+        "empire-septim",
+        "thalmor"
+      ],
+      "summary": "On the Blades' Akaviri origins, Septim service, and near-destruction after Oblivion.",
+      "keyInsight": "Without an emperor, the Blades became hunted relics with priceless dragonlore."
+    },
+    {
+      "id": "the-wolf-queen-v1",
+      "title": "The Wolf Queen, v1",
+      "author": "Waughin Jarth",
+      "subject": "Biographies",
+      "eraIds": [
+        "third"
+      ],
+      "topicIds": [
+        "empire-septim"
+      ],
+      "summary": "Opening of the dramatic biography of Potema, Wolf Queen of Solitude.",
+      "keyInsight": "Skyrim royalty once nearly tore the Septim Empire apart from within."
+    },
+    {
+      "id": "biography-of-the-wolf-queen",
+      "title": "Biography of the Wolf Queen",
+      "author": "Katar Eriphanes",
+      "subject": "Biographies",
+      "eraIds": [
+        "third"
+      ],
+      "topicIds": [
+        "empire-septim"
+      ],
+      "summary": "Historical biography of Potema Septim's infamous career.",
+      "keyInsight": "Solitude's Wolf Queen is a warning about Septim dynastic rot."
+    },
+    {
+      "id": "the-oblivion-crisis",
+      "title": "The Oblivion Crisis",
+      "author": "Praxis Sarcorum, Imperial Historian",
+      "subject": "History & Lore",
+      "eraIds": [
+        "third",
+        "fourth"
+      ],
+      "topicIds": [
+        "oblivion-crisis",
+        "empire-septim",
+        "daedra"
+      ],
+      "summary": "Official summary of Uriel VII's assassination and Mehrunes Dagon's invasion of Tamriel.",
+      "keyInsight": "The Crisis ends the Septims and begins the Empire's long decline."
+    },
+    {
+      "id": "mythic-dawn-commentaries-1",
+      "title": "Mythic Dawn Commentaries 1",
+      "author": "Mankar Camoran",
+      "subject": "Religion & Prophecy",
+      "eraIds": [
+        "third"
+      ],
+      "topicIds": [
+        "oblivion-crisis",
+        "daedra"
+      ],
+      "summary": "First initiatory commentary of the Mythic Dawn cult dedicated to Mehrunes Dagon.",
+      "keyInsight": "The Crisis had a scripture—and it reads like apocalyptic poetry."
+    },
+    {
+      "id": "mythic-dawn-commentaries-2",
+      "title": "Mythic Dawn Commentaries 2",
+      "author": "Mankar Camoran",
+      "subject": "Religion & Prophecy",
+      "eraIds": [
+        "third"
+      ],
+      "topicIds": [
+        "oblivion-crisis",
+        "daedra"
+      ],
+      "summary": "Second volume of Mankar Camoran's cult commentaries.",
+      "keyInsight": "Mythic Dawn theology reframes Mundus as a Daedric prison to overthrow."
+    },
+    {
+      "id": "mythic-dawn-commentaries-3",
+      "title": "Mythic Dawn Commentaries 3",
+      "author": "Mankar Camoran",
+      "subject": "Religion & Prophecy",
+      "eraIds": [
+        "third"
+      ],
+      "topicIds": [
+        "oblivion-crisis",
+        "daedra"
+      ],
+      "summary": "Third initiatory text for Mythic Dawn members.",
+      "keyInsight": "Camoran's commentaries escalate toward open war on the Divines' world."
+    },
+    {
+      "id": "mythic-dawn-commentaries-4",
+      "title": "Mythic Dawn Commentaries 4",
+      "author": "Mankar Camoran",
+      "subject": "Religion & Prophecy",
+      "eraIds": [
+        "third"
+      ],
+      "topicIds": [
+        "oblivion-crisis",
+        "daedra"
+      ],
+      "summary": "Final Mythic Dawn commentary completing the cult's core readings.",
+      "keyInsight": "Reading all four was the path into the organization that killed an emperor."
+    },
+    {
+      "id": "rising-threat-vol-i",
+      "title": "Rising Threat, Vol. I",
+      "author": "Lathenil of Sunhold",
+      "subject": "Politics",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "thalmor",
+        "oblivion-crisis",
+        "great-war"
+      ],
+      "summary": "Altmer dissident warns how the Thalmor seized power after the Oblivion Crisis.",
+      "keyInsight": "Thalmor claimed credit for ending the Crisis to justify rule."
+    },
+    {
+      "id": "rising-threat-vol-ii",
+      "title": "Rising Threat, Vol. II",
+      "author": "Lathenil of Sunhold",
+      "subject": "Politics",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "thalmor",
+        "great-war",
+        "oblivion-crisis"
+      ],
+      "summary": "Continues exposing Thalmor consolidation in Summerset and beyond.",
+      "keyInsight": "Dominion rebuilding was deliberate, patient, and ideological."
+    },
+    {
+      "id": "rising-threat-vol-iii",
+      "title": "Rising Threat, Vol. III",
+      "author": "Lathenil of Sunhold",
+      "subject": "Politics",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "thalmor",
+        "great-war"
+      ],
+      "summary": "Tracks Thalmor expansion toward open confrontation with the Empire.",
+      "keyInsight": "The Great War was the visible strike after decades of quiet preparation."
+    },
+    {
+      "id": "rising-threat-vol-iv",
+      "title": "Rising Threat, Vol. IV",
+      "author": "Lathenil of Sunhold",
+      "subject": "Politics",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "thalmor",
+        "great-war"
+      ],
+      "summary": "Final warning volume on Thalmor aims and the cost of underestimating them.",
+      "keyInsight": "Peace with the Dominion is a pause, not a settlement."
+    },
+    {
+      "id": "the-great-war",
+      "title": "The Great War",
+      "author": "Legate Justianus Quintius",
+      "subject": "History & Lore",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "great-war",
+        "thalmor",
+        "civil-war",
+        "empire-septim"
+      ],
+      "summary": "Soldier's summation of major campaigns from Dominion invasion to the White-Gold Concordat.",
+      "keyInsight": "Military victory at Red Ring still produced a politically bitter peace."
+    },
+    {
+      "id": "a-dream-of-sovngarde",
+      "title": "A Dream of Sovngarde",
+      "author": "Skardan Free-Winter",
+      "subject": "History & Lore",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "great-war",
+        "nords-atmora"
+      ],
+      "summary": "Nord soldier's vision of Sovngarde on the eve of the Battle of the Red Ring.",
+      "keyInsight": "Nord blood bought the Empire's survival—and many feel unpaid."
+    },
+    {
+      "id": "flight-from-the-thalmor",
+      "title": "Flight from the Thalmor",
+      "author": "Hadrik Oaken-Heart",
+      "subject": "Biographies",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "thalmor",
+        "great-war"
+      ],
+      "summary": "Epitaph-like narrative of a Nordic skald's flight from Thalmor persecution.",
+      "keyInsight": "Thalmor repression is personal terror, not only treaty text."
+    },
+    {
+      "id": "nords-arise",
+      "title": "Nords Arise!",
+      "author": "Anonymous",
+      "subject": "Politics",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "civil-war",
+        "great-war",
+        "aedra"
+      ],
+      "summary": "Stormcloak recruitment tract calling Nords to rebel against the Empire and Thalmor yoke.",
+      "keyInsight": "Civil War propaganda frames independence as religious duty."
+    },
+    {
+      "id": "the-bear-of-markarth",
+      "title": "The Bear of Markarth",
+      "author": "Arrianus Arius, Imperial Scholar",
+      "subject": "History & Lore",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "civil-war"
+      ],
+      "summary": "Imperial account of Ulfric's retaking of Markarth and the Markarth Incident's brutality.",
+      "keyInsight": "Markarth is where Ulfric's legend and the Forsworn tragedy intertwine."
+    },
+    {
+      "id": "the-madmen-of-the-reach",
+      "title": "The \"Madmen\" of the Reach",
+      "author": "Arrianus Arius, Imperial Scholar",
+      "subject": "History & Lore",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "civil-war"
+      ],
+      "summary": "Sympathetic defense of Reachmen/Forsworn motives against Nord rule.",
+      "keyInsight": "The Civil War has a third front: Reach native resistance."
+    },
+    {
+      "id": "skyrims-rule",
+      "title": "Skyrim's Rule",
+      "author": "Abdul-Mujib Ababneh",
+      "subject": "Politics",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "civil-war"
+      ],
+      "summary": "Outsider explanation of how Jarls, the Moot, and High Kings structure Skyrim's politics.",
+      "keyInsight": "Understanding the Moot clarifies why Torygg's death matters legally."
+    },
+    {
+      "id": "the-holds-of-skyrim",
+      "title": "The Holds of Skyrim",
+      "author": "Unknown",
+      "subject": "Politics",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "civil-war"
+      ],
+      "summary": "Imperial Legion field guide to Skyrim's holds and their strategic character.",
+      "keyInsight": "The war map is nine holds with distinct loyalties and resources."
+    },
+    {
+      "id": "of-crossed-daggers",
+      "title": "Of Crossed Daggers",
+      "author": "Dwennon Wyndell",
+      "subject": "History & Lore",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "civil-war",
+        "thieves-guild"
+      ],
+      "summary": "History of Riften's decline into corruption and crime.",
+      "keyInsight": "Riften's rot enables both Guild power and Civil War opportunism."
+    },
+    {
+      "id": "the-city-of-stone",
+      "title": "The City of Stone",
+      "author": "Amanda Alleia",
+      "subject": "Travel",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "civil-war",
+        "dwemer"
+      ],
+      "summary": "Mercenary's practical guide to Markarth's layout, dangers, and politics.",
+      "keyInsight": "Markarth's Dwemer bones make it a fortress-city with Reach scars."
+    },
+    {
+      "id": "thalmor-dossier-ulfric",
+      "title": "Thalmor Dossier: Ulfric Stormcloak",
+      "author": "Unknown",
+      "subject": "Politics",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "thalmor",
+        "civil-war"
+      ],
+      "summary": "Internal Thalmor file assessing Ulfric as an asset whose rebellion serves Dominion interests.",
+      "keyInsight": "Thalmor want the Civil War prolonged, not necessarily a Stormcloak win."
+    },
+    {
+      "id": "thalmor-dossier-delphine",
+      "title": "Thalmor Dossier: Delphine",
+      "author": "Unknown",
+      "subject": "Politics",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "thalmor",
+        "blades"
+      ],
+      "summary": "Thalmor intelligence file on Blades agent Delphine.",
+      "keyInsight": "The Dominion still hunts Blades as existential enemies."
+    },
+    {
+      "id": "thalmor-dossier-esbern",
+      "title": "Thalmor Dossier: Esbern",
+      "author": "Unknown",
+      "subject": "Politics",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "thalmor",
+        "blades",
+        "prophecy-dragonborn"
+      ],
+      "summary": "Thalmor dossier on Blades loremaster Esbern and his dragonlore value.",
+      "keyInsight": "Esbern is hunted because prophecy knowledge can unmake Dominion plans."
+    },
+    {
+      "id": "on-the-great-collapse",
+      "title": "On the Great Collapse",
+      "author": "Arch-Mage Deneth",
+      "subject": "History & Lore",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "college-winterhold"
+      ],
+      "summary": "Arch-Mage's letter to Winterhold's Jarl denying College blame for the Great Collapse.",
+      "keyInsight": "Town-College distrust is a Fourth Era political fact in Winterhold."
+    },
+    {
+      "id": "a-minor-maze",
+      "title": "A Minor Maze",
+      "author": "Unknown",
+      "subject": "History & Lore",
+      "eraIds": [
+        "first",
+        "fourth"
+      ],
+      "topicIds": [
+        "college-winterhold"
+      ],
+      "summary": "Brief history of Labyrinthian and Shalidor's legendary maze.",
+      "keyInsight": "Shalidor's footprint still structures College mythic geography."
+    },
+    {
+      "id": "fragment-on-artaeum",
+      "title": "Fragment: On Artaeum",
+      "author": "Taurce il-Anselma",
+      "subject": "History & Lore",
+      "eraIds": [
+        "first",
+        "second"
+      ],
+      "topicIds": [
+        "college-winterhold"
+      ],
+      "summary": "Fragment on the Psijic island of Artaeum and its esoteric order.",
+      "keyInsight": "Psijics predate and outclass mainland mage guilds—including Winterhold."
+    },
+    {
+      "id": "the-old-ways",
+      "title": "The Old Ways",
+      "author": "Celarus the Loremaster",
+      "subject": "Esoteric",
+      "eraIds": [
+        "second"
+      ],
+      "topicIds": [
+        "college-winterhold"
+      ],
+      "summary": "Guide to Psijic beliefs and the Elder Way of mystical counsel.",
+      "keyInsight": "Psijic philosophy rejects vulgar spell-for-hire culture."
+    },
+    {
+      "id": "galerion-the-mystic",
+      "title": "Galerion The Mystic",
+      "author": "Asgrim Kolsgreg",
+      "subject": "Biographies",
+      "eraIds": [
+        "second"
+      ],
+      "topicIds": [
+        "college-winterhold"
+      ],
+      "summary": "Biography of Vanus Galerion, Psijic turned founder of the Mages Guild.",
+      "keyInsight": "Organized mage education begins as a revolt against Psijic elitism."
+    },
+    {
+      "id": "enchanters-primer",
+      "title": "Enchanter's Primer",
+      "author": "Sergius Turrianus",
+      "subject": "Instruction",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "college-winterhold"
+      ],
+      "summary": "College-issued novice guide to the principles of enchanting.",
+      "keyInsight": "Winterhold still teaches practical magic despite local hostility."
+    },
+    {
+      "id": "arcana-restored",
+      "title": "Arcana Restored",
+      "author": "Wapna Neustra",
+      "subject": "Esoteric",
+      "eraIds": [
+        "third"
+      ],
+      "topicIds": [
+        "college-winterhold"
+      ],
+      "summary": "Cryptic instructional text on restoring arcane workings.",
+      "keyInsight": "Some College-adjacent lore is deliberately opaque even to mages."
+    },
+    {
+      "id": "brothers-of-darkness",
+      "title": "Brothers of Darkness",
+      "author": "Pellarne Assi",
+      "subject": "Faction",
+      "eraIds": [
+        "second"
+      ],
+      "topicIds": [
+        "dark-brotherhood"
+      ],
+      "summary": "Brief history of the Dark Brotherhood's origins and early notoriety.",
+      "keyInsight": "The Brotherhood markets murder as sacred vocation."
+    },
+    {
+      "id": "the-night-mothers-truth",
+      "title": "The Night Mother's Truth",
+      "author": "Gaston Bellefort",
+      "subject": "Faction",
+      "eraIds": [
+        "second",
+        "fourth"
+      ],
+      "topicIds": [
+        "dark-brotherhood"
+      ],
+      "summary": "Thesis on the Night Mother's identity and role as the Brotherhood's spiritual authority.",
+      "keyInsight": "Without a Listener, the Night Mother's silence starves the cult."
+    },
+    {
+      "id": "a-kiss-sweet-mother",
+      "title": "A Kiss, Sweet Mother",
+      "author": "Unknown",
+      "subject": "Faction",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "dark-brotherhood"
+      ],
+      "summary": "Instructions for performing the Black Sacrament to contact the Dark Brotherhood.",
+      "keyInsight": "The Sacrament is a ritual job request written in gore."
+    },
+    {
+      "id": "sacred-witness",
+      "title": "Sacred Witness",
+      "author": "Enric Milnes",
+      "subject": "Faction",
+      "eraIds": [
+        "third"
+      ],
+      "topicIds": [
+        "dark-brotherhood"
+      ],
+      "summary": "Memoir of meeting the Night Mother and working as an assassin.",
+      "keyInsight": "Brotherhood mystique is maintained by survivors' testimonials."
+    },
+    {
+      "id": "fire-and-darkness",
+      "title": "Fire and Darkness",
+      "author": "Ynir Gorming",
+      "subject": "Faction",
+      "eraIds": [
+        "first",
+        "second"
+      ],
+      "topicIds": [
+        "dark-brotherhood",
+        "chimer-dunmer"
+      ],
+      "summary": "History of the Morag Tong, the Dunmer assassins' guild ancestral to Brotherhood schism lore.",
+      "keyInsight": "Understand the Tong to understand why the Brotherhood is a heresy to Morrowind."
+    },
+    {
+      "id": "ciceros-journal-vol-1",
+      "title": "Cicero's Journal - Volume 1",
+      "author": "Cicero",
+      "subject": "Faction",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "dark-brotherhood"
+      ],
+      "summary": "Cicero's personal chronicle as Keeper early in his service to the Night Mother.",
+      "keyInsight": "The Keeper's job is to protect a corpse that still commands a cult."
+    },
+    {
+      "id": "ciceros-journal-vol-2",
+      "title": "Cicero's Journal - Volume 2",
+      "author": "Cicero",
+      "subject": "Faction",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "dark-brotherhood"
+      ],
+      "summary": "Continues Cicero's account of transporting and guarding the Night Mother.",
+      "keyInsight": "Fourth Era Brotherhood logistics are desperate and itinerant."
+    },
+    {
+      "id": "ciceros-journal-vol-3",
+      "title": "Cicero's Journal - Volume 3",
+      "author": "Cicero",
+      "subject": "Faction",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "dark-brotherhood"
+      ],
+      "summary": "Further journal entries on Cicero's unraveling journeys.",
+      "keyInsight": "Cicero's madness is professional devotion under isolation."
+    },
+    {
+      "id": "ciceros-journal-vol-4",
+      "title": "Cicero's Journal - Volume 4",
+      "author": "Cicero",
+      "subject": "Faction",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "dark-brotherhood"
+      ],
+      "summary": "Penultimate volume of Cicero's Keeper chronicle.",
+      "keyInsight": "The road to Skyrim's sanctuary is paved with dead Brotherhood chapters."
+    },
+    {
+      "id": "ciceros-journal-final",
+      "title": "Cicero's Journal - Final Volume",
+      "author": "Cicero",
+      "subject": "Faction",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "dark-brotherhood"
+      ],
+      "summary": "Final volume bringing Cicero and the Night Mother to Skyrim's last sanctuary.",
+      "keyInsight": "Skyrim's sanctuary is the Brotherhood's last candle."
+    },
+    {
+      "id": "fall-from-glory",
+      "title": "Fall from Glory",
+      "author": "Nithilis Lidari",
+      "subject": "Faction",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "thieves-guild"
+      ],
+      "summary": "Analysis of why Skyrim's Thieves Guild weakened in influence and luck.",
+      "keyInsight": "The Guild's decline has spiritual causes, not only bad leadership."
+    },
+    {
+      "id": "shadowmarks",
+      "title": "Shadowmarks",
+      "author": "Delvin Mallory",
+      "subject": "Faction",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "thieves-guild"
+      ],
+      "summary": "Guide to the symbols Guild members carve to share intelligence.",
+      "keyInsight": "If you can read shadowmarks, Skyrim's underworld becomes a map."
+    },
+    {
+      "id": "nightingales-fact-or-fiction",
+      "title": "Nightingales: Fact or Fiction?",
+      "author": "Wilimina Roth",
+      "subject": "Faction",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "thieves-guild",
+        "daedra"
+      ],
+      "summary": "Public dissertation questioning whether Nocturnal's Nightingales truly exist.",
+      "keyInsight": "Nightingale secrecy is so complete outsiders call them myth."
+    },
+    {
+      "id": "the-nightingales-vol-1",
+      "title": "The Nightingales Vol. 1",
+      "author": "Gallus Desidenius",
+      "subject": "Faction",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "thieves-guild",
+        "daedra"
+      ],
+      "summary": "Gallus's internal account of Nightingale purpose and Nocturnal's compact.",
+      "keyInsight": "The Guild's true apex is a Daedric oath, not a crime charter."
+    },
+    {
+      "id": "the-nightingales-vol-2",
+      "title": "The Nightingales Vol. 2",
+      "author": "Gallus Desidenius",
+      "subject": "Faction",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "thieves-guild",
+        "daedra"
+      ],
+      "summary": "Second volume on Nightingale duties, Trinity, and betrayal stakes.",
+      "keyInsight": "Breaking Nocturnal's trust curses more than one thief."
+    },
+    {
+      "id": "purloined-shadows",
+      "title": "Purloined Shadows",
+      "author": "Waughin Jarth",
+      "subject": "Fiction",
+      "eraIds": [
+        "third"
+      ],
+      "topicIds": [
+        "thieves-guild",
+        "daedra"
+      ],
+      "summary": "Chilling tale about the theft of Nocturnal's cloak and its consequences.",
+      "keyInsight": "Stealing from Nocturnal is a literary warning the Guild takes seriously."
+    },
+    {
+      "id": "guide-to-better-thieving",
+      "title": "Guide to Better Thieving",
+      "author": "Wulfmare Shadow-Cloak",
+      "subject": "Instruction",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "thieves-guild"
+      ],
+      "summary": "Boastful practical manual on pickpocketing and thiefcraft.",
+      "keyInsight": "Guild culture valorizes swagger as professional branding."
+    },
+    {
+      "id": "effects-of-the-elder-scrolls",
+      "title": "Effects of the Elder Scrolls",
+      "author": "Justinius Poluhnius",
+      "subject": "Esoteric",
+      "eraIds": [
+        "third",
+        "fourth"
+      ],
+      "topicIds": [
+        "prophecy-dragonborn"
+      ],
+      "summary": "Thesis classifying readers of Elder Scrolls and the costs of reading them.",
+      "keyInsight": "Scroll-reading has tiers—and blindness is a known occupational hazard."
+    },
+    {
+      "id": "ruminations-on-the-elder-scrolls",
+      "title": "Ruminations on the Elder Scrolls",
+      "author": "Septimus Signus",
+      "subject": "Esoteric",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "prophecy-dragonborn",
+        "daedra"
+      ],
+      "summary": "Fractured philosophical meditation on what Elder Scrolls are and do.",
+      "keyInsight": "Septimus's madness is what Scroll knowledge looks like without Moth Priest training."
+    },
+    {
+      "id": "an-accounting-of-the-scrolls",
+      "title": "An Accounting of the Scrolls",
+      "author": "Quintus Nerevelus, Former Imperial Librarian",
+      "subject": "Esoteric",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "prophecy-dragonborn"
+      ],
+      "summary": "Librarian's report on Elder Scrolls stewardship and joining the Ancestor Moth Cult.",
+      "keyInsight": "Even librarians who catalog Scrolls end up changed by them."
+    },
+    {
+      "id": "pension-of-the-ancestor-moth",
+      "title": "Pension of the Ancestor Moth",
+      "author": "Unknown",
+      "subject": "Religion & Prophecy",
+      "eraIds": [
+        "third",
+        "fourth"
+      ],
+      "topicIds": [
+        "prophecy-dragonborn"
+      ],
+      "summary": "Initiatory pamphlet on the Cult of the Ancestor Moth who tend Elder Scroll reading.",
+      "keyInsight": "Moth Priests are the Empire's licensed prophets—and they pay with their sight."
+    },
+    {
+      "id": "where-were-you-when-the-dragon-broke",
+      "title": "Where were you when the Dragon Broke",
+      "author": "Various",
+      "subject": "History & Lore",
+      "eraIds": [
+        "first"
+      ],
+      "topicIds": [
+        "prophecy-dragonborn",
+        "aedra"
+      ],
+      "summary": "Multiple cultural testimonies of the Dragon Break—nonlinear time catastrophe.",
+      "keyInsight": "When Akatosh breaks, history becomes a chorus of contradictory truths."
+    },
+    {
+      "id": "lost-legends",
+      "title": "Lost Legends",
+      "author": "Talsgar the Elder, Archivist of Winterhold",
+      "subject": "History & Lore",
+      "eraIds": [
+        "first",
+        "fourth"
+      ],
+      "topicIds": [
+        "nords-atmora",
+        "college-winterhold"
+      ],
+      "summary": "Collection of lesser-known Skyrim folk legends curated at Winterhold.",
+      "keyInsight": "Archivists preserve quests-as-folklore before heroes rediscover them."
+    },
+    {
+      "id": "the-legend-of-red-eagle",
+      "title": "The Legend of Red Eagle",
+      "author": "Tredayn Dren",
+      "subject": "History & Lore",
+      "eraIds": [
+        "first"
+      ],
+      "topicIds": [
+        "civil-war",
+        "nords-atmora"
+      ],
+      "summary": "Ancient tale of Reach hero Red Eagle resisting early Imperial/Nord domination.",
+      "keyInsight": "Forsworn mythology has First Era roots in Red Eagle."
+    },
+    {
+      "id": "watcher-of-stones",
+      "title": "Watcher of Stones",
+      "author": "Gelyph Sig, Thane of Bjorin",
+      "subject": "Religion & Prophecy",
+      "eraIds": [
+        "merethic",
+        "fourth"
+      ],
+      "topicIds": [
+        "nords-atmora",
+        "creation"
+      ],
+      "summary": "Musings on Skyrim's Guardian Stones and their ancient purpose.",
+      "keyInsight": "Standing stones are living Merethic religion embedded in the landscape."
+    },
+    {
+      "id": "death-of-a-wanderer",
+      "title": "Death of a Wanderer",
+      "author": "Anonymous",
+      "subject": "History & Lore",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "dragons",
+        "nords-atmora"
+      ],
+      "summary": "Tale of an Argonian's fatal venture into a draugr barrow.",
+      "keyInsight": "Nordic ruins kill tourists who treat cult tombs as museums."
+    },
+    {
+      "id": "on-stepping-lightly",
+      "title": "On Stepping Lightly",
+      "author": "Sigilis Justus",
+      "subject": "Instruction",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "dragons",
+        "nords-atmora"
+      ],
+      "summary": "Warning guide to hazards inside Skyrim's Nordic ruins.",
+      "keyInsight": "Barrows are active ritual sites, not abandoned basements."
+    },
+    {
+      "id": "lycanthropic-legends-of-skyrim",
+      "title": "Lycanthropic Legends of Skyrim",
+      "author": "Lentulus Inventius, Order of the Horn",
+      "subject": "Esoteric",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "companions",
+        "daedra"
+      ],
+      "summary": "Notes on Skyrim locals' reluctance to discuss werewolves and Hircine lore.",
+      "keyInsight": "Beast blood is an open secret Nords refuse to narrate cleanly."
+    },
+    {
+      "id": "the-totems-of-hircine",
+      "title": "The Totems of Hircine",
+      "author": "Unknown",
+      "subject": "Religion & Prophecy",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "companions",
+        "daedra"
+      ],
+      "summary": "Werewolf tales concerning artifacts tied to Hircine's worship.",
+      "keyInsight": "Hircine's gifts always extract a hunt's price."
+    },
+    {
+      "id": "children-of-the-all-maker",
+      "title": "Children of the All-Maker",
+      "author": "Tharstan of Solitude",
+      "subject": "Religion & Prophecy",
+      "eraIds": [
+        "merethic",
+        "fourth"
+      ],
+      "topicIds": [
+        "nords-atmora",
+        "creation"
+      ],
+      "summary": "Outsider account of Skaal faith on Solstheim centered on the All-Maker.",
+      "keyInsight": "Skaal religion preserves a distinct Atmoran-adjacent spiritual path."
+    },
+    {
+      "id": "ahzidal-descent",
+      "title": "Ahzidal's Descent",
+      "author": "Halund Greycloak",
+      "subject": "History & Lore",
+      "eraIds": [
+        "merethic"
+      ],
+      "topicIds": [
+        "dragons",
+        "nords-atmora"
+      ],
+      "summary": "Tale of the enchanter-priest Ahzidal's fall into obsessive magical ruin.",
+      "keyInsight": "Dragon Cult brilliance and madness were often the same trait."
+    },
+    {
+      "id": "the-black-arts-on-trial",
+      "title": "The Black Arts On Trial",
+      "author": "Hannibal Traven, Archmagister of the Mages Guild",
+      "subject": "Politics",
+      "eraIds": [
+        "third"
+      ],
+      "topicIds": [
+        "college-winterhold",
+        "daedra"
+      ],
+      "summary": "Summarizes the Mages Guild debate and ban on necromancy under Traven.",
+      "keyInsight": "Magic institutions police ethics as fiercely as technique."
+    },
+    {
+      "id": "2920-morning-star",
+      "title": "2920, Morning Star, v1",
+      "author": "Carlovac Townway",
+      "subject": "History & Lore",
+      "eraIds": [
+        "first"
+      ],
+      "topicIds": [
+        "empire-septim",
+        "chimer-dunmer"
+      ],
+      "summary": "Opening volume of the historical novel-series on the last year of the First Era.",
+      "keyInsight": "2920 dramatizes the Reman twilight that births the Second Era."
+    },
+    {
+      "id": "boethiahs-glory",
+      "title": "Boethiah's Glory",
+      "author": "Unknown",
+      "subject": "Religion & Prophecy",
+      "eraIds": [
+        "third"
+      ],
+      "topicIds": [
+        "daedra",
+        "chimer-dunmer"
+      ],
+      "summary": "Devotional text glorifying Boethiah's sphere of unlawful overthrow.",
+      "keyInsight": "Boethiah worship sacralizes betrayal as enlightenment."
+    },
+    {
+      "id": "song-of-pelinal-v1",
+      "title": "The Song of Pelinal, v1",
+      "author": "Unknown",
+      "subject": "History & Lore",
+      "eraIds": [
+        "first"
+      ],
+      "topicIds": [
+        "empire-septim",
+        "aedra",
+        "ehlnofey"
+      ],
+      "summary": "First fragment on Pelinal Whitestrake's name and mythic aura in Alessia's war.",
+      "keyInsight": "Pelinal is Alessia's divine-mad weapon against the Ayleids."
+    },
+    {
+      "id": "last-king-of-the-ayleids",
+      "title": "The Last King of the Ayleids",
+      "author": "Herminia Cinna",
+      "subject": "History & Lore",
+      "eraIds": [
+        "first"
+      ],
+      "topicIds": [
+        "ehlnofey",
+        "empire-septim"
+      ],
+      "summary": "Chronicles the downfall of Ayleid supremacy after Alessia's revolt.",
+      "keyInsight": "White-Gold's masters fell; their towers still haunt Cyrodiil and myth."
+    },
+    {
+      "id": "the-wild-elves",
+      "title": "The Wild Elves",
+      "author": "Kier-jo Chorvak",
+      "subject": "History & Lore",
+      "eraIds": [
+        "merethic",
+        "first"
+      ],
+      "topicIds": [
+        "ehlnofey"
+      ],
+      "summary": "Short description of the Ayleids—Heartland High Elves called Wild Elves.",
+      "keyInsight": "Ayleids preserved Dawn magicks longer than other merish cultures."
+    },
+    {
+      "id": "father-of-the-niben",
+      "title": "Father Of The Niben",
+      "author": "Florin Jaliil",
+      "subject": "History & Lore",
+      "eraIds": [
+        "merethic"
+      ],
+      "topicIds": [
+        "ehlnofey"
+      ],
+      "summary": "Translation of Topal the Pilot's fragmented voyage journal charting Tamriel.",
+      "keyInsight": "Aldmer exploration maps are the first written geography of Tamriel."
+    },
+    {
+      "id": "the-true-nature-of-orcs",
+      "title": "The True Nature of Orcs",
+      "author": "Unknown",
+      "subject": "History & Lore",
+      "eraIds": [
+        "dawn",
+        "merethic"
+      ],
+      "topicIds": [
+        "ehlnofey",
+        "daedra"
+      ],
+      "summary": "Explains Orsimer origin through Trinimac's transformation into Malacath.",
+      "keyInsight": "Orcs are changed elves—Malacath's people, not 'mere beasts.'"
+    },
+    {
+      "id": "an-explorers-guide-to-skyrim",
+      "title": "An Explorer's Guide to Skyrim",
+      "author": "Marcius Carvain, Viscount Bruma",
+      "subject": "Travel",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "civil-war",
+        "nords-atmora"
+      ],
+      "summary": "Touristic travel notes for adventurous visitors to Skyrim's holds.",
+      "keyInsight": "Even Imperial tourists see Skyrim as frontier myth country."
+    },
+    {
+      "id": "a-gentlemans-guide-to-whiterun",
+      "title": "A Gentleman's Guide to Whiterun",
+      "author": "Mikael the Bard",
+      "subject": "Travel",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "civil-war",
+        "companions"
+      ],
+      "summary": "Bard's colorful description of Whiterun's people, politics, and daily life.",
+      "keyInsight": "Whiterun's centrality makes it the Civil War's hinge hold."
+    },
+    {
+      "id": "songs-of-skyrim",
+      "title": "Songs of Skyrim",
+      "author": "Giraud Gemaine, Historian of the Bards College, Solitude",
+      "subject": "Poetry",
+      "eraIds": [
+        "fourth"
+      ],
+      "topicIds": [
+        "nords-atmora",
+        "civil-war"
+      ],
+      "summary": "Compiled popular songs of Skyrim preserved by the Bards College.",
+      "keyInsight": "Ballads carry politics—Ragnar the Red and Talos hymns included."
+    },
+    {
+      "id": "king-olafs-verse",
+      "title": "King Olaf's Verse",
+      "author": "Unknown",
+      "subject": "Poetry",
+      "eraIds": [
+        "first"
+      ],
+      "topicIds": [
+        "dragons",
+        "nords-atmora"
+      ],
+      "summary": "Lost Poetic Edda verse sung at Solitude's burning of King Olaf's effigy.",
+      "keyInsight": "Bards College ritual keeps First Era kings in living cultural memory."
+    }
+  ]
+}
