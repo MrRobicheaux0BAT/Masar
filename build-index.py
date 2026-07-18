@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thieves' Guild Quest Tracker</title>
-    <style>
+#!/usr/bin/env python3
+"""Assemble dual-theme Thieves Guild + Lore Library index.html"""
+from pathlib import Path
 
+CSS = r'''
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Uncial+Antiqua&family=Libre+Baskerville:ital,wght@0;400;0;700;1;400&family=Cormorant+Garamond:ital,wght@0;500;0;700;1;500&display=swap');
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -323,18 +320,10 @@ body.theme-lore .tab-btn.active {
   .total-count { font-size: 2.6em; }
   .era-node { width: 132px; }
 }
+'''
 
-    </style>
-</head>
-<body class="theme-guild">
-    <div class="app-shell">
-        <div class="tab-bar">
-            <button class="tab-btn active" data-theme="guild">Thieves' Guild</button>
-            <button class="tab-btn" data-theme="lore">Lore Library</button>
-        </div>
-
-        <div id="panel-guild" class="panel active">
-
+# Guild HTML body (static structure) - JS will fill dynamic parts
+GUILD_HTML = r'''
 <div class="guild-container">
   <div class="header">
     <div class="guild-symbol">◆</div>
@@ -365,11 +354,9 @@ body.theme-lore .tab-btn.active {
     Stones from <a href="https://elderscrolls.fandom.com/wiki/No_Stone_Unturned_(Skyrim)" target="_blank" rel="noopener">No Stone Unturned wiki</a>.
   </p>
 </div>
+'''
 
-        </div>
-
-        <div id="panel-lore" class="panel">
-
+LORE_HTML = r'''
 <div class="lore-container">
   <div class="lore-header">
     <div class="lore-eyebrow">The Arcaneum · Skyrim Shelf</div>
@@ -425,331 +412,18 @@ body.theme-lore .tab-btn.active {
 <div class="detail-overlay" id="detail-overlay" onclick="if(event.target===this)closeDetail()">
   <div class="detail-card" id="detail-card"></div>
 </div>
+'''
 
-        </div>
-    </div>
+# Read guild script from backup - extract script content after cities const through end
+backup = Path('index.guild-backup.html').read_text()
+# We'll keep guild JS in guild.js separately for cleanliness - embed from backup script tag
+import re
+m = re.search(r'<script>\s*(.*?)\s*</script>\s*</body>', backup, re.S)
+guild_js = m.group(1) if m else ''
+# Remove trailing renderCities/renderStones calls - we'll call after tab init
+# Actually keep them - they're fine
 
-    <script src="lore-data.js"></script>
-    <script>
-const cities = [
-            {
-                id: 'riften',
-                name: 'Riften',
-                required: 5,
-                hasSpecial: false,
-                unlockNote: 'Riften jobs count toward the 125 total & trophies, but do not unlock a city special quest.'
-            },
-            {
-                id: 'whiterun',
-                name: 'Whiterun',
-                required: 5,
-                hasSpecial: true,
-                specialName: 'Imitation Amnesty',
-                specialReward: 'Flagon upgrade + bribe Whiterun guards'
-            },
-            {
-                id: 'windhelm',
-                name: 'Windhelm',
-                required: 5,
-                hasSpecial: true,
-                specialName: 'Summerset Shadows',
-                specialReward: 'Flagon upgrade + bribe Windhelm guards + fence Niranye'
-            },
-            {
-                id: 'markarth',
-                name: 'Markarth',
-                required: 5,
-                hasSpecial: true,
-                specialName: 'Silver Lining',
-                specialReward: 'Flagon upgrade + bribe Markarth guards + fence Endon'
-            },
-            {
-                id: 'solitude',
-                name: 'Solitude',
-                required: 5,
-                hasSpecial: true,
-                specialName: 'The Dainty Sload',
-                specialReward: 'Flagon upgrade + bribe Solitude guards'
-            }
-        ];
-        
-        // Job-count trophies behind the Guildmaster desk (UESP)
-        const jobUnlocks = [
-            { at: 5, reward: 'Jeweled Candlestick trophy' },
-            { at: 15, reward: 'Ornate Drinking Horn trophy' },
-            { at: 25, reward: 'Golden Ship Model trophy' },
-            { at: 35, reward: 'Golden Urn trophy' },
-            { at: 45, reward: 'Jeweled Goblet trophy' },
-            { at: 55, reward: 'Jeweled Pitcher trophy' },
-            { at: 75, reward: 'Jeweled Flagon trophy' },
-            { at: 125, reward: 'Safe by the Guildmaster desk (gold, gems, potions)' }
-        ];
-        
-        // Unlocks by number of completed city specials
-        const specialUnlocks = [
-            { at: 1, reward: 'Syndus — bowyer & fletcher in the Ragged Flagon' },
-            { at: 2, reward: 'Herluin Lothaire — apothecary in the Ragged Flagon' },
-            { at: 3, reward: 'Arnskar Ember-Master (blacksmith) + recruit Garthar' },
-            { at: 4, reward: 'Vanryth Gatharian (blacksmith) + recruit Ravyn Imyan · fences up to 4,000 gold · Under New Management (Guild Master)' }
-        ];
-        
-        // All 24 Stones of Barenziah — Elder Scrolls Wiki: No Stone Unturned
-        const stones = [
-            { id: 'ansilvund', hold: 'Eastmarch', place: 'Ansilvund Burial Chambers', detail: 'Finish the excavation path; on the table in the final room near the Ghostblade and Fjori’s ghost.' },
-            { id: 'stony_creek', hold: 'Eastmarch', place: 'Stony Creek Cave', detail: 'Before the large water pool, take the right path into the bandit wizard’s cavern; on a table.' },
-            { id: 'shatter_shield', hold: 'Eastmarch', place: 'Windhelm — House of Clan Shatter-Shield', detail: 'Upstairs, first bedroom on the left, on the bookshelf.' },
-            { id: 'wuunferth', hold: 'Eastmarch', place: 'Windhelm — Palace of the Kings', detail: 'First door left upstairs; end of the hall in Wuunferth the Unliving’s quarters, on a table.' },
-            { id: 'db_sanctuary', hold: 'Falkreath', place: 'Dark Brotherhood Sanctuary', detail: 'On the dresser in Astrid’s room (With Friends Like These… or Destroy the Dark Brotherhood!).' },
-            { id: 'pinewatch', hold: 'Falkreath', place: 'Pinewatch — Bandit’s Sanctuary', detail: 'Room with one bandit and empty sarcophagi; locked side room to the right — on a shelf immediately right.' },
-            { id: 'sunderstone', hold: 'Falkreath', place: 'Sunderstone Gorge', detail: 'On the altar in front of the Word Wall (easier to spot facing the wall from across the table).' },
-            { id: 'dainty_sload', hold: 'Haafingar', place: 'Dainty Sload', detail: 'Down to the bottom level, up the opposite stairs; on the table at the end of that room.' },
-            { id: 'reeking_cave', hold: 'Haafingar', place: 'Reeking Cave', detail: 'Alcove with the dead conjurer near the road entrance (escape path from Diplomatic Immunity).' },
-            { id: 'blue_palace', hold: 'Haafingar', place: 'Solitude — Blue Palace', detail: 'On the bedside table in Jarl Elisif’s quarters.' },
-            { id: 'proudspire', hold: 'Haafingar', place: 'Solitude — Proudspire Manor', detail: 'Must own the house (25,000 gold). Upstairs master bedroom, on a chest of drawers on the left.' },
-            { id: 'rannveig', hold: 'Hjaalmarch', place: 'Rannveig’s Fast', detail: 'Prison area — shelf just right of the exit gate (trapdoor by Word Wall chest, or long tunnels).' },
-            { id: 'dead_crone', hold: 'The Reach', place: 'Dead Crone Rock', detail: 'Makeshift altar in front of the Word Wall at the top of the final tower.' },
-            { id: 'treasury', hold: 'The Reach', place: 'Markarth — Treasury House', detail: 'Next to the bed in the master bedroom.' },
-            { id: 'dwemer_museum', hold: 'The Reach', place: 'Markarth — Dwemer Museum', detail: 'Understone Keep museum; behind a locked gate on the left, table in the right-hand corner.' },
-            { id: 'black_briar', hold: 'The Rift', place: 'Black-Briar Lodge', detail: 'Left end table in the upstairs master bedroom.' },
-            { id: 'mistveil', hold: 'The Rift', place: 'Riften — Mistveil Keep', detail: 'Jarl’s chambers; end table left of the bed in the master bedroom.' },
-            { id: 'dragonsreach', hold: 'Whiterun', place: 'Dragonsreach — Jarl’s Quarters', detail: 'End table to the right of the Jarl’s bed.' },
-            { id: 'fellglow', hold: 'Whiterun', place: 'Fellglow Keep', detail: 'Workshop at top of front foyer — counter between the arcane enchanter and alchemy lab.' },
-            { id: 'jorrvaskr', hold: 'Whiterun', place: 'Jorrvaskr Living Quarters', detail: 'In Kodlak Whitemane’s bedroom.' },
-            { id: 'hall_dead', hold: 'Whiterun', place: 'Whiterun Hall of the Dead', detail: 'Catacombs: first left, then right down the ramp; immediate left by a skeleton.' },
-            { id: 'archmage', hold: 'Winterhold', place: 'College of Winterhold — Arch-Mage’s Quarters', detail: 'Shelf left of the bed under a mounted wolf head (access during/after Under Saarthal).' },
-            { id: 'hobs_fall', hold: 'Winterhold', place: 'Hob’s Fall Cave', detail: 'After the bridge, left/down path to an alchemy bench area; on a shelf.' },
-            { id: 'yngvild', hold: 'Winterhold', place: 'Yngvild — Throne Room', detail: 'Desk in the last room, next to Arondil’s final journal.' }
-        ];
-        
-        // Keep these keys identical so existing phone progress is preserved
-        const STORAGE_KEY = 'thieves_guild_quests';
-        const SPECIAL_QUESTS_KEY = 'thieves_guild_special_quests';
-        const STONES_KEY = 'thieves_guild_stones';
-        
-        function loadProgress() {
-            const saved = localStorage.getItem(STORAGE_KEY);
-            if (saved) {
-                return JSON.parse(saved);
-            }
-            const initial = {};
-            cities.forEach(city => {
-                initial[city.id] = 0;
-            });
-            return initial;
-        }
-        
-        function loadSpecialQuests() {
-            const saved = localStorage.getItem(SPECIAL_QUESTS_KEY);
-            if (saved) {
-                return JSON.parse(saved);
-            }
-            const initial = {};
-            cities.forEach(city => {
-                initial[city.id] = false;
-            });
-            return initial;
-        }
-        
-        function loadStones() {
-            const saved = localStorage.getItem(STONES_KEY);
-            if (saved) {
-                return JSON.parse(saved);
-            }
-            const initial = {};
-            stones.forEach(stone => {
-                initial[stone.id] = false;
-            });
-            return initial;
-        }
-        
-        function saveProgress(progress) {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
-        }
-        
-        function saveSpecialQuests(specialQuests) {
-            localStorage.setItem(SPECIAL_QUESTS_KEY, JSON.stringify(specialQuests));
-        }
-        
-        function saveStones(stoneProgress) {
-            localStorage.setItem(STONES_KEY, JSON.stringify(stoneProgress));
-        }
-        
-        let questProgress = loadProgress();
-        let specialQuests = loadSpecialQuests();
-        let stoneProgress = loadStones();
-        
-        function countSpecialsDone() {
-            return cities.filter(c => c.hasSpecial && specialQuests[c.id]).length;
-        }
-        
-        function renderCities() {
-            const container = document.getElementById('cities-container');
-            container.innerHTML = '';
-            
-            cities.forEach(city => {
-                const count = questProgress[city.id] || 0;
-                const isSpecialComplete = specialQuests[city.id] || false;
-                const reachedMilestone = count >= city.required;
-                
-                let milestoneHtml = '';
-                let requirementHtml = '';
-                let specialToggleHtml = '';
-                
-                if (!city.hasSpecial) {
-                    requirementHtml = `<div class="quest-requirement">${city.unlockNote}</div>`;
-                } else if (reachedMilestone && !isSpecialComplete) {
-                    milestoneHtml = `<div class="milestone-indicator">✓ 5 jobs done — talk to Delvin for “${city.specialName}”</div>`;
-                    requirementHtml = `<div class="quest-requirement">Unlocks: ${city.specialReward}</div>`;
-                } else if (!reachedMilestone) {
-                    requirementHtml = `<div class="quest-requirement">${count}/${city.required} jobs — ${city.required - count} more unlocks “${city.specialName}” (${city.specialReward})</div>`;
-                } else {
-                    requirementHtml = `<div class="quest-requirement">Special done — ${city.specialReward}</div>`;
-                }
-                
-                if (city.hasSpecial) {
-                    specialToggleHtml = `
-                        <div class="special-quest-toggle ${isSpecialComplete ? 'completed' : ''}" onclick="toggleSpecialQuest('${city.id}')">
-                            <input type="checkbox" id="special-${city.id}" ${isSpecialComplete ? 'checked' : ''} onchange="event.stopPropagation(); toggleSpecialQuest('${city.id}')">
-                            <label for="special-${city.id}">${city.specialName} completed</label>
-                        </div>
-                    `;
-                }
-                
-                const cityDiv = document.createElement('div');
-                cityDiv.className = 'city-tracker';
-                cityDiv.innerHTML = `
-                    <div class="city-header">
-                        <div class="city-name">${city.name}</div>
-                        <div class="city-count">${count}</div>
-                    </div>
-                    <div class="controls">
-                        <button class="btn btn-add" onclick="incrementCity('${city.id}')">Add Quest</button>
-                        <button class="btn btn-reset" onclick="resetCity('${city.id}')">Reset</button>
-                    </div>
-                    ${milestoneHtml}
-                    ${requirementHtml}
-                    ${specialToggleHtml}
-                `;
-                container.appendChild(cityDiv);
-            });
-            
-            updateTotal();
-            renderSpecialUnlocks();
-        }
-        
-        function renderJobUnlocks(total) {
-            const list = document.getElementById('job-unlocks');
-            const next = jobUnlocks.find(u => total < u.at);
-            
-            list.innerHTML = jobUnlocks.map(u => {
-                let cls = 'unlock-item';
-                if (total >= u.at) cls += ' reached';
-                else if (next && u.at === next.at) cls += ' next';
-                return `<div class="${cls}"><div class="unlock-at">${u.at}</div><div>${u.reward}</div></div>`;
-            }).join('');
-            
-            const nextEl = document.getElementById('next-unlock');
-            if (total >= 125) {
-                nextEl.innerHTML = `<span>ALL JOB UNLOCKS</span>Safe unlocked — random gold, gems & potions by the Guildmaster desk.`;
-            } else {
-                const remaining = next.at - total;
-                nextEl.innerHTML = `<span>NEXT UNLOCK · ${next.at} JOBS (${remaining} to go)</span>${next.reward}`;
-            }
-        }
-        
-        function renderSpecialUnlocks() {
-            const done = countSpecialsDone();
-            const container = document.getElementById('special-unlocks');
-            const next = specialUnlocks.find(u => done < u.at);
-            
-            container.innerHTML = specialUnlocks.map(u => {
-                let cls = 'unlock-item';
-                if (done >= u.at) cls += ' reached';
-                else if (next && u.at === next.at) cls += ' next';
-                return `<div class="${cls}"><div class="unlock-at">${u.at}/4</div><div>${u.reward}</div></div>`;
-            }).join('');
-        }
-        
-        function renderStones() {
-            const container = document.getElementById('stones-container');
-            const found = stones.filter(s => stoneProgress[s.id]).length;
-            document.getElementById('stones-count').textContent = `${found} / 24`;
-            
-            container.innerHTML = stones.map(stone => {
-                const isFound = !!stoneProgress[stone.id];
-                return `
-                    <div class="stone-item ${isFound ? 'found' : ''}" onclick="toggleStone('${stone.id}')">
-                        <input type="checkbox" ${isFound ? 'checked' : ''} onchange="event.stopPropagation(); toggleStone('${stone.id}')" aria-label="Mark ${stone.place} found">
-                        <div class="stone-body">
-                            <div class="stone-hold">${stone.hold}</div>
-                            <div class="stone-place">${stone.place}</div>
-                            <div class="stone-detail">${stone.detail}</div>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-        }
-        
-        function incrementCity(cityId) {
-            questProgress[cityId] = (questProgress[cityId] || 0) + 1;
-            saveProgress(questProgress);
-            renderCities();
-        }
-        
-        function resetCity(cityId) {
-            if (confirm(`Reset quest count for ${cities.find(c => c.id === cityId).name}?`)) {
-                questProgress[cityId] = 0;
-                saveProgress(questProgress);
-                renderCities();
-            }
-        }
-        
-        function toggleSpecialQuest(cityId) {
-            specialQuests[cityId] = !specialQuests[cityId];
-            saveSpecialQuests(specialQuests);
-            renderCities();
-        }
-        
-        function toggleStone(stoneId) {
-            stoneProgress[stoneId] = !stoneProgress[stoneId];
-            saveStones(stoneProgress);
-            renderStones();
-        }
-        
-        function resetAll() {
-            if (confirm('Reset all city job counts and special quest checkboxes? Stones log will stay.')) {
-                cities.forEach(city => {
-                    questProgress[city.id] = 0;
-                    specialQuests[city.id] = false;
-                });
-                saveProgress(questProgress);
-                saveSpecialQuests(specialQuests);
-                renderCities();
-            }
-        }
-        
-        function resetStones() {
-            if (confirm('Reset the Stones of Barenziah log only? Job progress will stay.')) {
-                stones.forEach(stone => {
-                    stoneProgress[stone.id] = false;
-                });
-                saveStones(stoneProgress);
-                renderStones();
-            }
-        }
-        
-        function updateTotal() {
-            const total = Object.values(questProgress).reduce((sum, count) => sum + count, 0);
-            document.getElementById('total-count').textContent = total;
-            document.getElementById('total-progress').textContent = `${total}/125 for the guildmaster safe`;
-            renderJobUnlocks(total);
-        }
-        
-        renderCities();
-        renderStones();
-    </script>
-    <script>
-
+LORE_JS = r'''
 /* ===== Theme / Tabs ===== */
 const THEME_KEY = 'skyrim_app_theme';
 function setTheme(theme) {
@@ -1008,7 +682,49 @@ function escapeHtml(s) {
 }
 
 if (LORE) initLoreChrome();
+'''
 
+# Fix guild JS - it references render at end; keep as-is from backup
+# But guild JS uses `const cities` etc - fine
+
+html = f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thieves' Guild Quest Tracker</title>
+    <style>
+{CSS}
+    </style>
+</head>
+<body class="theme-guild">
+    <div class="app-shell">
+        <div class="tab-bar">
+            <button class="tab-btn active" data-theme="guild">Thieves' Guild</button>
+            <button class="tab-btn" data-theme="lore">Lore Library</button>
+        </div>
+
+        <div id="panel-guild" class="panel active">
+{GUILD_HTML}
+        </div>
+
+        <div id="panel-lore" class="panel">
+{LORE_HTML}
+        </div>
+    </div>
+
+    <script src="lore-data.js"></script>
+    <script>
+{guild_js}
+    </script>
+    <script>
+{LORE_JS}
     </script>
 </body>
 </html>
+'''
+
+Path('index.html').write_text(html)
+Path('thieves-guild-tracker.html').write_text(html)
+print('Wrote index.html', Path('index.html').stat().st_size)
+print('Guild JS chars', len(guild_js))
