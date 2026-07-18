@@ -19,7 +19,7 @@
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             color: #c9a962;
             padding: 20px;
         }
@@ -29,8 +29,8 @@
             border: 3px solid #3d2f1f;
             border-radius: 10px;
             box-shadow: 0 0 30px rgba(0, 0, 0, 0.8), inset 0 0 50px rgba(0, 0, 0, 0.5);
-            padding: 40px;
-            max-width: 600px;
+            padding: 28px 22px 40px;
+            max-width: 640px;
             width: 100%;
             position: relative;
         }
@@ -51,17 +51,17 @@
         
         .header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 28px;
             border-bottom: 2px solid #4a3829;
-            padding-bottom: 20px;
+            padding-bottom: 18px;
         }
         
         .title {
             font-family: 'Uncial Antiqua', cursive;
-            font-size: 2.5em;
+            font-size: 2.2em;
             color: #d4af37;
             text-shadow: 0 0 10px rgba(201, 169, 98, 0.5);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             letter-spacing: 2px;
         }
         
@@ -73,25 +73,43 @@
         }
         
         .guild-symbol {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 20px;
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 16px;
             background: radial-gradient(circle, #4a3829 0%, #2d2416 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2em;
+            font-size: 1.8em;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
             border: 2px solid #5a4839;
+        }
+        
+        .section-title {
+            font-family: 'Uncial Antiqua', cursive;
+            font-size: 1.35em;
+            color: #d4af37;
+            text-align: center;
+            margin: 32px 0 14px;
+            letter-spacing: 1px;
+        }
+        
+        .section-note {
+            font-size: 0.78em;
+            color: #6a5844;
+            text-align: center;
+            margin: -6px 0 16px;
+            font-style: italic;
+            line-height: 1.4;
         }
         
         .city-tracker {
             background: rgba(58, 46, 32, 0.3);
             border: 2px solid #4a3829;
             border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
+            padding: 18px;
+            margin-bottom: 16px;
             transition: all 0.3s ease;
             box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
         }
@@ -106,21 +124,21 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         
         .city-name {
-            font-size: 1.4em;
+            font-size: 1.3em;
             color: #d4af37;
             font-weight: 600;
             text-shadow: 0 0 5px rgba(201, 169, 98, 0.3);
         }
         
         .city-count {
-            font-size: 2em;
+            font-size: 1.9em;
             color: #c9a962;
             font-weight: 700;
-            min-width: 60px;
+            min-width: 50px;
             text-align: center;
             text-shadow: 0 0 10px rgba(201, 169, 98, 0.5);
         }
@@ -133,12 +151,12 @@
         }
         
         .btn {
-            padding: 10px 20px;
+            padding: 10px 18px;
             border: 2px solid #4a3829;
             background: linear-gradient(135deg, #3a2e20 0%, #2a1e14 100%);
             color: #c9a962;
             font-family: 'Cinzel', serif;
-            font-size: 1em;
+            font-size: 0.95em;
             cursor: pointer;
             border-radius: 5px;
             transition: all 0.3s ease;
@@ -172,14 +190,15 @@
         
         .special-quest-toggle {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 10px;
             margin-top: 10px;
             padding: 10px;
             background: rgba(0, 0, 0, 0.3);
             border-radius: 5px;
-            font-size: 0.9em;
+            font-size: 0.85em;
             color: #8b7355;
+            line-height: 1.35;
         }
         
         .special-quest-toggle input[type="checkbox"] {
@@ -187,6 +206,8 @@
             height: 20px;
             cursor: pointer;
             accent-color: #c9a962;
+            flex-shrink: 0;
+            margin-top: 2px;
         }
         
         .special-quest-toggle label {
@@ -206,10 +227,11 @@
             border: 2px solid #d4af37;
             border-radius: 5px;
             text-align: center;
-            font-size: 0.85em;
+            font-size: 0.8em;
             color: #d4af37;
             font-weight: 600;
             animation: pulse 2s infinite;
+            line-height: 1.35;
         }
         
         @keyframes pulse {
@@ -218,31 +240,32 @@
         }
         
         .quest-requirement {
-            font-size: 0.8em;
+            font-size: 0.78em;
             color: #6a5844;
-            margin-top: 5px;
+            margin-top: 6px;
             font-style: italic;
+            line-height: 1.4;
         }
         
         .total-section {
             background: rgba(58, 46, 32, 0.4);
             border: 3px solid #4a3829;
             border-radius: 8px;
-            padding: 30px;
+            padding: 24px 18px;
             text-align: center;
-            margin-top: 30px;
+            margin-top: 24px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.6), inset 0 0 30px rgba(0, 0, 0, 0.5);
         }
         
         .total-label {
-            font-size: 1.3em;
+            font-size: 1.1em;
             color: #8b7355;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             letter-spacing: 2px;
         }
         
         .total-count {
-            font-size: 3.5em;
+            font-size: 3.2em;
             color: #d4af37;
             font-weight: 700;
             text-shadow: 0 0 20px rgba(212, 175, 55, 0.7);
@@ -251,17 +274,198 @@
         .total-progress {
             font-size: 0.9em;
             color: #8b7355;
-            margin-top: 10px;
+            margin-top: 8px;
+        }
+        
+        .next-unlock {
+            margin-top: 14px;
+            padding: 12px;
+            background: rgba(212, 175, 55, 0.12);
+            border: 1px solid #5a4839;
+            border-radius: 6px;
+            font-size: 0.85em;
+            color: #d4af37;
+            line-height: 1.45;
+        }
+        
+        .next-unlock span {
+            color: #8b7355;
+            display: block;
+            font-size: 0.85em;
+            margin-bottom: 4px;
+            letter-spacing: 1px;
+        }
+        
+        .unlock-list {
+            margin-top: 14px;
+            text-align: left;
+        }
+        
+        .unlock-item {
+            display: flex;
+            gap: 10px;
+            padding: 8px 10px;
+            border-radius: 5px;
+            margin-bottom: 6px;
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid transparent;
+            font-size: 0.78em;
+            line-height: 1.35;
+            color: #6a5844;
+        }
+        
+        .unlock-item.reached {
+            color: #c9a962;
+            border-color: #4a3829;
+            background: rgba(201, 169, 98, 0.1);
+        }
+        
+        .unlock-item.next {
+            color: #d4af37;
+            border-color: #d4af37;
+            background: rgba(212, 175, 55, 0.15);
+            animation: pulse 2s infinite;
+        }
+        
+        .unlock-at {
+            flex-shrink: 0;
+            min-width: 42px;
+            font-weight: 700;
+            color: inherit;
+        }
+        
+        .special-unlocks {
+            background: rgba(58, 46, 32, 0.3);
+            border: 2px solid #4a3829;
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 8px;
+        }
+        
+        .special-unlocks .unlock-item {
+            margin-bottom: 8px;
+        }
+        
+        .stones-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        
+        .stones-count {
+            font-size: 1em;
+            color: #d4af37;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+        
+        .stone-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            padding: 12px;
+            margin-bottom: 8px;
+            background: rgba(58, 46, 32, 0.3);
+            border: 2px solid #4a3829;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .stone-item:hover {
+            background: rgba(58, 46, 32, 0.5);
+        }
+        
+        .stone-item.found {
+            border-color: #5a4839;
+            background: rgba(201, 169, 98, 0.12);
+        }
+        
+        .stone-item.found .stone-place,
+        .stone-item.found .stone-detail {
+            color: #8b7355;
+            text-decoration: line-through;
+            text-decoration-color: #5a4839;
+        }
+        
+        .stone-item input[type="checkbox"] {
+            width: 22px;
+            height: 22px;
+            margin-top: 2px;
+            flex-shrink: 0;
+            cursor: pointer;
+            accent-color: #c9a962;
+        }
+        
+        .stone-body {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .stone-place {
+            font-size: 0.95em;
+            color: #d4af37;
+            font-weight: 600;
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+        
+        .stone-hold {
+            display: inline-block;
+            font-size: 0.7em;
+            color: #8b7355;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+        
+        .stone-detail {
+            font-size: 0.78em;
+            color: #8b7355;
+            line-height: 1.4;
+            font-family: Georgia, 'Times New Roman', serif;
         }
         
         .reset-all {
-            margin-top: 30px;
+            margin-top: 28px;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
         }
         
         .btn-reset-all {
-            padding: 15px 40px;
-            font-size: 1.1em;
+            padding: 14px 28px;
+            font-size: 1em;
+        }
+        
+        .source-note {
+            margin-top: 18px;
+            font-size: 0.7em;
+            color: #5a4839;
+            text-align: center;
+            line-height: 1.4;
+        }
+        
+        .source-note a {
+            color: #8b7355;
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px 14px 32px;
+            }
+            
+            .title {
+                font-size: 1.8em;
+            }
+            
+            .total-count {
+                font-size: 2.6em;
+            }
         }
     </style>
 </head>
@@ -273,32 +477,133 @@
             <p class="subtitle">Quest Tracker</p>
         </div>
         
-        <div id="cities-container">
-            <!-- City trackers will be inserted here -->
-        </div>
+        <div id="cities-container"></div>
         
         <div class="total-section">
-            <div class="total-label">TOTAL QUESTS COMPLETED</div>
+            <div class="total-label">TOTAL JOBS COMPLETED</div>
             <div class="total-count" id="total-count">0</div>
-            <div class="total-progress" id="total-progress">0/125 for full restoration</div>
+            <div class="total-progress" id="total-progress">0/125 for the guildmaster safe</div>
+            <div class="next-unlock" id="next-unlock"></div>
+            <div class="unlock-list" id="job-unlocks"></div>
         </div>
         
-        <div class="reset-all">
-            <button class="btn btn-reset btn-reset-all" onclick="resetAll()">Reset All Progress</button>
+        <h2 class="section-title">Special Job Unlocks</h2>
+        <p class="section-note">After 5 jobs in a city (not Riften), Delvin offers that city’s special quest. Merchants arrive by how many specials you’ve finished.</p>
+        <div class="special-unlocks" id="special-unlocks"></div>
+        
+        <h2 class="section-title">Stones of Barenziah</h2>
+        <p class="section-note">No Stone Unturned — tap a stone to mark it found. Progress saves on this phone separately from job counts.</p>
+        <div class="stones-header">
+            <div class="stones-count" id="stones-count">0 / 24</div>
         </div>
+        <div id="stones-container"></div>
+        
+        <div class="reset-all">
+            <button class="btn btn-reset btn-reset-all" onclick="resetAll()">Reset Job Progress</button>
+            <button class="btn btn-reset btn-reset-all" onclick="resetStones()">Reset Stones Log</button>
+        </div>
+        
+        <p class="source-note">
+            Unlocks from <a href="https://en.uesp.net/wiki/Skyrim:Thieves_Guild_(faction)" target="_blank" rel="noopener">UESP Thieves Guild</a>.
+            Stones from <a href="https://elderscrolls.fandom.com/wiki/No_Stone_Unturned_(Skyrim)" target="_blank" rel="noopener">No Stone Unturned wiki</a>.
+        </p>
     </div>
     
     <script>
         const cities = [
-            { id: 'riften', name: 'Riften', required: 5 },
-            { id: 'whiterun', name: 'Whiterun', required: 5 },
-            { id: 'windhelm', name: 'Windhelm', required: 5 },
-            { id: 'markarth', name: 'Markarth', required: 5 },
-            { id: 'solitude', name: 'Solitude', required: 5 }
+            {
+                id: 'riften',
+                name: 'Riften',
+                required: 5,
+                hasSpecial: false,
+                unlockNote: 'Riften jobs count toward the 125 total & trophies, but do not unlock a city special quest.'
+            },
+            {
+                id: 'whiterun',
+                name: 'Whiterun',
+                required: 5,
+                hasSpecial: true,
+                specialName: 'Imitation Amnesty',
+                specialReward: 'Flagon upgrade + bribe Whiterun guards'
+            },
+            {
+                id: 'windhelm',
+                name: 'Windhelm',
+                required: 5,
+                hasSpecial: true,
+                specialName: 'Summerset Shadows',
+                specialReward: 'Flagon upgrade + bribe Windhelm guards + fence Niranye'
+            },
+            {
+                id: 'markarth',
+                name: 'Markarth',
+                required: 5,
+                hasSpecial: true,
+                specialName: 'Silver Lining',
+                specialReward: 'Flagon upgrade + bribe Markarth guards + fence Endon'
+            },
+            {
+                id: 'solitude',
+                name: 'Solitude',
+                required: 5,
+                hasSpecial: true,
+                specialName: 'The Dainty Sload',
+                specialReward: 'Flagon upgrade + bribe Solitude guards'
+            }
         ];
         
+        // Job-count trophies behind the Guildmaster desk (UESP)
+        const jobUnlocks = [
+            { at: 5, reward: 'Jeweled Candlestick trophy' },
+            { at: 15, reward: 'Ornate Drinking Horn trophy' },
+            { at: 25, reward: 'Golden Ship Model trophy' },
+            { at: 35, reward: 'Golden Urn trophy' },
+            { at: 45, reward: 'Jeweled Goblet trophy' },
+            { at: 55, reward: 'Jeweled Pitcher trophy' },
+            { at: 75, reward: 'Jeweled Flagon trophy' },
+            { at: 125, reward: 'Safe by the Guildmaster desk (gold, gems, potions)' }
+        ];
+        
+        // Unlocks by number of completed city specials
+        const specialUnlocks = [
+            { at: 1, reward: 'Syndus — bowyer & fletcher in the Ragged Flagon' },
+            { at: 2, reward: 'Herluin Lothaire — apothecary in the Ragged Flagon' },
+            { at: 3, reward: 'Arnskar Ember-Master (blacksmith) + recruit Garthar' },
+            { at: 4, reward: 'Vanryth Gatharian (blacksmith) + recruit Ravyn Imyan · fences up to 4,000 gold · Under New Management (Guild Master)' }
+        ];
+        
+        // All 24 Stones of Barenziah — Elder Scrolls Wiki: No Stone Unturned
+        const stones = [
+            { id: 'ansilvund', hold: 'Eastmarch', place: 'Ansilvund Burial Chambers', detail: 'Finish the excavation path; on the table in the final room near the Ghostblade and Fjori’s ghost.' },
+            { id: 'stony_creek', hold: 'Eastmarch', place: 'Stony Creek Cave', detail: 'Before the large water pool, take the right path into the bandit wizard’s cavern; on a table.' },
+            { id: 'shatter_shield', hold: 'Eastmarch', place: 'Windhelm — House of Clan Shatter-Shield', detail: 'Upstairs, first bedroom on the left, on the bookshelf.' },
+            { id: 'wuunferth', hold: 'Eastmarch', place: 'Windhelm — Palace of the Kings', detail: 'First door left upstairs; end of the hall in Wuunferth the Unliving’s quarters, on a table.' },
+            { id: 'db_sanctuary', hold: 'Falkreath', place: 'Dark Brotherhood Sanctuary', detail: 'On the dresser in Astrid’s room (With Friends Like These… or Destroy the Dark Brotherhood!).' },
+            { id: 'pinewatch', hold: 'Falkreath', place: 'Pinewatch — Bandit’s Sanctuary', detail: 'Room with one bandit and empty sarcophagi; locked side room to the right — on a shelf immediately right.' },
+            { id: 'sunderstone', hold: 'Falkreath', place: 'Sunderstone Gorge', detail: 'On the altar in front of the Word Wall (easier to spot facing the wall from across the table).' },
+            { id: 'dainty_sload', hold: 'Haafingar', place: 'Dainty Sload', detail: 'Down to the bottom level, up the opposite stairs; on the table at the end of that room.' },
+            { id: 'reeking_cave', hold: 'Haafingar', place: 'Reeking Cave', detail: 'Alcove with the dead conjurer near the road entrance (escape path from Diplomatic Immunity).' },
+            { id: 'blue_palace', hold: 'Haafingar', place: 'Solitude — Blue Palace', detail: 'On the bedside table in Jarl Elisif’s quarters.' },
+            { id: 'proudspire', hold: 'Haafingar', place: 'Solitude — Proudspire Manor', detail: 'Must own the house (25,000 gold). Upstairs master bedroom, on a chest of drawers on the left.' },
+            { id: 'rannveig', hold: 'Hjaalmarch', place: 'Rannveig’s Fast', detail: 'Prison area — shelf just right of the exit gate (trapdoor by Word Wall chest, or long tunnels).' },
+            { id: 'dead_crone', hold: 'The Reach', place: 'Dead Crone Rock', detail: 'Makeshift altar in front of the Word Wall at the top of the final tower.' },
+            { id: 'treasury', hold: 'The Reach', place: 'Markarth — Treasury House', detail: 'Next to the bed in the master bedroom.' },
+            { id: 'dwemer_museum', hold: 'The Reach', place: 'Markarth — Dwemer Museum', detail: 'Understone Keep museum; behind a locked gate on the left, table in the right-hand corner.' },
+            { id: 'black_briar', hold: 'The Rift', place: 'Black-Briar Lodge', detail: 'Left end table in the upstairs master bedroom.' },
+            { id: 'mistveil', hold: 'The Rift', place: 'Riften — Mistveil Keep', detail: 'Jarl’s chambers; end table left of the bed in the master bedroom.' },
+            { id: 'dragonsreach', hold: 'Whiterun', place: 'Dragonsreach — Jarl’s Quarters', detail: 'End table to the right of the Jarl’s bed.' },
+            { id: 'fellglow', hold: 'Whiterun', place: 'Fellglow Keep', detail: 'Workshop at top of front foyer — counter between the arcane enchanter and alchemy lab.' },
+            { id: 'jorrvaskr', hold: 'Whiterun', place: 'Jorrvaskr Living Quarters', detail: 'In Kodlak Whitemane’s bedroom.' },
+            { id: 'hall_dead', hold: 'Whiterun', place: 'Whiterun Hall of the Dead', detail: 'Catacombs: first left, then right down the ramp; immediate left by a skeleton.' },
+            { id: 'archmage', hold: 'Winterhold', place: 'College of Winterhold — Arch-Mage’s Quarters', detail: 'Shelf left of the bed under a mounted wolf head (access during/after Under Saarthal).' },
+            { id: 'hobs_fall', hold: 'Winterhold', place: 'Hob’s Fall Cave', detail: 'After the bridge, left/down path to an alchemy bench area; on a shelf.' },
+            { id: 'yngvild', hold: 'Winterhold', place: 'Yngvild — Throne Room', detail: 'Desk in the last room, next to Arondil’s final journal.' }
+        ];
+        
+        // Keep these keys identical so existing phone progress is preserved
         const STORAGE_KEY = 'thieves_guild_quests';
         const SPECIAL_QUESTS_KEY = 'thieves_guild_special_quests';
+        const STONES_KEY = 'thieves_guild_stones';
         
         function loadProgress() {
             const saved = localStorage.getItem(STORAGE_KEY);
@@ -324,6 +629,18 @@
             return initial;
         }
         
+        function loadStones() {
+            const saved = localStorage.getItem(STONES_KEY);
+            if (saved) {
+                return JSON.parse(saved);
+            }
+            const initial = {};
+            stones.forEach(stone => {
+                initial[stone.id] = false;
+            });
+            return initial;
+        }
+        
         function saveProgress(progress) {
             localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
         }
@@ -332,8 +649,17 @@
             localStorage.setItem(SPECIAL_QUESTS_KEY, JSON.stringify(specialQuests));
         }
         
+        function saveStones(stoneProgress) {
+            localStorage.setItem(STONES_KEY, JSON.stringify(stoneProgress));
+        }
+        
         let questProgress = loadProgress();
         let specialQuests = loadSpecialQuests();
+        let stoneProgress = loadStones();
+        
+        function countSpecialsDone() {
+            return cities.filter(c => c.hasSpecial && specialQuests[c.id]).length;
+        }
         
         function renderCities() {
             const container = document.getElementById('cities-container');
@@ -343,6 +669,30 @@
                 const count = questProgress[city.id] || 0;
                 const isSpecialComplete = specialQuests[city.id] || false;
                 const reachedMilestone = count >= city.required;
+                
+                let milestoneHtml = '';
+                let requirementHtml = '';
+                let specialToggleHtml = '';
+                
+                if (!city.hasSpecial) {
+                    requirementHtml = `<div class="quest-requirement">${city.unlockNote}</div>`;
+                } else if (reachedMilestone && !isSpecialComplete) {
+                    milestoneHtml = `<div class="milestone-indicator">✓ 5 jobs done — talk to Delvin for “${city.specialName}”</div>`;
+                    requirementHtml = `<div class="quest-requirement">Unlocks: ${city.specialReward}</div>`;
+                } else if (!reachedMilestone) {
+                    requirementHtml = `<div class="quest-requirement">${count}/${city.required} jobs — ${city.required - count} more unlocks “${city.specialName}” (${city.specialReward})</div>`;
+                } else {
+                    requirementHtml = `<div class="quest-requirement">Special done — ${city.specialReward}</div>`;
+                }
+                
+                if (city.hasSpecial) {
+                    specialToggleHtml = `
+                        <div class="special-quest-toggle ${isSpecialComplete ? 'completed' : ''}" onclick="toggleSpecialQuest('${city.id}')">
+                            <input type="checkbox" id="special-${city.id}" ${isSpecialComplete ? 'checked' : ''} onchange="event.stopPropagation(); toggleSpecialQuest('${city.id}')">
+                            <label for="special-${city.id}">${city.specialName} completed</label>
+                        </div>
+                    `;
+                }
                 
                 const cityDiv = document.createElement('div');
                 cityDiv.className = 'city-tracker';
@@ -355,17 +705,68 @@
                         <button class="btn btn-add" onclick="incrementCity('${city.id}')">Add Quest</button>
                         <button class="btn btn-reset" onclick="resetCity('${city.id}')">Reset</button>
                     </div>
-                    ${reachedMilestone ? '<div class="milestone-indicator">✓ Special Merchant Unlocked!</div>' : ''}
-                    <div class="quest-requirement">${count} quests completed ${reachedMilestone ? '(5+ reached!)' : `(${city.required - count} more for special merchant)`}</div>
-                    <div class="special-quest-toggle ${isSpecialComplete ? 'completed' : ''}" onclick="toggleSpecialQuest('${city.id}')">
-                        <input type="checkbox" id="special-${city.id}" ${isSpecialComplete ? 'checked' : ''} onchange="event.stopPropagation(); toggleSpecialQuest('${city.id}')">
-                        <label for="special-${city.id}">${city.name} Special Quest Completed</label>
-                    </div>
+                    ${milestoneHtml}
+                    ${requirementHtml}
+                    ${specialToggleHtml}
                 `;
                 container.appendChild(cityDiv);
             });
             
             updateTotal();
+            renderSpecialUnlocks();
+        }
+        
+        function renderJobUnlocks(total) {
+            const list = document.getElementById('job-unlocks');
+            const next = jobUnlocks.find(u => total < u.at);
+            
+            list.innerHTML = jobUnlocks.map(u => {
+                let cls = 'unlock-item';
+                if (total >= u.at) cls += ' reached';
+                else if (next && u.at === next.at) cls += ' next';
+                return `<div class="${cls}"><div class="unlock-at">${u.at}</div><div>${u.reward}</div></div>`;
+            }).join('');
+            
+            const nextEl = document.getElementById('next-unlock');
+            if (total >= 125) {
+                nextEl.innerHTML = `<span>ALL JOB UNLOCKS</span>Safe unlocked — random gold, gems & potions by the Guildmaster desk.`;
+            } else {
+                const remaining = next.at - total;
+                nextEl.innerHTML = `<span>NEXT UNLOCK · ${next.at} JOBS (${remaining} to go)</span>${next.reward}`;
+            }
+        }
+        
+        function renderSpecialUnlocks() {
+            const done = countSpecialsDone();
+            const container = document.getElementById('special-unlocks');
+            const next = specialUnlocks.find(u => done < u.at);
+            
+            container.innerHTML = specialUnlocks.map(u => {
+                let cls = 'unlock-item';
+                if (done >= u.at) cls += ' reached';
+                else if (next && u.at === next.at) cls += ' next';
+                return `<div class="${cls}"><div class="unlock-at">${u.at}/4</div><div>${u.reward}</div></div>`;
+            }).join('');
+        }
+        
+        function renderStones() {
+            const container = document.getElementById('stones-container');
+            const found = stones.filter(s => stoneProgress[s.id]).length;
+            document.getElementById('stones-count').textContent = `${found} / 24`;
+            
+            container.innerHTML = stones.map(stone => {
+                const isFound = !!stoneProgress[stone.id];
+                return `
+                    <div class="stone-item ${isFound ? 'found' : ''}" onclick="toggleStone('${stone.id}')">
+                        <input type="checkbox" ${isFound ? 'checked' : ''} onchange="event.stopPropagation(); toggleStone('${stone.id}')" aria-label="Mark ${stone.place} found">
+                        <div class="stone-body">
+                            <div class="stone-hold">${stone.hold}</div>
+                            <div class="stone-place">${stone.place}</div>
+                            <div class="stone-detail">${stone.detail}</div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
         }
         
         function incrementCity(cityId) {
@@ -388,8 +789,14 @@
             renderCities();
         }
         
+        function toggleStone(stoneId) {
+            stoneProgress[stoneId] = !stoneProgress[stoneId];
+            saveStones(stoneProgress);
+            renderStones();
+        }
+        
         function resetAll() {
-            if (confirm('Are you sure you want to reset all quest progress and special quests?')) {
+            if (confirm('Reset all city job counts and special quest checkboxes? Stones log will stay.')) {
                 cities.forEach(city => {
                     questProgress[city.id] = 0;
                     specialQuests[city.id] = false;
@@ -400,13 +807,25 @@
             }
         }
         
+        function resetStones() {
+            if (confirm('Reset the Stones of Barenziah log only? Job progress will stay.')) {
+                stones.forEach(stone => {
+                    stoneProgress[stone.id] = false;
+                });
+                saveStones(stoneProgress);
+                renderStones();
+            }
+        }
+        
         function updateTotal() {
             const total = Object.values(questProgress).reduce((sum, count) => sum + count, 0);
             document.getElementById('total-count').textContent = total;
-            document.getElementById('total-progress').textContent = `${total}/125 for full restoration`;
+            document.getElementById('total-progress').textContent = `${total}/125 for the guildmaster safe`;
+            renderJobUnlocks(total);
         }
         
         renderCities();
+        renderStones();
     </script>
 </body>
 </html>
