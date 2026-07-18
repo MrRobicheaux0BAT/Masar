@@ -283,7 +283,15 @@ body.theme-lore .tab-btn.active {
 .book-meta { flex: 1; min-width: 0; }
 .book-title { font-family: 'Cormorant Garamond', serif; font-size: 1.15em; color: var(--l-gold); font-weight: 700; line-height: 1.2; }
 .book-author { font-size: 0.75em; color: var(--l-dim); font-style: italic; margin: 3px 0 6px; }
-.book-summary { font-size: 0.8em; color: var(--l-muted); line-height: 1.4; }
+.book-summary {
+  font-size: 0.8em; color: var(--l-muted); line-height: 1.45;
+  display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;
+}
+.detail-label {
+  font-family: 'Cormorant Garamond', serif; font-size: 0.95em; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--l-gold); margin: 14px 0 6px;
+}
+.detail-summary { font-size: 0.95em; line-height: 1.65; color: var(--l-ink); margin-bottom: 4px; }
 .book-tags { margin-top: 6px; display: flex; flex-wrap: wrap; gap: 6px; }
 .tag { font-size: 0.65em; letter-spacing: 0.5px; text-transform: uppercase; color: var(--l-dim); border: 1px solid #5a4030; padding: 2px 7px; border-radius: 999px; font-family: 'Cormorant Garamond', serif; }
 
@@ -647,9 +655,11 @@ function openBook(id) {
   openDetail(`
     <button class="close-x" onclick="closeDetail()">×</button>
     <h2>${escapeHtml(b.title)}</h2>
-    <div class="book-author" style="margin-bottom:10px">${escapeHtml(b.author || 'Unknown')} · ${escapeHtml(b.subject || '')}</div>
-    <p style="font-size:0.92em;line-height:1.55">${escapeHtml(b.summary || '')}</p>
-    <div class="key"><strong>Key insight:</strong> ${escapeHtml(b.keyInsight || b.summary || '')}</div>
+    <div class="book-author" style="margin-bottom:6px">${escapeHtml(b.author || 'Unknown')} · ${escapeHtml(b.subject || '')}</div>
+    <div class="detail-label">What it's about</div>
+    <p class="detail-summary">${escapeHtml(b.summary || '')}</p>
+    <div class="detail-label">Key insight</div>
+    <div class="key">${escapeHtml(b.keyInsight || '')}</div>
     <div class="connections">
       ${eras.map(e => `<button class="conn-chip" onclick="closeDetail();selectEra('${e.id}')">${e.name}</button>`).join('')}
       ${topics.map(t => `<button class="conn-chip" onclick="closeDetail();openTopic('${t.id}')">${t.name}</button>`).join('')}
