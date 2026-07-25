@@ -1094,7 +1094,11 @@ window.QUESTS_DATA = {
       "description": "Work with Commander Maro to assault and wipe out the Falkreath sanctuary.",
       "location": "Abandoned Shack → Dark Brotherhood Sanctuary",
       "exclusiveGroup": "db-start",
-      "note": "ALT PATH: mutually exclusive with the join questline. Killing Astrid is the trigger."
+      "note": "ALT PATH: mutually exclusive with joining. Kill Astrid in the Abandoned Shack during With Friends Like These…, then report to a guard / Commander Maro.",
+      "alternatives": [
+        "Only available if you kill Astrid instead of a captive",
+        "Completing this prevents the entire Dark Brotherhood join questline"
+      ]
     },
     {
       "id": "joining-the-legion",
@@ -1852,6 +1856,16 @@ window.QUESTS_DATA = {
       "description": "Cleanse the Wind Stone and learn how Miraak enslaves Solstheim.",
       "location": "Skaal Village / Wind Stone",
       "note": "Also listed among Solstheim sides; core to Dragonborn progression."
+    },
+    {
+      "id": "cleansing_the_stones",
+      "name": "Cleansing the Stones",
+      "categoryId": "dragonborn",
+      "order": 4,
+      "howToStart": "Automatic after The Fate of the Skaal — Storn asks you to cleanse the remaining All-Maker Stones.",
+      "description": "Travel Solstheim and cleanse the Earth, Beast, Tree, Sun, and Water Stones of Miraak's influence.",
+      "location": "Solstheim All-Maker Stones",
+      "note": "Part of the Dragonborn main path between Fate of the Skaal and The Path of Knowledge."
     },
     {
       "id": "path-of-knowledge",
