@@ -2,1437 +2,670 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thieves' Guild Quest Tracker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Voice-Controlled Teleprompter</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Uncial+Antiqua&family=Libre+Baskerville:ital,wght@0;400;0;700;1;400&family=Cormorant+Garamond:ital,wght@0;500;0;700;1;500&display=swap');
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow: hidden;
+            height: 100vh;
+        }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+        #controls {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 15px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 2px solid #333;
+        }
 
-:root {
-  --g-bg: linear-gradient(135deg, #1a1510 0%, #2d2416 50%, #1a1510 100%);
-  --g-panel: linear-gradient(145deg, #251e17 0%, #1a1410 100%);
-  --g-border: #3d2f1f;
-  --g-gold: #d4af37;
-  --g-ink: #c9a962;
-  --g-muted: #8b7355;
-  --g-dim: #6a5844;
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            touch-action: manipulation;
+        }
 
-  --l-bg: radial-gradient(ellipse at 20% 0%, #3d2a18 0%, #1a120c 45%, #0e0a08 100%);
-  --l-panel: linear-gradient(160deg, #2a1f14 0%, #17110c 100%);
-  --l-border: #6b4e2e;
-  --l-gold: #e8c97a;
-  --l-ink: #f0e6d2;
-  --l-muted: #b9a078;
-  --l-dim: #8a7355;
-  --l-shelf: rgba(90, 60, 30, 0.35);
-  --l-accent: #8b4513;
-}
+        #startBtn {
+            background: #4CAF50;
+            color: white;
+        }
 
-body {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 16px;
-  transition: background 0.5s ease, color 0.4s ease;
-}
+        #startBtn:active {
+            background: #45a049;
+        }
 
-body.theme-guild {
-  font-family: 'Cinzel', serif;
-  background: var(--g-bg);
-  color: var(--g-ink);
-}
+        #stopBtn {
+            background: #f44336;
+            color: white;
+        }
 
-body.theme-lore {
-  font-family: 'Libre Baskerville', Georgia, serif;
-  background: var(--l-bg);
-  color: var(--l-ink);
-}
+        #stopBtn:active {
+            background: #da190b;
+        }
 
-.app-shell {
-  width: 100%;
-  max-width: 720px;
-  position: relative;
-}
+        #resetBtn {
+            background: #2196F3;
+            color: white;
+        }
 
-.tab-bar {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  margin-bottom: 14px;
-  position: sticky;
-  top: 8px;
-  z-index: 40;
-}
+        #resetBtn:active {
+            background: #0b7dda;
+        }
 
-.tab-btn {
-  border: 2px solid;
-  padding: 12px 10px;
-  cursor: pointer;
-  font-size: 0.85em;
-  letter-spacing: 1px;
-  font-weight: 700;
-  border-radius: 8px;
-  transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.3s ease;
-  backdrop-filter: blur(8px);
-}
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
 
-body.theme-guild .tab-btn {
-  font-family: 'Cinzel', serif;
-  border-color: var(--g-border);
-  background: rgba(26, 20, 16, 0.85);
-  color: var(--g-muted);
-}
-body.theme-guild .tab-btn.active {
-  color: var(--g-gold);
-  border-color: var(--g-gold);
-  box-shadow: 0 0 16px rgba(212, 175, 55, 0.25);
-  background: rgba(58, 46, 32, 0.95);
-}
+        #status {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            font-size: 14px;
+            color: #4CAF50;
+            z-index: 999;
+        }
 
-body.theme-lore .tab-btn {
-  font-family: 'Cormorant Garamond', serif;
-  border-color: var(--l-border);
-  background: rgba(20, 14, 10, 0.88);
-  color: var(--l-muted);
-  font-size: 1.05em;
-  letter-spacing: 2px;
-}
-body.theme-lore .tab-btn.active {
-  color: var(--l-gold);
-  border-color: var(--l-gold);
-  box-shadow: 0 0 18px rgba(232, 201, 122, 0.2);
-  background: rgba(42, 31, 20, 0.95);
-}
+        #status.listening {
+            color: #4CAF50;
+        }
 
-.tab-btn:hover { transform: translateY(-1px); }
+        #status.stopped {
+            color: #f44336;
+        }
 
-.panel { display: none; animation: fadeIn 0.45s ease; }
-.panel.active { display: block; }
+        #teleprompterContainer {
+            position: fixed;
+            top: 140px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            padding: 20px;
+        }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+        #scriptText {
+            font-size: 24px;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+            padding-bottom: 80vh;
+        }
 
-/* ===== GUILD PANEL (preserved look) ===== */
-.guild-container {
-  background: var(--g-panel);
-  border: 3px solid var(--g-border);
-  border-radius: 10px;
-  box-shadow: 0 0 30px rgba(0,0,0,0.8), inset 0 0 50px rgba(0,0,0,0.5);
-  padding: 28px 22px 40px;
-  position: relative;
-}
-.guild-container::before {
-  content: '';
-  position: absolute; inset: -2px;
-  background: linear-gradient(45deg, #4a3829, #2d2416, #4a3829, #2d2416);
-  border-radius: 10px; z-index: -1; filter: blur(10px); opacity: 0.5;
-}
-.header { text-align: center; margin-bottom: 28px; border-bottom: 2px solid #4a3829; padding-bottom: 18px; }
-.title { font-family: 'Uncial Antiqua', cursive; font-size: 2.2em; color: var(--g-gold); text-shadow: 0 0 10px rgba(201,169,98,0.5); margin-bottom: 8px; letter-spacing: 2px; }
-.subtitle { font-size: 0.9em; color: var(--g-muted); font-style: italic; letter-spacing: 1px; }
-.guild-symbol { width: 56px; height: 56px; margin: 0 auto 16px; background: radial-gradient(circle, #4a3829 0%, #2d2416 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8em; box-shadow: 0 0 15px rgba(0,0,0,0.7); border: 2px solid #5a4839; }
-.section-title { font-family: 'Uncial Antiqua', cursive; font-size: 1.35em; color: var(--g-gold); text-align: center; margin: 32px 0 14px; letter-spacing: 1px; }
-.section-note { font-size: 0.78em; color: var(--g-dim); text-align: center; margin: -6px 0 16px; font-style: italic; line-height: 1.4; }
-.city-tracker { background: rgba(58,46,32,0.3); border: 2px solid #4a3829; border-radius: 8px; padding: 18px; margin-bottom: 16px; transition: all 0.3s ease; box-shadow: inset 0 0 20px rgba(0,0,0,0.5); }
-.city-tracker:hover { background: rgba(58,46,32,0.5); box-shadow: 0 0 15px rgba(74,56,41,0.5), inset 0 0 20px rgba(0,0,0,0.5); transform: translateY(-2px); }
-.city-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-.city-name { font-size: 1.3em; color: var(--g-gold); font-weight: 600; }
-.city-count { font-size: 1.9em; color: var(--g-ink); font-weight: 700; min-width: 50px; text-align: center; }
-.controls { display: flex; gap: 10px; margin-bottom: 10px; }
-.btn { padding: 10px 18px; border: 2px solid #4a3829; background: linear-gradient(135deg, #3a2e20 0%, #2a1e14 100%); color: var(--g-ink); font-family: 'Cinzel', serif; font-size: 0.95em; cursor: pointer; border-radius: 5px; transition: all 0.3s ease; font-weight: 600; letter-spacing: 1px; }
-.btn:hover { background: linear-gradient(135deg, #4a3829 0%, #3a2e20 100%); transform: translateY(-2px); }
-.btn-add { flex: 1; }
-.btn-reset { background: linear-gradient(135deg, #4a2e20 0%, #2a1e14 100%); border-color: #5a3e29; }
-.special-quest-toggle { display: flex; align-items: flex-start; gap: 10px; margin-top: 10px; padding: 10px; background: rgba(0,0,0,0.3); border-radius: 5px; font-size: 0.85em; color: var(--g-muted); line-height: 1.35; }
-.special-quest-toggle input[type="checkbox"] { width: 20px; height: 20px; cursor: pointer; accent-color: var(--g-ink); flex-shrink: 0; margin-top: 2px; }
-.special-quest-toggle label { cursor: pointer; user-select: none; }
-.special-quest-toggle.completed { background: rgba(201,169,98,0.2); color: var(--g-gold); }
-.milestone-indicator { margin-top: 10px; padding: 8px; background: linear-gradient(135deg, rgba(212,175,55,0.2) 0%, rgba(201,169,98,0.1) 100%); border: 2px solid var(--g-gold); border-radius: 5px; text-align: center; font-size: 0.8em; color: var(--g-gold); font-weight: 600; animation: pulse 2s infinite; line-height: 1.35; }
-@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.7} }
-.quest-requirement { font-size: 0.78em; color: var(--g-dim); margin-top: 6px; font-style: italic; line-height: 1.4; }
-.total-section { background: rgba(58,46,32,0.4); border: 3px solid #4a3829; border-radius: 8px; padding: 24px 18px; text-align: center; margin-top: 24px; box-shadow: 0 0 20px rgba(0,0,0,0.6), inset 0 0 30px rgba(0,0,0,0.5); }
-.total-label { font-size: 1.1em; color: var(--g-muted); margin-bottom: 8px; letter-spacing: 2px; }
-.total-count { font-size: 3.2em; color: var(--g-gold); font-weight: 700; text-shadow: 0 0 20px rgba(212,175,55,0.7); }
-.total-progress { font-size: 0.9em; color: var(--g-muted); margin-top: 8px; }
-.next-unlock { margin-top: 14px; padding: 12px; background: rgba(212,175,55,0.12); border: 1px solid #5a4839; border-radius: 6px; font-size: 0.85em; color: var(--g-gold); line-height: 1.45; }
-.next-unlock span { color: var(--g-muted); display: block; font-size: 0.85em; margin-bottom: 4px; letter-spacing: 1px; }
-.unlock-list { margin-top: 14px; text-align: left; }
-.unlock-item { display: flex; gap: 10px; padding: 8px 10px; border-radius: 5px; margin-bottom: 6px; background: rgba(0,0,0,0.25); border: 1px solid transparent; font-size: 0.78em; line-height: 1.35; color: var(--g-dim); }
-.unlock-item.reached { color: var(--g-ink); border-color: #4a3829; background: rgba(201,169,98,0.1); }
-.unlock-item.next { color: var(--g-gold); border-color: var(--g-gold); background: rgba(212,175,55,0.15); animation: pulse 2s infinite; }
-.unlock-at { flex-shrink: 0; min-width: 42px; font-weight: 700; }
-.special-unlocks { background: rgba(58,46,32,0.3); border: 2px solid #4a3829; border-radius: 8px; padding: 16px; margin-top: 8px; }
-.stones-header { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 12px; }
-.stones-count { font-size: 1em; color: var(--g-gold); font-weight: 700; }
-.stone-item { display: flex; gap: 12px; align-items: flex-start; padding: 12px; margin-bottom: 8px; background: rgba(58,46,32,0.3); border: 2px solid #4a3829; border-radius: 8px; cursor: pointer; }
-.stone-item.found { border-color: #5a4839; background: rgba(201,169,98,0.12); }
-.stone-item.found .stone-place, .stone-item.found .stone-detail { color: var(--g-muted); text-decoration: line-through; text-decoration-color: #5a4839; }
-.stone-item input[type="checkbox"] { width: 22px; height: 22px; margin-top: 2px; flex-shrink: 0; cursor: pointer; accent-color: var(--g-ink); }
-.stone-hold { display: inline-block; font-size: 0.7em; color: var(--g-muted); letter-spacing: 0.5px; margin-bottom: 4px; text-transform: uppercase; }
-.stone-place { font-size: 0.95em; color: var(--g-gold); font-weight: 600; margin-bottom: 4px; line-height: 1.3; }
-.stone-detail { font-size: 0.78em; color: var(--g-muted); line-height: 1.4; font-family: Georgia, serif; }
-.reset-all { margin-top: 28px; text-align: center; display: flex; flex-direction: column; gap: 10px; align-items: center; }
-.btn-reset-all { padding: 14px 28px; font-size: 1em; }
-.source-note { margin-top: 18px; font-size: 0.7em; color: #5a4839; text-align: center; line-height: 1.4; }
-.source-note a { color: var(--g-muted); }
+        .word {
+            display: inline;
+            padding: 2px 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
 
-/* ===== LORE LIBRARY ===== */
-.lore-container {
-  background: var(--l-panel);
-  border: 2px solid var(--l-border);
-  border-radius: 4px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.65), inset 0 0 80px rgba(80,50,20,0.15);
-  padding: 28px 20px 36px;
-  position: relative;
-  overflow: hidden;
-}
-.lore-container::before {
-  content: '';
-  position: absolute; inset: 0;
-  background:
-    repeating-linear-gradient(0deg, transparent, transparent 27px, rgba(139,69,19,0.04) 28px),
-    radial-gradient(ellipse at 80% 10%, rgba(232,201,122,0.08), transparent 40%);
-  pointer-events: none;
-}
-.lore-container > * { position: relative; z-index: 1; }
+        .word.current {
+            background-color: #4CAF50;
+            color: #000;
+            padding: 4px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
 
-.lore-header { text-align: center; margin-bottom: 22px; border-bottom: 1px solid var(--l-border); padding-bottom: 18px; }
-.lore-eyebrow { font-family: 'Cormorant Garamond', serif; font-size: 0.95em; letter-spacing: 4px; text-transform: uppercase; color: var(--l-muted); margin-bottom: 8px; }
-.lore-title { font-family: 'Cormorant Garamond', serif; font-size: 2.6em; font-weight: 700; color: var(--l-gold); letter-spacing: 1px; line-height: 1.1; }
-.lore-sub { margin-top: 10px; font-size: 0.92em; color: var(--l-muted); font-style: italic; line-height: 1.45; max-width: 34em; margin-left: auto; margin-right: auto; }
-.lore-stats { margin-top: 14px; display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; font-family: 'Cormorant Garamond', serif; font-size: 1.05em; color: var(--l-gold); }
+        .word.read {
+            color: #666;
+        }
 
-.lore-nav {
-  display: flex; gap: 8px; overflow-x: auto; padding: 4px 2px 12px; margin-bottom: 8px;
-  -webkit-overflow-scrolling: touch;
-}
-.lore-chip {
-  flex: 0 0 auto; border: 1px solid var(--l-border); background: rgba(0,0,0,0.25);
-  color: var(--l-muted); padding: 8px 14px; border-radius: 999px; cursor: pointer;
-  font-family: 'Cormorant Garamond', serif; font-size: 1em; letter-spacing: 1px;
-}
-.lore-chip.active { color: #1a120c; background: var(--l-gold); border-color: var(--l-gold); font-weight: 700; }
+        .sentence {
+            margin-bottom: 1em;
+        }
 
-.timeline {
-  display: flex; gap: 0; overflow-x: auto; padding: 10px 0 20px; margin-bottom: 8px;
-  -webkit-overflow-scrolling: touch;
-}
-.era-node {
-  flex: 0 0 auto; width: 148px; margin-right: 8px; padding: 14px 12px; cursor: pointer;
-  background: var(--l-shelf); border: 1px solid var(--l-border); border-radius: 3px;
-  position: relative; transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-}
-.era-node::after {
-  content: '›'; position: absolute; right: -11px; top: 50%; transform: translateY(-50%);
-  color: var(--l-dim); font-size: 1.4em; font-family: sans-serif;
-}
-.era-node:last-child::after { display: none; }
-.era-node:hover, .era-node.active {
-  border-color: var(--l-gold); transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
-}
-.era-node .era-name { font-family: 'Cormorant Garamond', serif; font-size: 1.15em; color: var(--l-gold); font-weight: 700; }
-.era-node .era-hint { font-size: 0.72em; color: var(--l-dim); margin-top: 6px; line-height: 1.35; }
+        @media (max-width: 768px) {
+            #scriptText {
+                font-size: 20px;
+                line-height: 1.6;
+            }
 
-.lore-block {
-  background: rgba(0,0,0,0.22); border: 1px solid var(--l-border); border-radius: 3px;
-  padding: 16px; margin-bottom: 14px;
-}
-.lore-block h2 {
-  font-family: 'Cormorant Garamond', serif; font-size: 1.55em; color: var(--l-gold);
-  margin-bottom: 8px; font-weight: 700;
-}
-.lore-block p { font-size: 0.88em; line-height: 1.55; color: var(--l-ink); margin-bottom: 10px; }
-.insight-list { list-style: none; }
-.insight-list li {
-  font-size: 0.82em; line-height: 1.45; color: var(--l-muted); padding: 7px 0 7px 14px;
-  border-left: 2px solid var(--l-accent); margin-bottom: 6px;
-}
-.skyrim-link {
-  margin-top: 10px; padding: 10px 12px; background: rgba(232,201,122,0.08);
-  border: 1px dashed var(--l-border); font-size: 0.8em; color: var(--l-gold); line-height: 1.45; font-style: italic;
-}
+            button {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
 
-.topic-grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin-bottom: 16px; }
-@media (min-width: 560px) { .topic-grid { grid-template-columns: 1fr 1fr; } }
-.topic-card {
-  padding: 14px; background: var(--l-shelf); border: 1px solid var(--l-border);
-  border-radius: 3px; cursor: pointer; transition: border-color 0.2s ease, transform 0.2s ease;
-}
-.topic-card:hover, .topic-card.active { border-color: var(--l-gold); transform: translateY(-1px); }
-.topic-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.15em; color: var(--l-gold); margin-bottom: 6px; }
-.topic-card p { font-size: 0.78em; color: var(--l-muted); line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+            #controls {
+                padding: 10px;
+                gap: 8px;
+            }
+        }
 
-.shelf-controls { display: flex; flex-direction: column; gap: 8px; margin: 8px 0 12px; }
-.shelf-controls input, .shelf-controls select {
-  width: 100%; padding: 11px 12px; border: 1px solid var(--l-border); border-radius: 3px;
-  background: rgba(10,8,6,0.65); color: var(--l-ink); font-family: 'Libre Baskerville', serif; font-size: 0.9em;
-}
-.shelf-controls input::placeholder { color: var(--l-dim); }
+        #fontControls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
 
-.book-row {
-  display: flex; gap: 10px; align-items: flex-start; padding: 12px; margin-bottom: 8px;
-  background: rgba(20,14,10,0.55); border: 1px solid #4a3420; border-left: 4px solid #7a5230;
-  border-radius: 2px; cursor: pointer; transition: border-color 0.2s ease, background 0.2s ease;
-}
-.book-row:hover { border-color: var(--l-gold); background: rgba(40,28,16,0.7); }
-.book-row.read { border-left-color: var(--l-gold); opacity: 0.85; }
-.book-row input { width: 20px; height: 20px; margin-top: 3px; accent-color: var(--l-gold); flex-shrink: 0; }
-.book-meta { flex: 1; min-width: 0; }
-.book-title { font-family: 'Cormorant Garamond', serif; font-size: 1.15em; color: var(--l-gold); font-weight: 700; line-height: 1.2; }
-.book-author { font-size: 0.75em; color: var(--l-dim); font-style: italic; margin: 3px 0 6px; }
-.book-summary {
-  font-size: 0.8em; color: var(--l-muted); line-height: 1.45;
-  display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;
-}
-.detail-label {
-  font-family: 'Cormorant Garamond', serif; font-size: 0.95em; letter-spacing: 2px;
-  text-transform: uppercase; color: var(--l-gold); margin: 14px 0 6px;
-}
-.detail-summary { font-size: 0.95em; line-height: 1.65; color: var(--l-ink); margin-bottom: 4px; }
-.book-tags { margin-top: 6px; display: flex; flex-wrap: wrap; gap: 6px; }
-.tag { font-size: 0.65em; letter-spacing: 0.5px; text-transform: uppercase; color: var(--l-dim); border: 1px solid #5a4030; padding: 2px 7px; border-radius: 999px; font-family: 'Cormorant Garamond', serif; }
+        #fontControls button {
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            padding: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
 
-.detail-overlay {
-  display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.72); z-index: 60;
-  padding: 20px 12px; overflow-y: auto;
-}
-.detail-overlay.open { display: block; }
-.detail-card {
-  max-width: 560px; margin: 20px auto; background: linear-gradient(160deg, #2c2116, #16110c);
-  border: 2px solid var(--l-gold); border-radius: 4px; padding: 22px 18px; color: var(--l-ink);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-}
-.detail-card h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.8em; color: var(--l-gold); margin-bottom: 6px; }
-.detail-card .close-x {
-  float: right; border: 1px solid var(--l-border); background: transparent; color: var(--l-muted);
-  width: 34px; height: 34px; border-radius: 50%; cursor: pointer; font-size: 1.1em;
-}
-.detail-card .key { margin-top: 12px; padding: 12px; background: rgba(232,201,122,0.1); border-left: 3px solid var(--l-gold); font-size: 0.88em; line-height: 1.5; }
-.connections { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
-.conn-chip {
-  border: 1px solid var(--l-border); background: rgba(0,0,0,0.3); color: var(--l-muted);
-  padding: 6px 10px; border-radius: 999px; cursor: pointer; font-size: 0.78em;
-  font-family: 'Cormorant Garamond', serif;
-}
+        #fontControls button:active {
+            background: rgba(255, 255, 255, 0.2);
+        }
 
-.empty-shelf { text-align: center; color: var(--l-dim); font-style: italic; padding: 24px 8px; font-size: 0.9em; }
-.lore-footer { margin-top: 20px; text-align: center; font-size: 0.7em; color: var(--l-dim); line-height: 1.45; }
-.lore-footer a { color: var(--l-muted); }
+        #editSection {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #000;
+            z-index: 2000;
+            display: none;
+            flex-direction: column;
+        }
 
-@media (max-width: 480px) {
-  .title { font-size: 1.8em; }
-  .lore-title { font-size: 2.1em; }
-  .total-count { font-size: 2.6em; }
-  .era-node { width: 132px; }
-}
+        #editSection.active {
+            display: flex;
+        }
 
+        #editControls {
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.9);
+            border-bottom: 2px solid #333;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
 
-/* ===== QUESTS CODEX ===== */
-:root {
-  --q-bg: radial-gradient(ellipse at 70% 0%, #243040 0%, #141820 40%, #0c1016 100%);
-  --q-panel: linear-gradient(160deg, #1c2430 0%, #121820 100%);
-  --q-border: #3d4f66;
-  --q-gold: #c9d4e0;
-  --q-ink: #dce4ee;
-  --q-muted: #8a9bb0;
-  --q-dim: #5c6d82;
-  --q-accent: #6b8cae;
-  --q-alt: #c4a35a;
-  --q-done: #7a9e7e;
-}
+        #scriptEditor {
+            flex: 1;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #fff;
+            border: none;
+            font-size: 16px;
+            line-height: 1.6;
+            resize: none;
+            font-family: inherit;
+        }
 
-body.theme-quests {
-  font-family: 'Libre Baskerville', Georgia, serif;
-  background: var(--q-bg);
-  color: var(--q-ink);
-}
+        #editBtn {
+            background: #FF9800;
+            color: white;
+        }
 
-body.theme-quests .tab-btn {
-  font-family: 'Cormorant Garamond', serif;
-  border-color: var(--q-border);
-  background: rgba(14, 18, 26, 0.9);
-  color: var(--q-muted);
-  font-size: 1.0em;
-  letter-spacing: 1.5px;
-}
-body.theme-quests .tab-btn.active {
-  color: var(--q-gold);
-  border-color: var(--q-gold);
-  box-shadow: 0 0 18px rgba(107, 140, 174, 0.25);
-  background: rgba(28, 36, 48, 0.95);
-}
-
-.tab-bar.tabs-3 { grid-template-columns: 1fr 1fr 1fr; }
-
-.quests-container {
-  background: var(--q-panel);
-  border: 2px solid var(--q-border);
-  border-radius: 4px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.65), inset 0 0 80px rgba(80,100,130,0.08);
-  padding: 28px 20px 36px;
-  position: relative;
-  overflow: hidden;
-}
-.quests-container::before {
-  content: '';
-  position: absolute; inset: 0;
-  background:
-    repeating-linear-gradient(0deg, transparent, transparent 29px, rgba(107,140,174,0.04) 30px),
-    radial-gradient(ellipse at 20% 0%, rgba(107,140,174,0.1), transparent 45%);
-  pointer-events: none;
-}
-.quests-container > * { position: relative; z-index: 1; }
-
-.quests-header { text-align: center; margin-bottom: 20px; border-bottom: 1px solid var(--q-border); padding-bottom: 16px; }
-.quests-eyebrow { font-family: 'Cormorant Garamond', serif; font-size: 0.95em; letter-spacing: 4px; text-transform: uppercase; color: var(--q-muted); margin-bottom: 8px; }
-.quests-title { font-family: 'Cormorant Garamond', serif; font-size: 2.4em; font-weight: 700; color: var(--q-gold); letter-spacing: 1px; line-height: 1.1; }
-.quests-sub { margin-top: 10px; font-size: 0.9em; color: var(--q-muted); font-style: italic; line-height: 1.45; max-width: 34em; margin-left: auto; margin-right: auto; }
-.quests-stats { margin-top: 14px; display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; font-family: 'Cormorant Garamond', serif; font-size: 1.05em; color: var(--q-gold); }
-
-.quest-search-row { display: flex; flex-direction: column; gap: 8px; margin: 10px 0 14px; }
-.quest-search-row input, .quest-search-row select {
-  width: 100%; padding: 11px 12px; border: 1px solid var(--q-border); border-radius: 3px;
-  background: rgba(8,12,18,0.7); color: var(--q-ink); font-family: 'Libre Baskerville', serif; font-size: 0.9em;
-}
-.quest-search-row input::placeholder { color: var(--q-dim); }
-
-.quest-group-label {
-  font-family: 'Cormorant Garamond', serif; font-size: 0.85em; letter-spacing: 3px;
-  text-transform: uppercase; color: var(--q-dim); margin: 18px 0 8px;
-}
-
-.cat-chip-row {
-  display: flex; gap: 8px; overflow-x: auto; padding: 4px 2px 12px;
-  -webkit-overflow-scrolling: touch;
-}
-.cat-chip {
-  flex: 0 0 auto; border: 1px solid var(--q-border); background: rgba(0,0,0,0.25);
-  color: var(--q-muted); padding: 8px 12px; border-radius: 4px; cursor: pointer;
-  font-family: 'Cormorant Garamond', serif; font-size: 0.95em; letter-spacing: 0.5px;
-  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
-}
-.cat-chip:hover { border-color: var(--q-accent); color: var(--q-ink); }
-.cat-chip.active { color: #0e1218; background: var(--q-gold); border-color: var(--q-gold); font-weight: 700; }
-.cat-chip .cat-count { opacity: 0.75; font-size: 0.85em; margin-left: 4px; }
-
-.cat-summary {
-  background: rgba(0,0,0,0.22); border: 1px solid var(--q-border); border-radius: 3px;
-  padding: 14px; margin-bottom: 12px; font-size: 0.85em; line-height: 1.5; color: var(--q-muted);
-}
-.cat-summary strong { color: var(--q-gold); font-family: 'Cormorant Garamond', serif; font-size: 1.25em; display: block; margin-bottom: 6px; font-weight: 700; }
-.cat-exclusive {
-  margin-top: 10px; padding: 10px 12px; background: rgba(196,163,90,0.12);
-  border: 1px dashed var(--q-alt); color: var(--q-alt); font-size: 0.82em; line-height: 1.45;
-}
-
-.quest-row {
-  display: flex; gap: 10px; align-items: flex-start; padding: 12px; margin-bottom: 8px;
-  background: rgba(12,16,24,0.55); border: 1px solid #2a384c; border-left: 4px solid var(--q-accent);
-  border-radius: 2px; cursor: pointer; transition: border-color 0.2s ease, background 0.2s ease, opacity 0.2s ease;
-}
-.quest-row:hover { border-color: var(--q-gold); background: rgba(28,40,56,0.7); }
-.quest-row.done { border-left-color: var(--q-done); opacity: 0.82; }
-.quest-row.alt-path { border-left-color: var(--q-alt); }
-.quest-row.locked { opacity: 0.45; }
-.quest-row input { width: 20px; height: 20px; margin-top: 3px; accent-color: var(--q-accent); flex-shrink: 0; }
-.quest-meta { flex: 1; min-width: 0; }
-.quest-name { font-family: 'Cormorant Garamond', serif; font-size: 1.15em; color: var(--q-gold); font-weight: 700; line-height: 1.2; }
-.quest-loc { font-size: 0.75em; color: var(--q-dim); font-style: italic; margin: 3px 0 6px; }
-.quest-blurb {
-  font-size: 0.8em; color: var(--q-muted); line-height: 1.45;
-  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
-}
-.quest-tags { margin-top: 6px; display: flex; flex-wrap: wrap; gap: 6px; }
-.q-tag {
-  font-size: 0.65em; letter-spacing: 0.5px; text-transform: uppercase; color: var(--q-dim);
-  border: 1px solid #3d4f66; padding: 2px 7px; border-radius: 3px;
-  font-family: 'Cormorant Garamond', serif;
-}
-.q-tag.alt { color: var(--q-alt); border-color: var(--q-alt); }
-.q-tag.fail { color: #c47a7a; border-color: #8a5050; }
-.q-tag.radiant { color: var(--q-accent); border-color: var(--q-accent); }
-.q-tag.done-tag { color: var(--q-done); border-color: var(--q-done); }
-
-.quests-footer { margin-top: 20px; text-align: center; font-size: 0.7em; color: var(--q-dim); line-height: 1.45; }
-.quests-footer a { color: var(--q-muted); }
-
-body.theme-quests .detail-card {
-  background: linear-gradient(160deg, #243040, #121820);
-  border-color: var(--q-gold);
-  color: var(--q-ink);
-}
-body.theme-quests .detail-card h2 { color: var(--q-gold); font-family: 'Cormorant Garamond', serif; }
-body.theme-quests .detail-label { color: var(--q-gold); }
-body.theme-quests .detail-card .key { background: rgba(107,140,174,0.12); border-left-color: var(--q-accent); }
-body.theme-quests .detail-card .close-x { border-color: var(--q-border); color: var(--q-muted); }
-body.theme-quests .conn-chip { border-color: var(--q-border); color: var(--q-muted); background: rgba(0,0,0,0.3); }
-body.theme-quests .lore-chip { border-color: var(--q-border); color: var(--q-muted); background: rgba(0,0,0,0.25); }
-body.theme-quests .lore-chip.active { color: #0e1218; background: var(--q-gold); border-color: var(--q-gold); }
-
-.alt-box {
-  margin-top: 10px; padding: 12px; background: rgba(196,163,90,0.1);
-  border-left: 3px solid var(--q-alt); font-size: 0.88em; line-height: 1.5;
-}
-.fail-box {
-  margin-top: 10px; padding: 12px; background: rgba(196,122,122,0.1);
-  border-left: 3px solid #c47a7a; font-size: 0.88em; line-height: 1.5; color: #e0b4b4;
-}
-.note-box {
-  margin-top: 10px; padding: 12px; background: rgba(107,140,174,0.12);
-  border-left: 3px solid var(--q-accent); font-size: 0.88em; line-height: 1.5;
-}
-
-@media (max-width: 480px) {
-  .quests-title { font-size: 1.9em; }
-  .tab-btn { font-size: 0.72em; padding: 10px 6px; letter-spacing: 0.5px; }
-  body.theme-quests .tab-btn, body.theme-lore .tab-btn { font-size: 0.85em; letter-spacing: 1px; }
-}
-
+        #editBtn:active {
+            background: #F57C00;
+        }
     </style>
 </head>
-<body class="theme-guild">
-    <div class="app-shell">
-        <div class="tab-bar tabs-3">
-            <button class="tab-btn active" data-theme="guild">Thieves' Guild</button>
-            <button class="tab-btn" data-theme="lore">Lore Library</button>
-            <button class="tab-btn" data-theme="quests">Quests</button>
-        </div>
-
-        <div id="panel-guild" class="panel active">
-
-<div class="guild-container">
-  <div class="header">
-    <div class="guild-symbol">◆</div>
-    <h1 class="title">Thieves' Guild</h1>
-    <p class="subtitle">Quest Tracker</p>
-  </div>
-  <div id="cities-container"></div>
-  <div class="total-section">
-    <div class="total-label">TOTAL JOBS COMPLETED</div>
-    <div class="total-count" id="total-count">0</div>
-    <div class="total-progress" id="total-progress">0/125 for the guildmaster safe</div>
-    <div class="next-unlock" id="next-unlock"></div>
-    <div class="unlock-list" id="job-unlocks"></div>
-  </div>
-  <h2 class="section-title">Special Job Unlocks</h2>
-  <p class="section-note">After 5 jobs in a city (not Riften), Delvin offers that city’s special quest. Merchants arrive by how many specials you’ve finished.</p>
-  <div class="special-unlocks" id="special-unlocks"></div>
-  <h2 class="section-title">Stones of Barenziah</h2>
-  <p class="section-note">No Stone Unturned — tap a stone to mark it found. Progress saves on this phone separately from job counts.</p>
-  <div class="stones-header"><div class="stones-count" id="stones-count">0 / 24</div></div>
-  <div id="stones-container"></div>
-  <div class="reset-all">
-    <button class="btn btn-reset btn-reset-all" onclick="resetAll()">Reset Job Progress</button>
-    <button class="btn btn-reset btn-reset-all" onclick="resetStones()">Reset Stones Log</button>
-  </div>
-  <p class="source-note">
-    Unlocks from <a href="https://en.uesp.net/wiki/Skyrim:Thieves_Guild_(faction)" target="_blank" rel="noopener">UESP Thieves Guild</a>.
-    Stones from <a href="https://elderscrolls.fandom.com/wiki/No_Stone_Unturned_(Skyrim)" target="_blank" rel="noopener">No Stone Unturned wiki</a>.
-  </p>
-</div>
-
-        </div>
-
-        <div id="panel-lore" class="panel">
-
-<div class="lore-container">
-  <div class="lore-header">
-    <div class="lore-eyebrow">The Arcaneum · Skyrim Shelf</div>
-    <h1 class="lore-title">Library of the Ages</h1>
-    <p class="lore-sub">A connected map of Tamriel’s history — eras, threads, and the books that carry them — ending in the Fourth Era crises of Skyrim.</p>
-    <div class="lore-stats">
-      <span id="stat-eras">6 Eras</span>
-      <span id="stat-topics">— Threads</span>
-      <span id="stat-books">— Books</span>
-      <span id="stat-read">0 read</span>
-    </div>
-  </div>
-
-  <div class="lore-nav" id="lore-view-nav">
-    <button class="lore-chip active" data-view="map">Lore Map</button>
-    <button class="lore-chip" data-view="topics">Threads</button>
-    <button class="lore-chip" data-view="books">Book Shelves</button>
-  </div>
-
-  <div id="view-map">
-    <div class="timeline" id="era-timeline"></div>
-    <div class="lore-block" id="era-detail"></div>
-    <h2 class="section-title" style="font-family:'Cormorant Garamond',serif;color:var(--l-gold);font-size:1.4em;margin:18px 0 10px;text-align:left;letter-spacing:1px;">Connected Threads</h2>
-    <div class="topic-grid" id="era-topics"></div>
-    <h2 class="section-title" style="font-family:'Cormorant Garamond',serif;color:var(--l-gold);font-size:1.4em;margin:18px 0 10px;text-align:left;letter-spacing:1px;">Key Books for this Era</h2>
-    <div id="era-books"></div>
-  </div>
-
-  <div id="view-topics" style="display:none">
-    <div class="topic-grid" id="all-topics"></div>
-  </div>
-
-  <div id="view-books" style="display:none">
-    <div class="shelf-controls">
-      <input id="book-search" type="search" placeholder="Search title, author, or keyword…">
-      <select id="book-subject">
-        <option value="">All subjects</option>
-      </select>
-      <select id="book-era">
-        <option value="">All eras</option>
-      </select>
-    </div>
-    <div id="book-shelf"></div>
-  </div>
-
-  <p class="lore-footer">
-    Summaries distilled from UESP lore &amp; Skyrim book descriptions.
-    <a href="https://en.uesp.net/wiki/Lore:History" target="_blank" rel="noopener">Lore:History</a> ·
-    <a href="https://en.uesp.net/wiki/Skyrim:Books" target="_blank" rel="noopener">Skyrim:Books</a>
-  </p>
-</div>
-
-        </div>
-
-        <div id="panel-quests" class="panel">
-
-<div class="quests-container">
-  <div class="quests-header">
-    <div class="quests-eyebrow">Journal · All of Skyrim</div>
-    <h1 class="quests-title">Quest Codex</h1>
-    <p class="quests-sub">Every named quest path — main story, factions, DLC, Daedric, and side work by hold — with starts, alternatives, and fail states for a true 100% journal.</p>
-    <div class="quests-stats">
-      <span id="quest-stat-total">0 Quests</span>
-      <span id="quest-stat-done">0 done</span>
-      <span id="quest-stat-cats">0 paths</span>
-    </div>
-  </div>
-
-  <div class="quest-search-row">
-    <input id="quest-search" type="search" placeholder="Search quests, locations, or keywords…">
-    <select id="quest-filter">
-      <option value="all">All quests</option>
-      <option value="open">Not completed</option>
-      <option value="done">Completed</option>
-      <option value="alt">Has alternatives</option>
-      <option value="exclusive">Exclusive / ALT paths</option>
-    </select>
-  </div>
-
-  <div id="quest-groups"></div>
-  <div class="cat-chip-row" id="quest-cat-chips"></div>
-  <div class="cat-summary" id="quest-cat-summary"></div>
-  <div id="quest-list"></div>
-
-  <div class="reset-all" style="margin-top:24px">
-    <button class="btn btn-reset btn-reset-all" onclick="resetQuestProgress()" style="font-family:'Cormorant Garamond',serif;border-color:var(--q-border);background:linear-gradient(135deg,#2a3544,#1a222e);color:var(--q-ink)">Reset Quest Log</button>
-  </div>
-  <p class="quests-footer">
-    Starts &amp; alternatives distilled from
-    <a href="https://en.uesp.net/wiki/Skyrim:Quests" target="_blank" rel="noopener">UESP Skyrim:Quests</a>.
-    Radiants listed once as types. Mutually exclusive paths are marked ALT.
-  </p>
-</div>
-
-        </div>
+<body>
+    <div id="controls">
+        <button id="startBtn">Start Listening</button>
+        <button id="stopBtn" disabled>Stop</button>
+        <button id="resetBtn">Reset</button>
+        <button id="editBtn">Edit Script</button>
     </div>
 
-<div class="detail-overlay" id="detail-overlay" onclick="if(event.target===this)closeDetail()">
-  <div class="detail-card" id="detail-card"></div>
-</div>
+    <div id="status" class="stopped">Ready to start</div>
 
-    <script src="lore-data.js"></script>
-    <script src="quests-data.js"></script>
+    <div id="teleprompterContainer">
+        <div id="scriptText"></div>
+    </div>
+
+    <div id="fontControls">
+        <button id="fontUp" title="Increase Font Size">+</button>
+        <button id="fontDown" title="Decrease Font Size">−</button>
+    </div>
+
+    <div id="editSection">
+        <div id="editControls">
+            <button id="saveEdit">Save</button>
+            <button id="cancelEdit">Cancel</button>
+        </div>
+        <textarea id="scriptEditor"></textarea>
+    </div>
+
     <script>
-const cities = [
-            {
-                id: 'riften',
-                name: 'Riften',
-                required: 5,
-                hasSpecial: false,
-                unlockNote: 'Riften jobs count toward the 125 total & trophies, but do not unlock a city special quest.'
-            },
-            {
-                id: 'whiterun',
-                name: 'Whiterun',
-                required: 5,
-                hasSpecial: true,
-                specialName: 'Imitation Amnesty',
-                specialReward: 'Flagon upgrade + bribe Whiterun guards'
-            },
-            {
-                id: 'windhelm',
-                name: 'Windhelm',
-                required: 5,
-                hasSpecial: true,
-                specialName: 'Summerset Shadows',
-                specialReward: 'Flagon upgrade + bribe Windhelm guards + fence Niranye'
-            },
-            {
-                id: 'markarth',
-                name: 'Markarth',
-                required: 5,
-                hasSpecial: true,
-                specialName: 'Silver Lining',
-                specialReward: 'Flagon upgrade + bribe Markarth guards + fence Endon'
-            },
-            {
-                id: 'solitude',
-                name: 'Solitude',
-                required: 5,
-                hasSpecial: true,
-                specialName: 'The Dainty Sload',
-                specialReward: 'Flagon upgrade + bribe Solitude guards'
-            }
-        ];
-        
-        // Job-count trophies behind the Guildmaster desk (UESP)
-        const jobUnlocks = [
-            { at: 5, reward: 'Jeweled Candlestick trophy' },
-            { at: 15, reward: 'Ornate Drinking Horn trophy' },
-            { at: 25, reward: 'Golden Ship Model trophy' },
-            { at: 35, reward: 'Golden Urn trophy' },
-            { at: 45, reward: 'Jeweled Goblet trophy' },
-            { at: 55, reward: 'Jeweled Pitcher trophy' },
-            { at: 75, reward: 'Jeweled Flagon trophy' },
-            { at: 125, reward: 'Safe by the Guildmaster desk (gold, gems, potions)' }
-        ];
-        
-        // Unlocks by number of completed city specials
-        const specialUnlocks = [
-            { at: 1, reward: 'Syndus — bowyer & fletcher in the Ragged Flagon' },
-            { at: 2, reward: 'Herluin Lothaire — apothecary in the Ragged Flagon' },
-            { at: 3, reward: 'Arnskar Ember-Master (blacksmith) + recruit Garthar' },
-            { at: 4, reward: 'Vanryth Gatharian (blacksmith) + recruit Ravyn Imyan · fences up to 4,000 gold · Under New Management (Guild Master)' }
-        ];
-        
-        // All 24 Stones of Barenziah — Elder Scrolls Wiki: No Stone Unturned
-        const stones = [
-            { id: 'ansilvund', hold: 'Eastmarch', place: 'Ansilvund Burial Chambers', detail: 'Finish the excavation path; on the table in the final room near the Ghostblade and Fjori’s ghost.' },
-            { id: 'stony_creek', hold: 'Eastmarch', place: 'Stony Creek Cave', detail: 'Before the large water pool, take the right path into the bandit wizard’s cavern; on a table.' },
-            { id: 'shatter_shield', hold: 'Eastmarch', place: 'Windhelm — House of Clan Shatter-Shield', detail: 'Upstairs, first bedroom on the left, on the bookshelf.' },
-            { id: 'wuunferth', hold: 'Eastmarch', place: 'Windhelm — Palace of the Kings', detail: 'First door left upstairs; end of the hall in Wuunferth the Unliving’s quarters, on a table.' },
-            { id: 'db_sanctuary', hold: 'Falkreath', place: 'Dark Brotherhood Sanctuary', detail: 'On the dresser in Astrid’s room (With Friends Like These… or Destroy the Dark Brotherhood!).' },
-            { id: 'pinewatch', hold: 'Falkreath', place: 'Pinewatch — Bandit’s Sanctuary', detail: 'Room with one bandit and empty sarcophagi; locked side room to the right — on a shelf immediately right.' },
-            { id: 'sunderstone', hold: 'Falkreath', place: 'Sunderstone Gorge', detail: 'On the altar in front of the Word Wall (easier to spot facing the wall from across the table).' },
-            { id: 'dainty_sload', hold: 'Haafingar', place: 'Dainty Sload', detail: 'Down to the bottom level, up the opposite stairs; on the table at the end of that room.' },
-            { id: 'reeking_cave', hold: 'Haafingar', place: 'Reeking Cave', detail: 'Alcove with the dead conjurer near the road entrance (escape path from Diplomatic Immunity).' },
-            { id: 'blue_palace', hold: 'Haafingar', place: 'Solitude — Blue Palace', detail: 'On the bedside table in Jarl Elisif’s quarters.' },
-            { id: 'proudspire', hold: 'Haafingar', place: 'Solitude — Proudspire Manor', detail: 'Must own the house (25,000 gold). Upstairs master bedroom, on a chest of drawers on the left.' },
-            { id: 'rannveig', hold: 'Hjaalmarch', place: 'Rannveig’s Fast', detail: 'Prison area — shelf just right of the exit gate (trapdoor by Word Wall chest, or long tunnels).' },
-            { id: 'dead_crone', hold: 'The Reach', place: 'Dead Crone Rock', detail: 'Makeshift altar in front of the Word Wall at the top of the final tower.' },
-            { id: 'treasury', hold: 'The Reach', place: 'Markarth — Treasury House', detail: 'Next to the bed in the master bedroom.' },
-            { id: 'dwemer_museum', hold: 'The Reach', place: 'Markarth — Dwemer Museum', detail: 'Understone Keep museum; behind a locked gate on the left, table in the right-hand corner.' },
-            { id: 'black_briar', hold: 'The Rift', place: 'Black-Briar Lodge', detail: 'Left end table in the upstairs master bedroom.' },
-            { id: 'mistveil', hold: 'The Rift', place: 'Riften — Mistveil Keep', detail: 'Jarl’s chambers; end table left of the bed in the master bedroom.' },
-            { id: 'dragonsreach', hold: 'Whiterun', place: 'Dragonsreach — Jarl’s Quarters', detail: 'End table to the right of the Jarl’s bed.' },
-            { id: 'fellglow', hold: 'Whiterun', place: 'Fellglow Keep', detail: 'Workshop at top of front foyer — counter between the arcane enchanter and alchemy lab.' },
-            { id: 'jorrvaskr', hold: 'Whiterun', place: 'Jorrvaskr Living Quarters', detail: 'In Kodlak Whitemane’s bedroom.' },
-            { id: 'hall_dead', hold: 'Whiterun', place: 'Whiterun Hall of the Dead', detail: 'Catacombs: first left, then right down the ramp; immediate left by a skeleton.' },
-            { id: 'archmage', hold: 'Winterhold', place: 'College of Winterhold — Arch-Mage’s Quarters', detail: 'Shelf left of the bed under a mounted wolf head (access during/after Under Saarthal).' },
-            { id: 'hobs_fall', hold: 'Winterhold', place: 'Hob’s Fall Cave', detail: 'After the bridge, left/down path to an alchemy bench area; on a shelf.' },
-            { id: 'yngvild', hold: 'Winterhold', place: 'Yngvild — Throne Room', detail: 'Desk in the last room, next to Arondil’s final journal.' }
-        ];
-        
-        // Keep these keys identical so existing phone progress is preserved
-        const STORAGE_KEY = 'thieves_guild_quests';
-        const SPECIAL_QUESTS_KEY = 'thieves_guild_special_quests';
-        const STONES_KEY = 'thieves_guild_stones';
-        
-        function loadProgress() {
-            const saved = localStorage.getItem(STORAGE_KEY);
-            if (saved) {
-                return JSON.parse(saved);
-            }
-            const initial = {};
-            cities.forEach(city => {
-                initial[city.id] = 0;
-            });
-            return initial;
+        // Default script
+        const defaultScript = `I've been replaying the games I grew up on.
+
+Not for nostalgia. You get older, the way you see things changes, and something you already finished turns into a completely different game.
+
+Dark Souls did that to me.
+
+And I'm serious when I say this — a video game character clarified something for me that I'd been circling for years.
+
+Dark Souls is set in a world that is finished. Everything is grey. Everything is dying. The kingdoms are ruins, the people left are losing their minds, and nothing in it is on your side.
+
+And that's not the game being dramatic. That's just the honest version of the setting. The world is hard. It doesn't care about you. It was never going to arrange itself around your plans.
+
+Most people spend their lives waiting for that to change before they start living properly.
+
+And then walking through the middle of all this is a man in a sun-painted tunic who refuses to be miserable.
+
+Solaire.
+
+The mistake is thinking he's comic relief. He isn't. He's one of the most capable people in that world — proper armour, proper skill, and he'll stand with you at the final fight when nobody else will.
+
+He has a mission of his own that he takes completely seriously.
+
+He just never lets it turn him into something ugly.
+
+Here's what I couldn't see before.
+
+The setting is fixed. Everyone in that world got dealt the same grey. Same ruins, same odds, same dying light.
+
+So the world was never the thing that determined how any of them turned out. The only variable was who they decided to be inside it.
+
+Solaire didn't get a better world. He got the same one, and he walked through it differently.
+
+We've been sold this idea that if you're serious about something, it has to cost you your lightness. Head down. Jaw clenched. Suffer now, live later.
+
+Solaire breaks that completely. He's rigorous about his mission and he's still laughing. Still admiring the light. Still finding the whole thing worth being awake for.
+
+The joy isn't a break from the mission. It's the thing that lets him carry it that far without breaking.
+
+Grimness isn't proof you're taking something seriously. Usually it's proof you're taking it badly.
+
+He stops. He looks. He notices where he is.
+
+He's not treating the journey as a tax he pays to reach the goal. He's not waiting to arrive before he's allowed to feel anything.
+
+Which matters, because arriving is mostly a myth. You hit the target and there's another one behind it. If the only good part is the finish line, you're signing up for a life where almost none of it counts.
+
+And this is the one I want to sit on, because I think it's the whole thing.
+
+Solaire is not travelling from A to B. He's exploring. Every corridor is somewhere he hasn't been. Every stranger is someone he hasn't met yet. He's moving through the same ruins as everyone else and treating them like there's something in there worth finding.
+
+Nobody gave him a reason to. He decided it.
+
+And notice where he is while he's doing it. He's not somewhere beautiful. He's not on a trip. He's in the worst place in the world and he's still looking around like it's the first day.
+
+That's the part people get wrong about adventure. We've turned it into a product. Flights, itineraries, a place far enough away to justify feeling something. Which conveniently means adventure is always somewhere else, always later, always after the money's there. And in the meantime you get to stay exactly as you are.
+
+But adventure isn't a location. It's a way of moving through wherever you already are.
+
+Your city has streets you've never walked. There's a district you drive past every week and have never once stopped in. There are entire neighbourhoods within twenty minutes of you that are, functionally, unexplored map. You just stopped looking, because you decided you already know this place.
+
+You don't. You know your route. That's not the same thing.
+
+And this is where it opens up.
+
+In a game you go and talk to every single character. You find the one standing in the corner and you exhaust every line of dialogue, because you know they've got something — a story, a warning, a piece of the world you didn't have.
+
+Then you get up from the game and walk past forty actual people without a word.
+
+Every person you pass is running something more complicated than any character ever written. They know things you don't. They've been places you haven't. They've survived things you couldn't guess from looking at them.
+
+And it costs nothing. That's the part that gets me. It costs nothing. No ticket, no plan, no budget. Ask the question. Stay for the answer. Let it go somewhere.
+
+That's an adventure. That's a day that didn't go grey.
+
+One example, then I'll leave it.
+
+I was getting flowers for my grandmother and my aunt. Small shop, nothing special about it. The guy working there is called Mohammed. Pakistani.
+
+I was in there thirty minutes. Drinking tea.
+
+He started telling me about flowers — not selling them to me, just what they actually mean to him, why he does this. And somehow that turned into his life.
+
+He's been with the same woman for nine years. She's in Brazil. Her family has land there, a house, the whole thing already built. He could get on a plane tomorrow and walk straight into a finished life.
+
+He won't take it. That's the reason nine years have gone by and they're still not married. He's not arriving empty-handed. He's building his own before he goes.
+
+So they see each other whenever they can. She comes here, he goes there. Her family's in it, his family's in it, everyone's just in it, for as long as it takes.
+
+Thirty minutes. Cost me nothing. I walked in for flowers.
+
+And it took me a while to realise what I'd actually been sitting across from. That's a man nine years into something hard, turning down the easy version of it — and he's still got half an hour for a stranger and a pot of tea and a conversation about what flowers mean.
+
+Nine years in and he isn't bitter. He isn't grinding his teeth about it. He's enjoying it.
+
+That's Solaire. Standing behind a counter in a flower shop.
+
+You're not supposed to be watching this world. You're supposed to be in it.
+
+This is the one that gets me.
+
+Solaire has his own quest and he still shows up for yours. He'll come and fight in a battle that gains him nothing. Not instead of his mission — alongside it.
+
+And it's the reason he's the most loved character in the whole series. Not his skill. Not his gear. The fact that he's useful to someone else's fight.
+
+Most of us make this so much harder than it has to be. We chase the thing alone, we grind alone, we sit in the room alone, and then we can't work out why any of it feels flat.
+
+The mission is yours. That doesn't mean you have to carry it by yourself, and it doesn't mean you stop being any use to anyone else while you do.
+
+And here's the part that should scare you.
+
+Everybody in that world has a goal. Every single one of them is chasing something. And nearly all of them get eaten by it — bitter, obsessive, and eventually hollow. Still moving, nothing left inside.
+
+Having a purpose doesn't protect you. That's the lie. Plenty of people have a purpose and it hollows them out anyway.
+
+What protects you is how you carry it.
+
+Mohammed's nine years in. He's carrying it well.
+
+And this is where it stops being about a game.
+
+Because when your life goes grey, you reach for something. Everyone does. The phone, the noise, the scroll, whatever's nearest and easiest.
+
+None of that is the real problem. That's the symptom. You don't fix it with more discipline, because it was never a discipline problem — it's what happens when there's nothing bright left in the day to reach for instead.
+
+And that's the trap, because the feed is doing exactly what exploration used to do. Something new every few seconds. New place, new face, new story. It's the same appetite. It just got hijacked by something that gives you the sensation of discovery without you having to go anywhere or become anyone.
+
+You're not addicted to a screen. You're starving for a world. And you've been letting something else chew it for you.
+
+So you don't fight the distraction. You go after the grey.
+
+That's the whole lesson. Have a mission you're serious about. Don't let it make you bitter. Look at the view while you're walking. Treat the place you already live like unexplored ground, and the people in it like they're worth talking to. Be useful to the ones walking near you.
+
+Because the world isn't going to soften for any of us.
+
+The world is grey. Be the thing in it that isn't.`;
+
+        // App state
+        let recognition = null;
+        let isListening = false;
+        let words = [];
+        let currentWordIndex = 0;
+        let fontSize = 24;
+        let scriptContent = localStorage.getItem('teleprompterScript') || defaultScript;
+
+        // Elements
+        const startBtn = document.getElementById('startBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const editBtn = document.getElementById('editBtn');
+        const status = document.getElementById('status');
+        const scriptText = document.getElementById('scriptText');
+        const container = document.getElementById('teleprompterContainer');
+        const fontUp = document.getElementById('fontUp');
+        const fontDown = document.getElementById('fontDown');
+        const editSection = document.getElementById('editSection');
+        const scriptEditor = document.getElementById('scriptEditor');
+        const saveEdit = document.getElementById('saveEdit');
+        const cancelEdit = document.getElementById('cancelEdit');
+
+        // Initialize
+        function init() {
+            processScript();
+            renderScript();
+            setupRecognition();
+            setupEventListeners();
         }
-        
-        function loadSpecialQuests() {
-            const saved = localStorage.getItem(SPECIAL_QUESTS_KEY);
-            if (saved) {
-                return JSON.parse(saved);
-            }
-            const initial = {};
-            cities.forEach(city => {
-                initial[city.id] = false;
-            });
-            return initial;
-        }
-        
-        function loadStones() {
-            const saved = localStorage.getItem(STONES_KEY);
-            if (saved) {
-                return JSON.parse(saved);
-            }
-            const initial = {};
-            stones.forEach(stone => {
-                initial[stone.id] = false;
-            });
-            return initial;
-        }
-        
-        function saveProgress(progress) {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
-        }
-        
-        function saveSpecialQuests(specialQuests) {
-            localStorage.setItem(SPECIAL_QUESTS_KEY, JSON.stringify(specialQuests));
-        }
-        
-        function saveStones(stoneProgress) {
-            localStorage.setItem(STONES_KEY, JSON.stringify(stoneProgress));
-        }
-        
-        let questProgress = loadProgress();
-        let specialQuests = loadSpecialQuests();
-        let stoneProgress = loadStones();
-        
-        function countSpecialsDone() {
-            return cities.filter(c => c.hasSpecial && specialQuests[c.id]).length;
-        }
-        
-        function renderCities() {
-            const container = document.getElementById('cities-container');
-            container.innerHTML = '';
+
+        // Process script into words
+        function processScript() {
+            const text = scriptContent.trim();
+            const paragraphs = text.split(/\n\n+/);
+            words = [];
             
-            cities.forEach(city => {
-                const count = questProgress[city.id] || 0;
-                const isSpecialComplete = specialQuests[city.id] || false;
-                const reachedMilestone = count >= city.required;
-                
-                let milestoneHtml = '';
-                let requirementHtml = '';
-                let specialToggleHtml = '';
-                
-                if (!city.hasSpecial) {
-                    requirementHtml = `<div class="quest-requirement">${city.unlockNote}</div>`;
-                } else if (reachedMilestone && !isSpecialComplete) {
-                    milestoneHtml = `<div class="milestone-indicator">✓ 5 jobs done — talk to Delvin for “${city.specialName}”</div>`;
-                    requirementHtml = `<div class="quest-requirement">Unlocks: ${city.specialReward}</div>`;
-                } else if (!reachedMilestone) {
-                    requirementHtml = `<div class="quest-requirement">${count}/${city.required} jobs — ${city.required - count} more unlocks “${city.specialName}” (${city.specialReward})</div>`;
-                } else {
-                    requirementHtml = `<div class="quest-requirement">Special done — ${city.specialReward}</div>`;
-                }
-                
-                if (city.hasSpecial) {
-                    specialToggleHtml = `
-                        <div class="special-quest-toggle ${isSpecialComplete ? 'completed' : ''}" onclick="toggleSpecialQuest('${city.id}')">
-                            <input type="checkbox" id="special-${city.id}" ${isSpecialComplete ? 'checked' : ''} onchange="event.stopPropagation(); toggleSpecialQuest('${city.id}')">
-                            <label for="special-${city.id}">${city.specialName} completed</label>
-                        </div>
-                    `;
-                }
-                
-                const cityDiv = document.createElement('div');
-                cityDiv.className = 'city-tracker';
-                cityDiv.innerHTML = `
-                    <div class="city-header">
-                        <div class="city-name">${city.name}</div>
-                        <div class="city-count">${count}</div>
-                    </div>
-                    <div class="controls">
-                        <button class="btn btn-add" onclick="incrementCity('${city.id}')">Add Quest</button>
-                        <button class="btn btn-reset" onclick="resetCity('${city.id}')">Reset</button>
-                    </div>
-                    ${milestoneHtml}
-                    ${requirementHtml}
-                    ${specialToggleHtml}
-                `;
-                container.appendChild(cityDiv);
-            });
-            
-            updateTotal();
-            renderSpecialUnlocks();
-        }
-        
-        function renderJobUnlocks(total) {
-            const list = document.getElementById('job-unlocks');
-            const next = jobUnlocks.find(u => total < u.at);
-            
-            list.innerHTML = jobUnlocks.map(u => {
-                let cls = 'unlock-item';
-                if (total >= u.at) cls += ' reached';
-                else if (next && u.at === next.at) cls += ' next';
-                return `<div class="${cls}"><div class="unlock-at">${u.at}</div><div>${u.reward}</div></div>`;
-            }).join('');
-            
-            const nextEl = document.getElementById('next-unlock');
-            if (total >= 125) {
-                nextEl.innerHTML = `<span>ALL JOB UNLOCKS</span>Safe unlocked — random gold, gems & potions by the Guildmaster desk.`;
-            } else {
-                const remaining = next.at - total;
-                nextEl.innerHTML = `<span>NEXT UNLOCK · ${next.at} JOBS (${remaining} to go)</span>${next.reward}`;
-            }
-        }
-        
-        function renderSpecialUnlocks() {
-            const done = countSpecialsDone();
-            const container = document.getElementById('special-unlocks');
-            const next = specialUnlocks.find(u => done < u.at);
-            
-            container.innerHTML = specialUnlocks.map(u => {
-                let cls = 'unlock-item';
-                if (done >= u.at) cls += ' reached';
-                else if (next && u.at === next.at) cls += ' next';
-                return `<div class="${cls}"><div class="unlock-at">${u.at}/4</div><div>${u.reward}</div></div>`;
-            }).join('');
-        }
-        
-        function renderStones() {
-            const container = document.getElementById('stones-container');
-            const found = stones.filter(s => stoneProgress[s.id]).length;
-            document.getElementById('stones-count').textContent = `${found} / 24`;
-            
-            container.innerHTML = stones.map(stone => {
-                const isFound = !!stoneProgress[stone.id];
-                return `
-                    <div class="stone-item ${isFound ? 'found' : ''}" onclick="toggleStone('${stone.id}')">
-                        <input type="checkbox" ${isFound ? 'checked' : ''} onchange="event.stopPropagation(); toggleStone('${stone.id}')" aria-label="Mark ${stone.place} found">
-                        <div class="stone-body">
-                            <div class="stone-hold">${stone.hold}</div>
-                            <div class="stone-place">${stone.place}</div>
-                            <div class="stone-detail">${stone.detail}</div>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-        }
-        
-        function incrementCity(cityId) {
-            questProgress[cityId] = (questProgress[cityId] || 0) + 1;
-            saveProgress(questProgress);
-            renderCities();
-        }
-        
-        function resetCity(cityId) {
-            if (confirm(`Reset quest count for ${cities.find(c => c.id === cityId).name}?`)) {
-                questProgress[cityId] = 0;
-                saveProgress(questProgress);
-                renderCities();
-            }
-        }
-        
-        function toggleSpecialQuest(cityId) {
-            specialQuests[cityId] = !specialQuests[cityId];
-            saveSpecialQuests(specialQuests);
-            renderCities();
-        }
-        
-        function toggleStone(stoneId) {
-            stoneProgress[stoneId] = !stoneProgress[stoneId];
-            saveStones(stoneProgress);
-            renderStones();
-        }
-        
-        function resetAll() {
-            if (confirm('Reset all city job counts and special quest checkboxes? Stones log will stay.')) {
-                cities.forEach(city => {
-                    questProgress[city.id] = 0;
-                    specialQuests[city.id] = false;
+            paragraphs.forEach((para, paraIndex) => {
+                const sentences = para.split(/([.!?]+\s+)/);
+                sentences.forEach(sentence => {
+                    const wordMatches = sentence.match(/\S+/g);
+                    if (wordMatches) {
+                        wordMatches.forEach(word => {
+                            words.push({
+                                text: word,
+                                normalized: word.toLowerCase().replace(/[^a-z0-9]/g, ''),
+                                read: false
+                            });
+                        });
+                    }
                 });
-                saveProgress(questProgress);
-                saveSpecialQuests(specialQuests);
-                renderCities();
+            });
+        }
+
+        // Render script with word spans
+        function renderScript() {
+            const text = scriptContent.trim();
+            const paragraphs = text.split(/\n\n+/);
+            let wordIndex = 0;
+            
+            scriptText.innerHTML = paragraphs.map(para => {
+                return '<div class="sentence">' + 
+                    para.split(/(\s+)/).map(part => {
+                        if (part.match(/\S+/)) {
+                            const span = `<span class="word" data-index="${wordIndex}">${part}</span>`;
+                            wordIndex++;
+                            return span;
+                        }
+                        return part;
+                    }).join('') +
+                '</div>';
+            }).join('');
+        }
+
+        // Setup speech recognition
+        function setupRecognition() {
+            if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+                status.textContent = 'Speech recognition not supported in this browser';
+                status.style.color = '#f44336';
+                startBtn.disabled = true;
+                return;
+            }
+
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            recognition = new SpeechRecognition();
+            recognition.continuous = true;
+            recognition.interimResults = true;
+            recognition.lang = 'en-US';
+
+            recognition.onstart = () => {
+                isListening = true;
+                startBtn.disabled = true;
+                stopBtn.disabled = false;
+                status.textContent = 'Listening...';
+                status.className = 'listening';
+            };
+
+            recognition.onend = () => {
+                if (isListening) {
+                    recognition.start();
+                }
+            };
+
+            recognition.onerror = (event) => {
+                console.error('Recognition error:', event.error);
+                if (event.error === 'no-speech') {
+                    return;
+                }
+                status.textContent = `Error: ${event.error}`;
+            };
+
+            recognition.onresult = (event) => {
+                let interimTranscript = '';
+                let finalTranscript = '';
+
+                for (let i = event.resultIndex; i < event.results.length; i++) {
+                    const transcript = event.results[i][0].transcript;
+                    if (event.results[i].isFinal) {
+                        finalTranscript += transcript + ' ';
+                    } else {
+                        interimTranscript += transcript;
+                    }
+                }
+
+                if (finalTranscript) {
+                    processTranscript(finalTranscript);
+                }
+
+                status.textContent = 'Listening... ' + (interimTranscript || finalTranscript.slice(-50));
+            };
+        }
+
+        // Process transcript and match words
+        function processTranscript(transcript) {
+            const spokenWords = transcript.toLowerCase()
+                .replace(/[^a-z0-9\s]/g, '')
+                .split(/\s+/)
+                .filter(w => w.length > 0);
+
+            spokenWords.forEach(spokenWord => {
+                let bestMatch = -1;
+                let bestScore = 0;
+
+                for (let i = Math.max(0, currentWordIndex - 5); 
+                     i < Math.min(words.length, currentWordIndex + 15); 
+                     i++) {
+                    if (words[i].read) continue;
+
+                    const score = similarity(spokenWord, words[i].normalized);
+                    if (score > bestScore && score > 0.7) {
+                        bestScore = score;
+                        bestMatch = i;
+                    }
+                }
+
+                if (bestMatch !== -1) {
+                    for (let i = currentWordIndex; i <= bestMatch; i++) {
+                        words[i].read = true;
+                    }
+                    currentWordIndex = bestMatch + 1;
+                    updateDisplay();
+                }
+            });
+        }
+
+        // Calculate string similarity
+        function similarity(s1, s2) {
+            if (s1 === s2) return 1.0;
+            if (s1.length < 2 || s2.length < 2) return 0;
+
+            const firstBigrams = new Map();
+            for (let i = 0; i < s1.length - 1; i++) {
+                const bigram = s1.substring(i, i + 2);
+                const count = firstBigrams.get(bigram) || 0;
+                firstBigrams.set(bigram, count + 1);
+            }
+
+            let intersectionSize = 0;
+            for (let i = 0; i < s2.length - 1; i++) {
+                const bigram = s2.substring(i, i + 2);
+                const count = firstBigrams.get(bigram) || 0;
+                if (count > 0) {
+                    firstBigrams.set(bigram, count - 1);
+                    intersectionSize++;
+                }
+            }
+
+            return (2.0 * intersectionSize) / (s1.length + s2.length - 2);
+        }
+
+        // Update display
+        function updateDisplay() {
+            const wordElements = document.querySelectorAll('.word');
+            wordElements.forEach((el, index) => {
+                el.classList.remove('current', 'read');
+                if (index < currentWordIndex) {
+                    el.classList.add('read');
+                } else if (index === currentWordIndex) {
+                    el.classList.add('current');
+                }
+            });
+
+            const currentElement = wordElements[currentWordIndex];
+            if (currentElement) {
+                const rect = currentElement.getBoundingClientRect();
+                const containerRect = container.getBoundingClientRect();
+                const offset = rect.top - containerRect.top - (window.innerHeight / 3);
+                
+                if (Math.abs(offset) > 50) {
+                    container.scrollBy({
+                        top: offset,
+                        behavior: 'smooth'
+                    });
+                }
             }
         }
-        
-        function resetStones() {
-            if (confirm('Reset the Stones of Barenziah log only? Job progress will stay.')) {
-                stones.forEach(stone => {
-                    stoneProgress[stone.id] = false;
-                });
-                saveStones(stoneProgress);
-                renderStones();
-            }
+
+        // Event listeners
+        function setupEventListeners() {
+            startBtn.addEventListener('click', () => {
+                if (recognition) {
+                    recognition.start();
+                }
+            });
+
+            stopBtn.addEventListener('click', () => {
+                isListening = false;
+                if (recognition) {
+                    recognition.stop();
+                }
+                startBtn.disabled = false;
+                stopBtn.disabled = true;
+                status.textContent = 'Stopped';
+                status.className = 'stopped';
+            });
+
+            resetBtn.addEventListener('click', () => {
+                currentWordIndex = 0;
+                words.forEach(w => w.read = false);
+                updateDisplay();
+                container.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            fontUp.addEventListener('click', () => {
+                fontSize = Math.min(fontSize + 2, 48);
+                scriptText.style.fontSize = fontSize + 'px';
+            });
+
+            fontDown.addEventListener('click', () => {
+                fontSize = Math.max(fontSize - 2, 16);
+                scriptText.style.fontSize = fontSize + 'px';
+            });
+
+            editBtn.addEventListener('click', () => {
+                scriptEditor.value = scriptContent;
+                editSection.classList.add('active');
+            });
+
+            saveEdit.addEventListener('click', () => {
+                scriptContent = scriptEditor.value;
+                localStorage.setItem('teleprompterScript', scriptContent);
+                processScript();
+                renderScript();
+                currentWordIndex = 0;
+                editSection.classList.remove('active');
+            });
+
+            cancelEdit.addEventListener('click', () => {
+                editSection.classList.remove('active');
+            });
         }
-        
-        function updateTotal() {
-            const total = Object.values(questProgress).reduce((sum, count) => sum + count, 0);
-            document.getElementById('total-count').textContent = total;
-            document.getElementById('total-progress').textContent = `${total}/125 for the guildmaster safe`;
-            renderJobUnlocks(total);
-        }
-        
-        renderCities();
-        renderStones();
-    </script>
-    <script>
 
-/* ===== Theme / Tabs ===== */
-const THEME_KEY = 'skyrim_app_theme';
-const THEME_TITLES = {
-  guild: "Thieves' Guild Quest Tracker",
-  lore: "Library of the Ages",
-  quests: "Skyrim Quest Codex"
-};
-function setTheme(theme) {
-  if (!['guild', 'lore', 'quests'].includes(theme)) theme = 'guild';
-  document.body.classList.remove('theme-guild', 'theme-lore', 'theme-quests');
-  document.body.classList.add('theme-' + theme);
-  document.getElementById('panel-guild').classList.toggle('active', theme === 'guild');
-  document.getElementById('panel-lore').classList.toggle('active', theme === 'lore');
-  const pq = document.getElementById('panel-quests');
-  if (pq) pq.classList.toggle('active', theme === 'quests');
-  document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.theme === theme);
-  });
-  localStorage.setItem(THEME_KEY, theme);
-  document.title = THEME_TITLES[theme] || THEME_TITLES.guild;
-}
-document.querySelectorAll('.tab-btn').forEach(btn => {
-  btn.addEventListener('click', () => setTheme(btn.dataset.theme));
-});
-setTheme(localStorage.getItem(THEME_KEY) || 'guild');
-
-/* ===== Lore Library ===== */
-const READ_KEY = 'skyrim_lore_read';
-const LORE = window.LORE_DATA;
-let loreState = {
-  view: 'map',
-  eraId: LORE.eras[LORE.eras.length - 1].id,
-  topicId: null,
-  search: '',
-  subject: '',
-  eraFilter: ''
-};
-
-function loadRead() {
-  try { return JSON.parse(localStorage.getItem(READ_KEY) || '{}'); } catch { return {}; }
-}
-function saveRead(map) { localStorage.setItem(READ_KEY, JSON.stringify(map)); }
-let readMap = loadRead();
-
-function bookById(id) { return LORE.books.find(b => b.id === id); }
-function topicById(id) { return LORE.topics.find(t => t.id === id); }
-function eraById(id) { return LORE.eras.find(e => e.id === id); }
-
-function countRead() { return Object.values(readMap).filter(Boolean).length; }
-
-function initLoreChrome() {
-  document.getElementById('stat-topics').textContent = LORE.topics.length + ' Threads';
-  document.getElementById('stat-books').textContent = LORE.books.length + ' Books';
-  document.getElementById('stat-read').textContent = countRead() + ' read';
-
-  const subSel = document.getElementById('book-subject');
-  const subjects = [...new Set(LORE.books.map(b => b.subject))].sort();
-  subjects.forEach(s => {
-    const o = document.createElement('option'); o.value = s; o.textContent = s; subSel.appendChild(o);
-  });
-  const eraSel = document.getElementById('book-era');
-  LORE.eras.forEach(e => {
-    const o = document.createElement('option'); o.value = e.id; o.textContent = e.name; eraSel.appendChild(o);
-  });
-
-  document.getElementById('lore-view-nav').addEventListener('click', (e) => {
-    const chip = e.target.closest('.lore-chip');
-    if (!chip) return;
-    loreState.view = chip.dataset.view;
-    document.querySelectorAll('#lore-view-nav .lore-chip').forEach(c => c.classList.toggle('active', c === chip));
-    document.getElementById('view-map').style.display = loreState.view === 'map' ? '' : 'none';
-    document.getElementById('view-topics').style.display = loreState.view === 'topics' ? '' : 'none';
-    document.getElementById('view-books').style.display = loreState.view === 'books' ? '' : 'none';
-    if (loreState.view === 'topics') renderAllTopics();
-    if (loreState.view === 'books') renderBookShelf();
-  });
-
-  document.getElementById('book-search').addEventListener('input', (e) => {
-    loreState.search = e.target.value.trim().toLowerCase();
-    renderBookShelf();
-  });
-  document.getElementById('book-subject').addEventListener('change', (e) => {
-    loreState.subject = e.target.value;
-    renderBookShelf();
-  });
-  document.getElementById('book-era').addEventListener('change', (e) => {
-    loreState.eraFilter = e.target.value;
-    renderBookShelf();
-  });
-
-  renderTimeline();
-  renderEraDetail();
-}
-
-function renderTimeline() {
-  const el = document.getElementById('era-timeline');
-  el.innerHTML = LORE.eras.map(era => `
-    <div class="era-node ${era.id === loreState.eraId ? 'active' : ''}" onclick="selectEra('${era.id}')">
-      <div class="era-name">${era.name}</div>
-      <div class="era-hint">${(era.skyrimRelevance || '').slice(0, 70)}…</div>
-    </div>
-  `).join('');
-}
-
-function selectEra(id) {
-  loreState.eraId = id;
-  loreState.topicId = null;
-  loreState.view = 'map';
-  document.querySelectorAll('#lore-view-nav .lore-chip').forEach(c => c.classList.toggle('active', c.dataset.view === 'map'));
-  document.getElementById('view-map').style.display = '';
-  document.getElementById('view-topics').style.display = 'none';
-  document.getElementById('view-books').style.display = 'none';
-  renderTimeline();
-  renderEraDetail();
-}
-
-function renderEraDetail() {
-  const era = eraById(loreState.eraId);
-  const detail = document.getElementById('era-detail');
-  detail.innerHTML = `
-    <h2>${era.name}</h2>
-    <p>${era.summary}</p>
-    <ul class="insight-list">${era.keyInsights.map(i => `<li>${i}</li>`).join('')}</ul>
-    <div class="skyrim-link"><strong>Why it matters in Skyrim:</strong> ${era.skyrimRelevance}</div>
-    <div class="connections">
-      ${(era.connections || []).map(cid => {
-        const t = topicById(cid) || eraById(cid);
-        const label = t ? t.name : cid;
-        const kind = topicById(cid) ? 'topic' : 'era';
-        return `<button class="conn-chip" onclick="openConnection('${kind}','${cid}')">${label}</button>`;
-      }).join('')}
-    </div>
-  `;
-
-  const topics = LORE.topics.filter(t => (t.eraIds || []).includes(era.id));
-  document.getElementById('era-topics').innerHTML = topics.map(t => topicCardHtml(t)).join('') || '<div class="empty-shelf">No threads tagged to this era.</div>';
-
-  // Books linked via topic relatedBookIds or eraIds
-  const relatedIds = new Set();
-  topics.forEach(t => (t.relatedBookIds || []).forEach(id => relatedIds.add(id)));
-  let books = LORE.books.filter(b => relatedIds.has(b.id) || (b.eraIds || []).includes(era.id));
-  // Prefer related first, cap list for map view
-  books = books.slice(0, 24);
-  document.getElementById('era-books').innerHTML = books.map(b => bookRowHtml(b)).join('') || '<div class="empty-shelf">Browse Book Shelves for the full catalog.</div>';
-}
-
-function topicCardHtml(t) {
-  return `<div class="topic-card ${loreState.topicId === t.id ? 'active' : ''}" onclick="openTopic('${t.id}')">
-    <h3>${t.name}</h3>
-    <p>${t.summary}</p>
-  </div>`;
-}
-
-function renderAllTopics() {
-  document.getElementById('all-topics').innerHTML = LORE.topics.map(t => topicCardHtml(t)).join('');
-}
-
-function openTopic(id) {
-  const t = topicById(id);
-  if (!t) return;
-  loreState.topicId = id;
-  const books = (t.relatedBookIds || []).map(bookById).filter(Boolean);
-  const eras = (t.eraIds || []).map(eraById).filter(Boolean);
-  openDetail(`
-    <button class="close-x" onclick="closeDetail()">×</button>
-    <h2>${t.name}</h2>
-    <p style="font-size:0.9em;line-height:1.55;margin:10px 0">${t.summary}</p>
-    <ul class="insight-list">${(t.keyInsights||[]).map(i => `<li>${i}</li>`).join('')}</ul>
-    <div class="connections" style="margin-top:14px">
-      ${eras.map(e => `<button class="conn-chip" onclick="closeDetail();selectEra('${e.id}')">${e.name}</button>`).join('')}
-    </div>
-    <h3 style="font-family:'Cormorant Garamond',serif;color:var(--l-gold);margin:16px 0 8px;font-size:1.3em">Related books</h3>
-    ${books.map(b => bookRowHtml(b)).join('') || '<div class="empty-shelf">No linked titles yet — search the shelves.</div>'}
-  `);
-  if (loreState.view === 'topics') renderAllTopics();
-}
-
-function openConnection(kind, id) {
-  if (kind === 'era') selectEra(id);
-  else openTopic(id);
-}
-
-function bookRowHtml(b) {
-  const read = !!readMap[b.id];
-  return `<div class="book-row ${read ? 'read' : ''}" onclick="openBook('${b.id}')">
-    <input type="checkbox" ${read ? 'checked' : ''} onclick="event.stopPropagation(); toggleRead('${b.id}')" aria-label="Mark read">
-    <div class="book-meta">
-      <div class="book-title">${escapeHtml(b.title)}</div>
-      <div class="book-author">${escapeHtml(b.author || 'Unknown')}</div>
-      <div class="book-summary">${escapeHtml(b.summary || '')}</div>
-      <div class="book-tags">
-        <span class="tag">${escapeHtml(b.subject || 'Lore')}</span>
-        ${(b.eraIds||[]).slice(0,2).map(eid => {
-          const e = eraById(eid); return e ? `<span class="tag">${e.name}</span>` : '';
-        }).join('')}
-      </div>
-    </div>
-  </div>`;
-}
-
-function filteredBooks() {
-  return LORE.books.filter(b => {
-    if (loreState.subject && b.subject !== loreState.subject) return false;
-    if (loreState.eraFilter && !(b.eraIds || []).includes(loreState.eraFilter)) return false;
-    if (loreState.search) {
-      const blob = `${b.title} ${b.author} ${b.summary} ${b.keyInsight}`.toLowerCase();
-      if (!blob.includes(loreState.search)) return false;
-    }
-    return true;
-  });
-}
-
-function renderBookShelf() {
-  const books = filteredBooks();
-  const shelf = document.getElementById('book-shelf');
-  if (!books.length) {
-    shelf.innerHTML = '<div class="empty-shelf">No volumes match these shelves.</div>';
-    return;
-  }
-  shelf.innerHTML = `<div class="section-note" style="text-align:left;color:var(--l-muted);margin-bottom:10px">${books.length} volumes</div>` +
-    books.map(b => bookRowHtml(b)).join('');
-}
-
-function openBook(id) {
-  const b = bookById(id);
-  if (!b) return;
-  const topics = (b.topicIds || []).map(topicById).filter(Boolean);
-  const eras = (b.eraIds || []).map(eraById).filter(Boolean);
-  openDetail(`
-    <button class="close-x" onclick="closeDetail()">×</button>
-    <h2>${escapeHtml(b.title)}</h2>
-    <div class="book-author" style="margin-bottom:6px">${escapeHtml(b.author || 'Unknown')} · ${escapeHtml(b.subject || '')}</div>
-    <div class="detail-label">What it's about</div>
-    <p class="detail-summary">${escapeHtml(b.summary || '')}</p>
-    <div class="detail-label">Key insight</div>
-    <div class="key">${escapeHtml(b.keyInsight || '')}</div>
-    <div class="connections">
-      ${eras.map(e => `<button class="conn-chip" onclick="closeDetail();selectEra('${e.id}')">${e.name}</button>`).join('')}
-      ${topics.map(t => `<button class="conn-chip" onclick="closeDetail();openTopic('${t.id}')">${t.name}</button>`).join('')}
-    </div>
-    <div style="margin-top:16px">
-      <button class="lore-chip ${readMap[b.id] ? 'active' : ''}" onclick="toggleRead('${b.id}'); openBook('${b.id}')">${readMap[b.id] ? '✓ Logged as read' : 'Mark as read'}</button>
-    </div>
-  `);
-}
-
-function toggleRead(id) {
-  readMap[id] = !readMap[id];
-  saveRead(readMap);
-  document.getElementById('stat-read').textContent = countRead() + ' read';
-  if (loreState.view === 'books') renderBookShelf();
-  if (loreState.view === 'map') renderEraDetail();
-}
-
-function openDetail(html) {
-  document.getElementById('detail-card').innerHTML = html;
-  document.getElementById('detail-overlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeDetail() {
-  document.getElementById('detail-overlay').classList.remove('open');
-  document.body.style.overflow = '';
-}
-function escapeHtml(s) {
-  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-}
-
-if (LORE) initLoreChrome();
-
-
-/* ===== Quest Codex ===== */
-const QUEST_DONE_KEY = 'skyrim_quests_done';
-const QUEST_CAT_KEY = 'skyrim_quests_cat';
-const QD = window.QUESTS_DATA;
-
-let questState = {
-  categoryId: null,
-  search: '',
-  filter: 'all'
-};
-
-function loadQuestDone() {
-  try { return JSON.parse(localStorage.getItem(QUEST_DONE_KEY) || '{}'); } catch { return {}; }
-}
-function saveQuestDone(map) { localStorage.setItem(QUEST_DONE_KEY, JSON.stringify(map)); }
-let questDone = loadQuestDone();
-
-function questById(id) { return QD.quests.find(q => q.id === id); }
-function catById(id) { return QD.categories.find(c => c.id === id); }
-
-function countQuestDone() { return Object.values(questDone).filter(Boolean).length; }
-
-function exclusiveLocked(q) {
-  if (!q.exclusiveGroup) return false;
-  if (questDone[q.id]) return false;
-  const rivals = QD.quests.filter(o =>
-    o.exclusiveGroup === q.exclusiveGroup && o.id !== q.id && questDone[o.id]
-  );
-  return rivals.length > 0;
-}
-
-function questMatches(q) {
-  if (questState.categoryId && q.categoryId !== questState.categoryId) return false;
-  if (questState.filter === 'open' && questDone[q.id]) return false;
-  if (questState.filter === 'done' && !questDone[q.id]) return false;
-  if (questState.filter === 'alt' && !(q.alternatives && q.alternatives.length)) return false;
-  if (questState.filter === 'exclusive' && !q.exclusiveGroup && !(q.note && /ALT/i.test(q.note))) return false;
-  if (questState.search) {
-    const blob = `${q.name} ${q.howToStart} ${q.description} ${q.location || ''} ${(q.alternatives||[]).join(' ')} ${q.note || ''} ${q.canFail || ''}`.toLowerCase();
-    if (!blob.includes(questState.search)) return false;
-  }
-  return true;
-}
-
-function initQuestsChrome() {
-  if (!QD) return;
-  questState.categoryId = localStorage.getItem(QUEST_CAT_KEY) || QD.categories[0].id;
-  document.getElementById('quest-stat-total').textContent = QD.quests.length + ' Quests';
-  document.getElementById('quest-stat-cats').textContent = QD.categories.length + ' paths';
-  document.getElementById('quest-stat-done').textContent = countQuestDone() + ' done';
-
-  document.getElementById('quest-search').addEventListener('input', (e) => {
-    questState.search = e.target.value.trim().toLowerCase();
-    renderQuestList();
-  });
-  document.getElementById('quest-filter').addEventListener('change', (e) => {
-    questState.filter = e.target.value;
-    renderQuestList();
-  });
-
-  renderQuestChips();
-  renderQuestList();
-}
-
-function renderQuestChips() {
-  const groups = [];
-  const seen = new Set();
-  QD.categories.forEach(c => {
-    if (!seen.has(c.group)) { seen.add(c.group); groups.push(c.group); }
-  });
-
-  const groupHost = document.getElementById('quest-groups');
-  groupHost.innerHTML = groups.map(g => {
-    const cats = QD.categories.filter(c => c.group === g);
-    const chips = cats.map(c => {
-      const total = QD.quests.filter(q => q.categoryId === c.id).length;
-      const done = QD.quests.filter(q => q.categoryId === c.id && questDone[q.id]).length;
-      return `<button type="button" class="cat-chip ${c.id === questState.categoryId ? 'active' : ''}" data-cat="${c.id}">${c.name}<span class="cat-count">${done}/${total}</span></button>`;
-    }).join('');
-    return `<div class="quest-group-label">${g}</div><div class="cat-chip-row">${chips}</div>`;
-  }).join('');
-
-  groupHost.querySelectorAll('.cat-chip').forEach(btn => {
-    btn.addEventListener('click', () => selectQuestCategory(btn.dataset.cat));
-  });
-
-  // hide duplicate chip row
-  document.getElementById('quest-cat-chips').style.display = 'none';
-}
-
-function selectQuestCategory(id) {
-  questState.categoryId = id;
-  localStorage.setItem(QUEST_CAT_KEY, id);
-  renderQuestChips();
-  renderQuestList();
-}
-
-function renderQuestList() {
-  const cat = catById(questState.categoryId);
-  const summary = document.getElementById('quest-cat-summary');
-  if (cat) {
-    summary.innerHTML = `<strong>${escapeHtml(cat.name)}</strong>${escapeHtml(cat.summary || '')}${
-      cat.exclusiveNote ? `<div class="cat-exclusive"><strong>Exclusive paths:</strong> ${escapeHtml(cat.exclusiveNote)}</div>` : ''
-    }`;
-  } else {
-    summary.innerHTML = '';
-  }
-
-  const list = QD.quests.filter(questMatches).sort((a, b) => (a.order || 0) - (b.order || 0) || a.name.localeCompare(b.name));
-  const host = document.getElementById('quest-list');
-  if (!list.length) {
-    host.innerHTML = '<div class="empty-shelf" style="color:var(--q-dim)">No quests match this filter.</div>';
-    return;
-  }
-  host.innerHTML = `<div class="section-note" style="text-align:left;color:var(--q-muted);margin-bottom:10px;font-style:italic">${list.length} shown</div>` +
-    list.map(questRowHtml).join('');
-  document.getElementById('quest-stat-done').textContent = countQuestDone() + ' done';
-}
-
-function questRowHtml(q) {
-  const done = !!questDone[q.id];
-  const locked = exclusiveLocked(q);
-  const hasAlt = !!(q.alternatives && q.alternatives.length) || !!q.exclusiveGroup || !!(q.note && /ALT/i.test(q.note));
-  const tags = [];
-  if (hasAlt) tags.push('<span class="q-tag alt">ALT</span>');
-  if (q.canFail) tags.push('<span class="q-tag fail">Can fail</span>');
-  if (q.radiant) tags.push('<span class="q-tag radiant">Radiant</span>');
-  if (done) tags.push('<span class="q-tag done-tag">Done</span>');
-  if (locked) tags.push('<span class="q-tag alt">Other path chosen</span>');
-  return `<div class="quest-row ${done ? 'done' : ''} ${hasAlt ? 'alt-path' : ''} ${locked ? 'locked' : ''}" onclick="openQuest('${q.id}')">
-    <input type="checkbox" ${done ? 'checked' : ''} onclick="event.stopPropagation(); toggleQuestDone('${q.id}')" aria-label="Mark complete">
-    <div class="quest-meta">
-      <div class="quest-name">${escapeHtml(q.name)}</div>
-      <div class="quest-loc">${escapeHtml(q.location || 'Skyrim')}</div>
-      <div class="quest-blurb">${escapeHtml(q.description || '')}</div>
-      <div class="quest-tags">${tags.join('')}</div>
-    </div>
-  </div>`;
-}
-
-function toggleQuestDone(id) {
-  questDone[id] = !questDone[id];
-  saveQuestDone(questDone);
-  renderQuestChips();
-  renderQuestList();
-  const overlay = document.getElementById('detail-overlay');
-  if (overlay.classList.contains('open')) {
-    const current = document.querySelector('#detail-card h2');
-    const q = questById(id);
-    if (current && q && current.textContent === q.name) openQuest(id);
-  }
-}
-
-function openQuest(id) {
-  const q = questById(id);
-  if (!q) return;
-  const cat = catById(q.categoryId);
-  const done = !!questDone[q.id];
-  const locked = exclusiveLocked(q);
-  const alts = (q.alternatives || []).map(a => `<li>${escapeHtml(a)}</li>`).join('');
-  const rivals = q.exclusiveGroup
-    ? QD.quests.filter(o => o.exclusiveGroup === q.exclusiveGroup && o.id !== q.id)
-    : [];
-  openDetail(`
-    <button class="close-x" onclick="closeDetail()">×</button>
-    <h2>${escapeHtml(q.name)}</h2>
-    <div class="book-author" style="margin-bottom:6px;color:var(--q-muted)">${escapeHtml(cat ? cat.name : '')}${q.location ? ' · ' + escapeHtml(q.location) : ''}</div>
-    <div class="quest-tags" style="margin-bottom:8px">
-      ${q.exclusiveGroup || (q.note && /ALT/i.test(q.note)) ? '<span class="q-tag alt">ALT PATH</span>' : ''}
-      ${q.radiant ? '<span class="q-tag radiant">Radiant</span>' : ''}
-      ${done ? '<span class="q-tag done-tag">Done</span>' : ''}
-      ${locked ? '<span class="q-tag alt">Locked by other path</span>' : ''}
-    </div>
-    <div class="detail-label">How to start</div>
-    <p class="detail-summary">${escapeHtml(q.howToStart || '')}</p>
-    <div class="detail-label">About this quest</div>
-    <p class="detail-summary">${escapeHtml(q.description || '')}</p>
-    ${alts ? `<div class="detail-label">Alternatives &amp; endings</div><ul class="insight-list" style="border:none">${alts}</ul>` : ''}
-    ${q.canFail ? `<div class="fail-box"><strong>Can fail / soft-lock:</strong> ${escapeHtml(q.canFail)}</div>` : ''}
-    ${q.note ? `<div class="note-box">${escapeHtml(q.note)}</div>` : ''}
-    ${rivals.length ? `<div class="alt-box"><strong>Mutually exclusive with:</strong> ${rivals.map(r => escapeHtml(r.name)).join(' · ')}</div>` : ''}
-    <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap">
-      <button class="lore-chip ${done ? 'active' : ''}" onclick="toggleQuestDone('${q.id}')">${done ? '✓ Completed' : 'Mark complete'}</button>
-      ${cat ? `<button class="lore-chip" onclick="closeDetail(); selectQuestCategory('${cat.id}')">All ${escapeHtml(cat.name)}</button>` : ''}
-    </div>
-  `);
-}
-
-function resetQuestProgress() {
-  if (!confirm('Clear all quest completion marks?')) return;
-  questDone = {};
-  saveQuestDone(questDone);
-  renderQuestChips();
-  renderQuestList();
-}
-
-if (QD) initQuestsChrome();
-
-
+        // Initialize app
+        init();
     </script>
 </body>
 </html>
