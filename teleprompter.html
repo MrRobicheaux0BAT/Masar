@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Voice-Controlled Teleprompter</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        #controls {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 15px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 2px solid #333;
+        }
+
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            touch-action: manipulation;
+        }
+
+        #startBtn {
+            background: #4CAF50;
+            color: white;
+        }
+
+        #startBtn:active {
+            background: #45a049;
+        }
+
+        #stopBtn {
+            background: #f44336;
+            color: white;
+        }
+
+        #stopBtn:active {
+            background: #da190b;
+        }
+
+        #resetBtn {
+            background: #2196F3;
+            color: white;
+        }
+
+        #resetBtn:active {
+            background: #0b7dda;
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        #status {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            font-size: 14px;
+            color: #4CAF50;
+            z-index: 999;
+        }
+
+        #status.listening {
+            color: #4CAF50;
+        }
+
+        #status.stopped {
+            color: #f44336;
+        }
+
+        #teleprompterContainer {
+            position: fixed;
+            top: 140px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            padding: 20px;
+        }
+
+        #scriptText {
+            font-size: 24px;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+            padding-bottom: 80vh;
+        }
+
+        .word {
+            display: inline;
+            padding: 2px 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .word.current {
+            background-color: #4CAF50;
+            color: #000;
+            padding: 4px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .word.read {
+            color: #666;
+        }
+
+        .sentence {
+            margin-bottom: 1em;
+        }
+
+        @media (max-width: 768px) {
+            #scriptText {
+                font-size: 20px;
+                line-height: 1.6;
+            }
+
+            button {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+
+            #controls {
+                padding: 10px;
+                gap: 8px;
+            }
+        }
+
+        #fontControls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        #fontControls button {
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            padding: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        #fontControls button:active {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        #editSection {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #000;
+            z-index: 2000;
+            display: none;
+            flex-direction: column;
+        }
+
+        #editSection.active {
+            display: flex;
+        }
+
+        #editControls {
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.9);
+            border-bottom: 2px solid #333;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        #scriptEditor {
+            flex: 1;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #fff;
+            border: none;
+            font-size: 16px;
+            line-height: 1.6;
+            resize: none;
+            font-family: inherit;
+        }
+
+        #editBtn {
+            background: #FF9800;
+            color: white;
+        }
+
+        #editBtn:active {
+            background: #F57C00;
+        }
+    </style>
+</head>
+<body>
+    <div id="controls">
+        <button id="startBtn">Start Listening</button>
+        <button id="stopBtn" disabled>Stop</button>
+        <button id="resetBtn">Reset</button>
+        <button id="editBtn">Edit Script</button>
+    </div>
+
+    <div id="status" class="stopped">Ready to start</div>
+
+    <div id="teleprompterContainer">
+        <div id="scriptText"></div>
+    </div>
+
+    <div id="fontControls">
+        <button id="fontUp" title="Increase Font Size">+</button>
+        <button id="fontDown" title="Decrease Font Size">−</button>
+    </div>
+
+    <div id="editSection">
+        <div id="editControls">
+            <button id="saveEdit">Save</button>
+            <button id="cancelEdit">Cancel</button>
+        </div>
+        <textarea id="scriptEditor"></textarea>
+    </div>
+
+    <script>
+        // Default script
+        const defaultScript = `I've been replaying the games I grew up on.
+
+Not for nostalgia. You get older, the way you see things changes, and something you already finished turns into a completely different game.
+
+Dark Souls did that to me.
+
+And I'm serious when I say this — a video game character clarified something for me that I'd been circling for years.
+
+Dark Souls is set in a world that is finished. Everything is grey. Everything is dying. The kingdoms are ruins, the people left are losing their minds, and nothing in it is on your side.
+
+And that's not the game being dramatic. That's just the honest version of the setting. The world is hard. It doesn't care about you. It was never going to arrange itself around your plans.
+
+Most people spend their lives waiting for that to change before they start living properly.
+
+And then walking through the middle of all this is a man in a sun-painted tunic who refuses to be miserable.
+
+Solaire.
+
+The mistake is thinking he's comic relief. He isn't. He's one of the most capable people in that world — proper armour, proper skill, and he'll stand with you at the final fight when nobody else will.
+
+He has a mission of his own that he takes completely seriously.
+
+He just never lets it turn him into something ugly.
+
+Here's what I couldn't see before.
+
+The setting is fixed. Everyone in that world got dealt the same grey. Same ruins, same odds, same dying light.
+
+So the world was never the thing that determined how any of them turned out. The only variable was who they decided to be inside it.
+
+Solaire didn't get a better world. He got the same one, and he walked through it differently.
+
+We've been sold this idea that if you're serious about something, it has to cost you your lightness. Head down. Jaw clenched. Suffer now, live later.
+
+Solaire breaks that completely. He's rigorous about his mission and he's still laughing. Still admiring the light. Still finding the whole thing worth being awake for.
+
+The joy isn't a break from the mission. It's the thing that lets him carry it that far without breaking.
+
+Grimness isn't proof you're taking something seriously. Usually it's proof you're taking it badly.
+
+He stops. He looks. He notices where he is.
+
+He's not treating the journey as a tax he pays to reach the goal. He's not waiting to arrive before he's allowed to feel anything.
+
+Which matters, because arriving is mostly a myth. You hit the target and there's another one behind it. If the only good part is the finish line, you're signing up for a life where almost none of it counts.
+
+And this is the one I want to sit on, because I think it's the whole thing.
+
+Solaire is not travelling from A to B. He's exploring. Every corridor is somewhere he hasn't been. Every stranger is someone he hasn't met yet. He's moving through the same ruins as everyone else and treating them like there's something in there worth finding.
+
+Nobody gave him a reason to. He decided it.
+
+And notice where he is while he's doing it. He's not somewhere beautiful. He's not on a trip. He's in the worst place in the world and he's still looking around like it's the first day.
+
+That's the part people get wrong about adventure. We've turned it into a product. Flights, itineraries, a place far enough away to justify feeling something. Which conveniently means adventure is always somewhere else, always later, always after the money's there. And in the meantime you get to stay exactly as you are.
+
+But adventure isn't a location. It's a way of moving through wherever you already are.
+
+Your city has streets you've never walked. There's a district you drive past every week and have never once stopped in. There are entire neighbourhoods within twenty minutes of you that are, functionally, unexplored map. You just stopped looking, because you decided you already know this place.
+
+You don't. You know your route. That's not the same thing.
+
+And this is where it opens up.
+
+In a game you go and talk to every single character. You find the one standing in the corner and you exhaust every line of dialogue, because you know they've got something — a story, a warning, a piece of the world you didn't have.
+
+Then you get up from the game and walk past forty actual people without a word.
+
+Every person you pass is running something more complicated than any character ever written. They know things you don't. They've been places you haven't. They've survived things you couldn't guess from looking at them.
+
+And it costs nothing. That's the part that gets me. It costs nothing. No ticket, no plan, no budget. Ask the question. Stay for the answer. Let it go somewhere.
+
+That's an adventure. That's a day that didn't go grey.
+
+One example, then I'll leave it.
+
+I was getting flowers for my grandmother and my aunt. Small shop, nothing special about it. The guy working there is called Mohammed. Pakistani.
+
+I was in there thirty minutes. Drinking tea.
+
+He started telling me about flowers — not selling them to me, just what they actually mean to him, why he does this. And somehow that turned into his life.
+
+He's been with the same woman for nine years. She's in Brazil. Her family has land there, a house, the whole thing already built. He could get on a plane tomorrow and walk straight into a finished life.
+
+He won't take it. That's the reason nine years have gone by and they're still not married. He's not arriving empty-handed. He's building his own before he goes.
+
+So they see each other whenever they can. She comes here, he goes there. Her family's in it, his family's in it, everyone's just in it, for as long as it takes.
+
+Thirty minutes. Cost me nothing. I walked in for flowers.
+
+And it took me a while to realise what I'd actually been sitting across from. That's a man nine years into something hard, turning down the easy version of it — and he's still got half an hour for a stranger and a pot of tea and a conversation about what flowers mean.
+
+Nine years in and he isn't bitter. He isn't grinding his teeth about it. He's enjoying it.
+
+That's Solaire. Standing behind a counter in a flower shop.
+
+You're not supposed to be watching this world. You're supposed to be in it.
+
+This is the one that gets me.
+
+Solaire has his own quest and he still shows up for yours. He'll come and fight in a battle that gains him nothing. Not instead of his mission — alongside it.
+
+And it's the reason he's the most loved character in the whole series. Not his skill. Not his gear. The fact that he's useful to someone else's fight.
+
+Most of us make this so much harder than it has to be. We chase the thing alone, we grind alone, we sit in the room alone, and then we can't work out why any of it feels flat.
+
+The mission is yours. That doesn't mean you have to carry it by yourself, and it doesn't mean you stop being any use to anyone else while you do.
+
+And here's the part that should scare you.
+
+Everybody in that world has a goal. Every single one of them is chasing something. And nearly all of them get eaten by it — bitter, obsessive, and eventually hollow. Still moving, nothing left inside.
+
+Having a purpose doesn't protect you. That's the lie. Plenty of people have a purpose and it hollows them out anyway.
+
+What protects you is how you carry it.
+
+Mohammed's nine years in. He's carrying it well.
+
+And this is where it stops being about a game.
+
+Because when your life goes grey, you reach for something. Everyone does. The phone, the noise, the scroll, whatever's nearest and easiest.
+
+None of that is the real problem. That's the symptom. You don't fix it with more discipline, because it was never a discipline problem — it's what happens when there's nothing bright left in the day to reach for instead.
+
+And that's the trap, because the feed is doing exactly what exploration used to do. Something new every few seconds. New place, new face, new story. It's the same appetite. It just got hijacked by something that gives you the sensation of discovery without you having to go anywhere or become anyone.
+
+You're not addicted to a screen. You're starving for a world. And you've been letting something else chew it for you.
+
+So you don't fight the distraction. You go after the grey.
+
+That's the whole lesson. Have a mission you're serious about. Don't let it make you bitter. Look at the view while you're walking. Treat the place you already live like unexplored ground, and the people in it like they're worth talking to. Be useful to the ones walking near you.
+
+Because the world isn't going to soften for any of us.
+
+The world is grey. Be the thing in it that isn't.`;
+
+        // App state
+        let recognition = null;
+        let isListening = false;
+        let words = [];
+        let currentWordIndex = 0;
+        let fontSize = 24;
+        let scriptContent = localStorage.getItem('teleprompterScript') || defaultScript;
+
+        // Elements
+        const startBtn = document.getElementById('startBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const editBtn = document.getElementById('editBtn');
+        const status = document.getElementById('status');
+        const scriptText = document.getElementById('scriptText');
+        const container = document.getElementById('teleprompterContainer');
+        const fontUp = document.getElementById('fontUp');
+        const fontDown = document.getElementById('fontDown');
+        const editSection = document.getElementById('editSection');
+        const scriptEditor = document.getElementById('scriptEditor');
+        const saveEdit = document.getElementById('saveEdit');
+        const cancelEdit = document.getElementById('cancelEdit');
+
+        // Initialize
+        function init() {
+            processScript();
+            renderScript();
+            setupRecognition();
+            setupEventListeners();
+        }
+
+        // Process script into words
+        function processScript() {
+            const text = scriptContent.trim();
+            const paragraphs = text.split(/\n\n+/);
+            words = [];
+            
+            paragraphs.forEach((para, paraIndex) => {
+                const sentences = para.split(/([.!?]+\s+)/);
+                sentences.forEach(sentence => {
+                    const wordMatches = sentence.match(/\S+/g);
+                    if (wordMatches) {
+                        wordMatches.forEach(word => {
+                            words.push({
+                                text: word,
+                                normalized: word.toLowerCase().replace(/[^a-z0-9]/g, ''),
+                                read: false
+                            });
+                        });
+                    }
+                });
+            });
+        }
+
+        // Render script with word spans
+        function renderScript() {
+            const text = scriptContent.trim();
+            const paragraphs = text.split(/\n\n+/);
+            let wordIndex = 0;
+            
+            scriptText.innerHTML = paragraphs.map(para => {
+                return '<div class="sentence">' + 
+                    para.split(/(\s+)/).map(part => {
+                        if (part.match(/\S+/)) {
+                            const span = `<span class="word" data-index="${wordIndex}">${part}</span>`;
+                            wordIndex++;
+                            return span;
+                        }
+                        return part;
+                    }).join('') +
+                '</div>';
+            }).join('');
+        }
+
+        // Setup speech recognition
+        function setupRecognition() {
+            if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+                status.textContent = 'Speech recognition not supported in this browser';
+                status.style.color = '#f44336';
+                startBtn.disabled = true;
+                return;
+            }
+
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            recognition = new SpeechRecognition();
+            recognition.continuous = true;
+            recognition.interimResults = true;
+            recognition.lang = 'en-US';
+
+            recognition.onstart = () => {
+                isListening = true;
+                startBtn.disabled = true;
+                stopBtn.disabled = false;
+                status.textContent = 'Listening...';
+                status.className = 'listening';
+            };
+
+            recognition.onend = () => {
+                if (isListening) {
+                    recognition.start();
+                }
+            };
+
+            recognition.onerror = (event) => {
+                console.error('Recognition error:', event.error);
+                if (event.error === 'no-speech') {
+                    return;
+                }
+                status.textContent = `Error: ${event.error}`;
+            };
+
+            recognition.onresult = (event) => {
+                let interimTranscript = '';
+                let finalTranscript = '';
+
+                for (let i = event.resultIndex; i < event.results.length; i++) {
+                    const transcript = event.results[i][0].transcript;
+                    if (event.results[i].isFinal) {
+                        finalTranscript += transcript + ' ';
+                    } else {
+                        interimTranscript += transcript;
+                    }
+                }
+
+                if (finalTranscript) {
+                    processTranscript(finalTranscript);
+                }
+
+                status.textContent = 'Listening... ' + (interimTranscript || finalTranscript.slice(-50));
+            };
+        }
+
+        // Process transcript and match words
+        function processTranscript(transcript) {
+            const spokenWords = transcript.toLowerCase()
+                .replace(/[^a-z0-9\s]/g, '')
+                .split(/\s+/)
+                .filter(w => w.length > 0);
+
+            spokenWords.forEach(spokenWord => {
+                let bestMatch = -1;
+                let bestScore = 0;
+
+                for (let i = Math.max(0, currentWordIndex - 5); 
+                     i < Math.min(words.length, currentWordIndex + 15); 
+                     i++) {
+                    if (words[i].read) continue;
+
+                    const score = similarity(spokenWord, words[i].normalized);
+                    if (score > bestScore && score > 0.7) {
+                        bestScore = score;
+                        bestMatch = i;
+                    }
+                }
+
+                if (bestMatch !== -1) {
+                    for (let i = currentWordIndex; i <= bestMatch; i++) {
+                        words[i].read = true;
+                    }
+                    currentWordIndex = bestMatch + 1;
+                    updateDisplay();
+                }
+            });
+        }
+
+        // Calculate string similarity
+        function similarity(s1, s2) {
+            if (s1 === s2) return 1.0;
+            if (s1.length < 2 || s2.length < 2) return 0;
+
+            const firstBigrams = new Map();
+            for (let i = 0; i < s1.length - 1; i++) {
+                const bigram = s1.substring(i, i + 2);
+                const count = firstBigrams.get(bigram) || 0;
+                firstBigrams.set(bigram, count + 1);
+            }
+
+            let intersectionSize = 0;
+            for (let i = 0; i < s2.length - 1; i++) {
+                const bigram = s2.substring(i, i + 2);
+                const count = firstBigrams.get(bigram) || 0;
+                if (count > 0) {
+                    firstBigrams.set(bigram, count - 1);
+                    intersectionSize++;
+                }
+            }
+
+            return (2.0 * intersectionSize) / (s1.length + s2.length - 2);
+        }
+
+        // Update display
+        function updateDisplay() {
+            const wordElements = document.querySelectorAll('.word');
+            wordElements.forEach((el, index) => {
+                el.classList.remove('current', 'read');
+                if (index < currentWordIndex) {
+                    el.classList.add('read');
+                } else if (index === currentWordIndex) {
+                    el.classList.add('current');
+                }
+            });
+
+            const currentElement = wordElements[currentWordIndex];
+            if (currentElement) {
+                const rect = currentElement.getBoundingClientRect();
+                const containerRect = container.getBoundingClientRect();
+                const offset = rect.top - containerRect.top - (window.innerHeight / 3);
+                
+                if (Math.abs(offset) > 50) {
+                    container.scrollBy({
+                        top: offset,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        }
+
+        // Event listeners
+        function setupEventListeners() {
+            startBtn.addEventListener('click', () => {
+                if (recognition) {
+                    recognition.start();
+                }
+            });
+
+            stopBtn.addEventListener('click', () => {
+                isListening = false;
+                if (recognition) {
+                    recognition.stop();
+                }
+                startBtn.disabled = false;
+                stopBtn.disabled = true;
+                status.textContent = 'Stopped';
+                status.className = 'stopped';
+            });
+
+            resetBtn.addEventListener('click', () => {
+                currentWordIndex = 0;
+                words.forEach(w => w.read = false);
+                updateDisplay();
+                container.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            fontUp.addEventListener('click', () => {
+                fontSize = Math.min(fontSize + 2, 48);
+                scriptText.style.fontSize = fontSize + 'px';
+            });
+
+            fontDown.addEventListener('click', () => {
+                fontSize = Math.max(fontSize - 2, 16);
+                scriptText.style.fontSize = fontSize + 'px';
+            });
+
+            editBtn.addEventListener('click', () => {
+                scriptEditor.value = scriptContent;
+                editSection.classList.add('active');
+            });
+
+            saveEdit.addEventListener('click', () => {
+                scriptContent = scriptEditor.value;
+                localStorage.setItem('teleprompterScript', scriptContent);
+                processScript();
+                renderScript();
+                currentWordIndex = 0;
+                editSection.classList.remove('active');
+            });
+
+            cancelEdit.addEventListener('click', () => {
+                editSection.classList.remove('active');
+            });
+        }
+
+        // Initialize app
+        init();
+    </script>
+</body>
+</html>
